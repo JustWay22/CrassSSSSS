@@ -182,11 +182,12 @@
             margin-top: 10px;
             position: relative;
             z-index: 2;
+            align-items: center;
         }
 
         .balance-button {
-            background: #72ff5c;
-            color: #000;
+            background: #56bd46;
+            color: #fff;
             border: none;
             padding: 8px 16px;
             border-radius: 15px;
@@ -198,17 +199,74 @@
         }
 
         .balance-button:hover {
-            background: #5fff46;
+            background: #4aa83a;
             transform: translateY(-1px);
         }
 
-        .balance-button.withdraw {
-            background: #808080;
-            color: white;
-            cursor: pointer;
+        .balance-button.deposit {
+            background: #56bd46;
+            color: #fff;
         }
 
-        .balance-button.withdraw:hover {
+        .balance-button.deposit:hover {
+            background: #4aa83a;
+            transform: translateY(-1px);
+        }
+
+        .menu-button {
+            background: #808080;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 15px;
+            font-family: 'Orbitron', monospace;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .menu-button:hover {
+            background: #909090;
+            transform: translateY(-1px);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: rgba(30, 40, 50, 0.95);
+            border: 2px solid #808080;
+            border-radius: 15px;
+            padding: 10px;
+            display: none;
+            flex-direction: column;
+            gap: 8px;
+            min-width: 150px;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .dropdown-menu.show {
+            display: flex;
+        }
+
+        .dropdown-item {
+            background: #808080;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 10px;
+            font-family: 'Orbitron', monospace;
+            font-weight: 700;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: left;
+        }
+
+        .dropdown-item:hover {
             background: #909090;
             transform: translateY(-1px);
         }
@@ -232,7 +290,7 @@
 
         .main-content {
             display: grid;
-            grid-template-columns: 300px 1fr 350px;
+            grid-template-columns: 300px 1fr 400px;
             gap: 30px;
             height: 600px;
             overflow: visible;
@@ -467,8 +525,8 @@
             border: 2px solid #00aaff;
             padding: 20px;
             backdrop-filter: blur(10px);
-            overflow-y: auto;
             max-height: 600px;
+            overflow: hidden;
         }
 
         .players-title {
@@ -483,14 +541,24 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            padding: 8px 12px;
-            margin-bottom: 6px;
+            padding: 10px 15px;
+            margin-bottom: 8px;
             background: rgba(0, 170, 255, 0.1);
             border-radius: 15px;
             border: 1px solid rgba(0, 170, 255, 0.3);
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             position: relative;
             transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: playerSlideIn 0.5s ease-out forwards;
+        }
+
+        @keyframes playerSlideIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .player-item.user {
@@ -529,35 +597,45 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            white-space: nowrap;
         }
 
         .player-name {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             font-weight: 700;
             color: white;
+            flex-shrink: 0;
         }
 
         .player-bet {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: white;
             display: flex;
             align-items: center;
             gap: 4px;
+            white-space: nowrap;
         }
 
         .player-cashout {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: #00ff00;
             display: flex;
             align-items: center;
             gap: 4px;
             font-weight: 700;
+            white-space: nowrap;
         }
 
         .player-lost {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: #ff4444;
             font-weight: 700;
+        }
+
+        .player-bet-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .game-area {
@@ -1011,8 +1089,8 @@
         }
 
         .modal-btn.confirm {
-            background: linear-gradient(45deg, #00dd00, #00ff00);
-            color: #000;
+            background: #56bd46;
+            color: #fff;
         }
 
         .modal-btn.cancel {
@@ -1411,9 +1489,14 @@
                         <img src="https://files.svgcdn.io/token-branded/ton.png" alt="TON" class="ton-icon">
                     </div>
                     <div class="balance-buttons" id="balanceButtons" style="display: none;">
-                        <button class="balance-button" onclick="showDepositModal()" data-lang="deposit">ПОПОЛНИТЬ</button>
-                        <button class="balance-button withdraw" onclick="showWithdrawModal()" data-lang="withdraw">ВЫВОД СРЕДСТВ</button>
-                        <button class="balance-button" onclick="showAccountModal()">:</button>
+                        <button class="balance-button deposit" onclick="showDepositModal()" data-lang="deposit">ПОПОЛНИТЬ</button>
+                        <div style="position: relative;">
+                            <button class="menu-button" onclick="toggleMenu()" id="menuButton">⋯</button>
+                            <div class="dropdown-menu" id="dropdownMenu">
+                                <button class="dropdown-item" onclick="showWithdrawModal(); toggleMenu()" data-lang="withdraw">ВЫВОД СРЕДСТВ</button>
+                                <button class="dropdown-item" onclick="showAccountModal(); toggleMenu()">ПРОФИЛЬ</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="login-overlay" id="loginOverlay">
@@ -1788,6 +1871,22 @@
             }
         }
 
+        // Функция для переключения меню
+        function toggleMenu() {
+            const dropdownMenu = document.getElementById('dropdownMenu');
+            dropdownMenu.classList.toggle('show');
+        }
+
+        // Закрытие меню при клике вне его
+        document.addEventListener('click', function(e) {
+            const menuButton = document.getElementById('menuButton');
+            const dropdownMenu = document.getElementById('dropdownMenu');
+            
+            if (!menuButton.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                dropdownMenu.classList.remove('show');
+            }
+        });
+
         class CrashGame {
             constructor() {
                 this.balance = 1000.00;
@@ -1843,7 +1942,6 @@
                 ];
                 
                 this.initializeGame();
-                this.generatePlayers();
                 this.startContinuousGame();
                 this.startHeartbeatEffect();
                 this.startOnlineCounter();
@@ -1979,6 +2077,7 @@
                     
                     this.updateDisplay();
                     this.updateGameActionButton();
+                    this.updatePlayersDisplay();
                     
                     // Показываем уведомление
                     const message = currentLanguage === 'ru' ? 'Ставка отменена' : 'Bet cancelled';
@@ -2035,15 +2134,13 @@
                 
                 // Сортируем игроков по размеру ставки (больше ставка - выше в списке)
                 this.players.sort((a, b) => parseFloat(b.bet) - parseFloat(a.bet));
-                
-                this.updatePlayersDisplay();
             }
 
             updatePlayersDisplay() {
                 const playersList = document.getElementById('playersList');
                 playersList.innerHTML = '';
                 
-                // Сначала добавляем пользователя если он есть ставка
+                // Сначала добавляем пользователя если есть ставка
                 if (this.isLoggedIn && (this.hasBet || this.nextGameBet)) {
                     const userBetAmount = this.hasBet ? this.betAmount : this.nextGameBetAmount;
                     const userDiv = document.createElement('div');
@@ -2056,14 +2153,15 @@
                         const potentialWin = (userBetAmount * this.currentMultiplier).toFixed(2);
                         displayBet = `${userBetAmount.toFixed(2)} TON`;
                         cashoutDisplay = `${potentialWin} TON`;
-                    } else if (this.hasBet) {
+                    } else if (this.hasBet || this.nextGameBet) {
                         displayBet = `${userBetAmount.toFixed(2)} TON`;
                     }
                     
+                    // Убрал текст "(ВЫ)"
                     userDiv.innerHTML = `
                         <div class="player-info">
-                            <div class="player-name">ИГРОК (ВЫ)</div>
-                            <div style="display: flex; gap: 15px; align-items: center;">
+                            <div class="player-name">ИГРОК</div>
+                            <div class="player-bet-info">
                                 <div class="player-bet">
                                     ${displayBet} <img src="https://files.svgcdn.io/token-branded/ton.png" alt="TON" style="width: 16px; height: 16px;">
                                 </div>
@@ -2076,40 +2174,57 @@
                     playersList.appendChild(userDiv);
                 }
                 
-                // Потом добавляем остальных игроков
-                this.players.forEach((player, index) => {
-                    const playerDiv = document.createElement('div');
-                    playerDiv.className = 'player-item';
-                    
-                    let betDisplay = `${player.bet} TON`;
-                    let cashoutDisplay = player.cashout;
-                    
-                    if (this.gameState === 'playing' && !player.hasCashedOut) {
-                        const potentialWin = (parseFloat(player.bet) * this.currentMultiplier).toFixed(2);
-                        cashoutDisplay = `${potentialWin} TON`;
-                    } else if (player.hasCashedOut) {
-                        cashoutDisplay = player.cashout;
-                        playerDiv.classList.add('won');
-                    } else if (this.gameState === 'crashed' && !player.hasCashedOut) {
-                        playerDiv.classList.add('lost');
-                        cashoutDisplay = '-';
-                    }
-                    
-                    playerDiv.innerHTML = `
-                        <div class="player-info">
-                            <div class="player-name">${player.name}</div>
-                            <div style="display: flex; gap: 15px; align-items: center;">
-                                <div class="player-bet">
-                                    ${betDisplay} <img src="https://files.svgcdn.io/token-branded/ton.png" alt="TON" style="width: 16px; height: 16px;">
-                                </div>
-                                <div class="${player.hasCashedOut ? 'player-cashout' : (this.gameState === 'crashed' && !player.hasCashedOut ? 'player-lost' : 'player-cashout')}">
-                                    ${cashoutDisplay}
-                                </div>
+                // Добавляем остальных игроков с анимацией появления во время перерыва
+                if (this.gameState === 'countdown') {
+                    // Во время перерыва игроки появляются последовательно в течение 5 секунд
+                    this.players.forEach((player, index) => {
+                        const delay = (index * 5000) / this.players.length; // Распределяем на 5 секунд
+                        setTimeout(() => {
+                            this.addPlayerToDisplay(player, index);
+                        }, delay);
+                    });
+                } else {
+                    // В остальное время сразу показываем всех игроков
+                    this.players.forEach((player, index) => {
+                        this.addPlayerToDisplay(player, index);
+                    });
+                }
+            }
+
+            addPlayerToDisplay(player, index) {
+                const playersList = document.getElementById('playersList');
+                const playerDiv = document.createElement('div');
+                playerDiv.className = 'player-item';
+                playerDiv.style.animationDelay = `${index * 0.05}s`; // Небольшая задержка для плавности
+                
+                let betDisplay = `${player.bet} TON`;
+                let cashoutDisplay = player.cashout;
+                
+                if (this.gameState === 'playing' && !player.hasCashedOut) {
+                    const potentialWin = (parseFloat(player.bet) * this.currentMultiplier).toFixed(2);
+                    cashoutDisplay = `${potentialWin} TON`;
+                } else if (player.hasCashedOut) {
+                    cashoutDisplay = player.cashout;
+                    playerDiv.classList.add('won');
+                } else if (this.gameState === 'crashed' && !player.hasCashedOut) {
+                    playerDiv.classList.add('lost');
+                    cashoutDisplay = '-';
+                }
+                
+                playerDiv.innerHTML = `
+                    <div class="player-info">
+                        <div class="player-name">${player.name}</div>
+                        <div class="player-bet-info">
+                            <div class="player-bet">
+                                ${betDisplay} <img src="https://files.svgcdn.io/token-branded/ton.png" alt="TON" style="width: 16px; height: 16px;">
+                            </div>
+                            <div class="${player.hasCashedOut ? 'player-cashout' : (this.gameState === 'crashed' && !player.hasCashedOut ? 'player-lost' : 'player-cashout')}">
+                                ${cashoutDisplay}
                             </div>
                         </div>
-                    `;
-                    playersList.appendChild(playerDiv);
-                });
+                    </div>
+                `;
+                playersList.appendChild(playerDiv);
             }
 
             startGameLoop() {
@@ -2158,7 +2273,7 @@
                 }
                 
                 this.updateGameActionButton();
-                this.updatePlayersDisplay();
+                this.updatePlayersDisplay(); // Игроки начинают появляться во время обратного отсчета
                 
                 let count = 5; // 5 секунд обратного отсчета
                 countdownNumber.textContent = count;
