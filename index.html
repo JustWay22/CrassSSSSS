@@ -244,8 +244,9 @@
             flex-direction: column;
             gap: 8px;
             min-width: 150px;
-            z-index: 1000;
+            z-index: 99999; /* Максимальный z-index */
             backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
         }
 
         .dropdown-menu.show {
@@ -1905,6 +1906,7 @@
                 this.crashPoint = 0;
                 this.gameStartTime = 0;
                 this.players = [];
+                this.playersGenerated = false; // Флаг для контроля генерации игроков
                 this.gameLoopId = null;
                 this.currentGifIndex = 0;
                 this.gifChangeInterval = null;
@@ -2117,6 +2119,9 @@
             }
 
             generatePlayers() {
+                // Генерируем игроков только если они еще не были созданы для этого раунда
+                if (this.playersGenerated) return;
+                
                 this.players = [];
                 const playersCount = Math.floor(Math.random() * 36) + 30; // От 30 до 65 игроков
                 
@@ -2134,17 +2139,50 @@
                 
                 // Сортируем игроков по размеру ставки (больше ставка - выше в списке)
                 this.players.sort((a, b) => parseFloat(b.bet) - parseFloat(a.bet));
+                this.playersGenerated = true;
+                console.log('Игроки сгенерированы:', this.players.length);
             }
 
             updatePlayersDisplay() {
                 const playersList = document.getElementById('playersList');
-                playersList.innerHTML = '';
                 
-                // Сначала добавляем пользователя если есть ставка
+                // Очищаем список только в начале нового раунда, а не постоянно
+                if (this.gameState === 'countdown' && !this.playersGenerated) {
+                    playersList.innerHTML = '';
+                }
+                
+                // Добавляем пользователя если есть ставка
+                this.addUserToPlayersList();
+                
+                // Добавляем других игроков только если список пуст (в начале раунда)
+                if (this.gameState === 'countdown' && playersList.children.length <= 1) {
+                    this.players.forEach((player, index) => {
+                        const delay = (index * 5000) / this.players.length;
+                        setTimeout(() => {
+                            this.addPlayerToDisplay(player, index);
+                        }, delay);
+                    });
+                } else if (this.gameState !== 'countdown') {
+                    // Во время игры только обновляем существующие элементы игроков
+                    this.updateExistingPlayers();
+                }
+            }
+
+            addUserToPlayersList() {
+                const playersList = document.getElementById('playersList');
+                
+                // Ищем существующий элемент пользователя
+                let userDiv = playersList.querySelector('.player-item.user');
+                
                 if (this.isLoggedIn && (this.hasBet || this.nextGameBet)) {
                     const userBetAmount = this.hasBet ? this.betAmount : this.nextGameBetAmount;
-                    const userDiv = document.createElement('div');
-                    userDiv.className = 'player-item user';
+                    
+                    if (!userDiv) {
+                        // Создаем новый элемент если его нет
+                        userDiv = document.createElement('div');
+                        userDiv.className = 'player-item user';
+                        playersList.insertBefore(userDiv, playersList.firstChild);
+                    }
                     
                     let displayBet = userBetAmount.toFixed(2);
                     let cashoutDisplay = '-';
@@ -2157,7 +2195,6 @@
                         displayBet = `${userBetAmount.toFixed(2)} TON`;
                     }
                     
-                    // Убрал текст "(ВЫ)"
                     userDiv.innerHTML = `
                         <div class="player-info">
                             <div class="player-name">ИГРОК</div>
@@ -2171,45 +2208,65 @@
                             </div>
                         </div>
                     `;
-                    playersList.appendChild(userDiv);
+                } else if (userDiv) {
+                    // Удаляем элемент пользователя если нет ставки
+                    userDiv.remove();
                 }
+            }
+
+            updateExistingPlayers() {
+                const playersList = document.getElementById('playersList');
+                const playerItems = playersList.querySelectorAll('.player-item:not(.user)');
                 
-                // Добавляем остальных игроков с анимацией появления во время перерыва
-                if (this.gameState === 'countdown') {
-                    // Во время перерыва игроки появляются последовательно в течение 5 секунд
-                    this.players.forEach((player, index) => {
-                        const delay = (index * 5000) / this.players.length; // Распределяем на 5 секунд
-                        setTimeout(() => {
-                            this.addPlayerToDisplay(player, index);
-                        }, delay);
-                    });
-                } else {
-                    // В остальное время сразу показываем всех игроков
-                    this.players.forEach((player, index) => {
-                        this.addPlayerToDisplay(player, index);
-                    });
-                }
+                playerItems.forEach((playerDiv, index) => {
+                    const player = this.players[index];
+                    if (!player) return;
+                    
+                    let betDisplay = `${player.bet} TON`;
+                    let cashoutDisplay = player.cashout;
+                    
+                    // Убираем старые классы состояния
+                    playerDiv.classList.remove('won', 'lost');
+                    
+                    if (this.gameState === 'playing' && !player.hasCashedOut) {
+                        const potentialWin = (parseFloat(player.bet) * this.currentMultiplier).toFixed(2);
+                        cashoutDisplay = `${potentialWin} TON`;
+                    } else if (player.hasCashedOut) {
+                        cashoutDisplay = player.cashout;
+                        playerDiv.classList.add('won');
+                    } else if (this.gameState === 'crashed' && !player.hasCashedOut) {
+                        playerDiv.classList.add('lost');
+                        cashoutDisplay = '-';
+                    }
+                    
+                    // Обновляем содержимое существующего элемента
+                    const cashoutElement = playerDiv.querySelector('.player-cashout');
+                    const lostElement = playerDiv.querySelector('.player-lost');
+                    
+                    if (this.gameState === 'crashed' && !player.hasCashedOut) {
+                        if (cashoutElement) {
+                            cashoutElement.className = 'player-lost';
+                            cashoutElement.textContent = '-';
+                        }
+                    } else {
+                        if (lostElement) {
+                            lostElement.className = player.hasCashedOut ? 'player-cashout' : 'player-cashout';
+                        }
+                        if (cashoutElement) {
+                            cashoutElement.textContent = cashoutDisplay;
+                        }
+                    }
+                });
             }
 
             addPlayerToDisplay(player, index) {
                 const playersList = document.getElementById('playersList');
                 const playerDiv = document.createElement('div');
                 playerDiv.className = 'player-item';
-                playerDiv.style.animationDelay = `${index * 0.05}s`; // Небольшая задержка для плавности
+                playerDiv.style.animationDelay = `${index * 0.05}s`;
                 
                 let betDisplay = `${player.bet} TON`;
                 let cashoutDisplay = player.cashout;
-                
-                if (this.gameState === 'playing' && !player.hasCashedOut) {
-                    const potentialWin = (parseFloat(player.bet) * this.currentMultiplier).toFixed(2);
-                    cashoutDisplay = `${potentialWin} TON`;
-                } else if (player.hasCashedOut) {
-                    cashoutDisplay = player.cashout;
-                    playerDiv.classList.add('won');
-                } else if (this.gameState === 'crashed' && !player.hasCashedOut) {
-                    playerDiv.classList.add('lost');
-                    cashoutDisplay = '-';
-                }
                 
                 playerDiv.innerHTML = `
                     <div class="player-info">
@@ -2218,7 +2275,7 @@
                             <div class="player-bet">
                                 ${betDisplay} <img src="https://files.svgcdn.io/token-branded/ton.png" alt="TON" style="width: 16px; height: 16px;">
                             </div>
-                            <div class="${player.hasCashedOut ? 'player-cashout' : (this.gameState === 'crashed' && !player.hasCashedOut ? 'player-lost' : 'player-cashout')}">
+                            <div class="player-cashout">
                                 ${cashoutDisplay}
                             </div>
                         </div>
@@ -2230,7 +2287,8 @@
             startGameLoop() {
                 console.log('Начало игрового цикла');
                 this.clearAllIntervals();
-                this.generatePlayers(); // Генерируем новых игроков каждую игру
+                this.playersGenerated = false; // Сбрасываем флаг для генерации новых игроков
+                this.generatePlayers(); 
                 this.startCountdown();
             }
 
@@ -2273,9 +2331,9 @@
                 }
                 
                 this.updateGameActionButton();
-                this.updatePlayersDisplay(); // Игроки начинают появляться во время обратного отсчета
+                this.updatePlayersDisplay();
                 
-                let count = 5; // 5 секунд обратного отсчета
+                let count = 5;
                 countdownNumber.textContent = count;
                 countdownNumber.style.animation = 'heartbeat 1s ease-in-out';
 
@@ -2309,7 +2367,6 @@
                 
                 console.log('Точка краша:', this.crashPoint);
                 
-                // Симулируем кешауты других игроков
                 this.simulatePlayerCashouts();
                 
                 const gameGif = document.getElementById('gameGif');
@@ -2349,12 +2406,9 @@
                     player.cashedOutAt = 0;
                     player.cashout = '-';
                     
-                    // 70% шанс, что игрок попытается кешаутить
                     if (Math.random() < 0.7) {
-                        // Случайный множитель от 1.2 до crashPoint - 0.5
                         const maxCashout = Math.max(1.2, this.crashPoint - 0.5);
                         const cashoutPoint = Math.random() * (maxCashout - 1.2) + 1.2;
-                        
                         player.cashedOutAt = cashoutPoint;
                     }
                 });
@@ -2402,8 +2456,8 @@
                     this.updateGameActionButton();
                 }
 
-                // Обновляем потенциальный выигрыш игроков
-                this.updatePlayersDisplay();
+                // Обновляем потенциальный выигрыш игроков во время игры
+                this.updateExistingPlayers();
 
                 // автокешаут только если значение больше 0
                 if (this.hasBet && this.autoCashout > 0 && this.currentMultiplier >= this.autoCashout && !this.isCrashed) {
@@ -2506,7 +2560,7 @@
                 this.totalGames++;
                 this.updateDisplay();
                 this.updateGameActionButton();
-                this.updatePlayersDisplay();
+                this.updateExistingPlayers(); // Обновляем игроков в конце игры
 
                 if (this.gameHistory.length > 10) {
                     this.gameHistory = this.gameHistory.slice(-10);
