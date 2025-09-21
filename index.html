@@ -185,8 +185,8 @@
         }
 
         .balance-button {
-            background: rgba(100, 100, 100, 0.8);
-            color: white;
+            background: #72ff5c;
+            color: #000;
             border: none;
             padding: 8px 16px;
             border-radius: 15px;
@@ -198,18 +198,18 @@
         }
 
         .balance-button:hover {
-            background: rgba(120, 120, 120, 0.9);
+            background: #5fff46;
             transform: translateY(-1px);
         }
 
         .balance-button.withdraw {
-            background: rgba(255, 100, 100, 0.8);
+            background: #808080;
             color: white;
             cursor: pointer;
         }
 
         .balance-button.withdraw:hover {
-            background: rgba(255, 120, 120, 0.9);
+            background: #909090;
             transform: translateY(-1px);
         }
 
@@ -235,6 +235,7 @@
             grid-template-columns: 300px 1fr 350px;
             gap: 30px;
             height: 600px;
+            overflow: visible;
         }
 
         .bonus-content {
@@ -252,7 +253,6 @@
             font-weight: 900;
             color: white;
             margin-bottom: 30px;
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
         }
 
         .bonus-stages {
@@ -336,7 +336,6 @@
 
         .bonus-stage.active .bonus-percentage {
             color: #ffaa00;
-            text-shadow: 0 0 20px rgba(255, 170, 0, 0.8);
         }
 
         .bonus-stage.completed .bonus-percentage {
@@ -468,6 +467,8 @@
             border: 2px solid #00aaff;
             padding: 20px;
             backdrop-filter: blur(10px);
+            overflow-y: auto;
+            max-height: 600px;
         }
 
         .players-title {
@@ -482,26 +483,56 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            padding: 10px;
-            margin-bottom: 10px;
+            padding: 8px 12px;
+            margin-bottom: 6px;
             background: rgba(0, 170, 255, 0.1);
-            border-radius: 20px;
+            border-radius: 15px;
             border: 1px solid rgba(0, 170, 255, 0.3);
+            font-size: 0.85rem;
+            position: relative;
+            transition: all 0.3s ease;
         }
 
-        .player-avatar {
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            border: 2px solid #00aaff;
+        .player-item.user {
+            background: rgba(255, 170, 0, 0.2);
+            border: 2px solid #ffaa00;
+            order: -1;
+            margin-bottom: 10px;
+        }
+
+        .player-item.lost {
+            background: rgba(255, 68, 68, 0.2);
+            border-color: #ff4444;
+            color: #ff9999;
+        }
+
+        .player-item.won {
+            background: rgba(0, 255, 0, 0.2);
+            border-color: #00ff00;
+            position: relative;
+        }
+
+        .player-item.won::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 255, 0, 0.1);
+            border-radius: 15px;
+            pointer-events: none;
         }
 
         .player-info {
             flex: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .player-name {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 700;
             color: white;
         }
@@ -514,8 +545,24 @@
             gap: 4px;
         }
 
+        .player-cashout {
+            font-size: 0.8rem;
+            color: #00ff00;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-weight: 700;
+        }
+
+        .player-lost {
+            font-size: 0.8rem;
+            color: #ff4444;
+            font-weight: 700;
+        }
+
         .game-area {
             position: relative;
+            overflow: visible;
         }
 
         .game-canvas {
@@ -527,7 +574,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 100%;
+            height: 600px;
+            width: 100%;
             background-image: 
                 linear-gradient(rgba(0, 170, 255, 0.1) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(0, 170, 255, 0.1) 1px, transparent 1px);
@@ -587,14 +635,12 @@
             font-size: 4rem;
             font-weight: 900;
             color: white;
-            text-shadow: 0 0 30px white;
             z-index: 10;
             transition: all 0.1s ease;
         }
 
         .multiplier-display.red {
             color: #ff4444;
-            text-shadow: 0 0 30px #ff4444;
         }
 
         .win-display {
@@ -605,7 +651,6 @@
             font-size: 2.5rem;
             font-weight: 900;
             color: #ffaa00;
-            text-shadow: 0 0 20px #ffaa00;
             z-index: 11;
             opacity: 0;
             transition: all 0.3s ease;
@@ -636,7 +681,7 @@
             font-weight: 900;
             cursor: pointer;
             transition: all 0.3s ease;
-            z-index: 15;
+            z-index: 25;
         }
 
         .game-action-button.bet {
@@ -727,7 +772,6 @@
             font-size: 8rem;
             font-weight: 900;
             color: #00aaff;
-            text-shadow: 0 0 50px #00aaff;
             animation: heartbeat 1s ease-in-out;
         }
 
@@ -745,7 +789,6 @@
             font-size: 3rem;
             color: #ff0044;
             font-weight: 900;
-            text-shadow: 0 0 30px #ff0044;
             z-index: 15;
             animation: crashPulse 0.5s ease-in-out;
         }
@@ -1179,7 +1222,6 @@
             color: white;
             margin-bottom: 30px;
             font-size: 2.5rem;
-            text-shadow: 0 0 20px rgba(255, 170, 0, 0.8);
         }
 
         .win-modal .modal-btn {
@@ -1194,15 +1236,7 @@
             font-size: 4rem;
             font-weight: 900;
             color: #ffaa00;
-            text-shadow: 0 0 30px rgba(255, 170, 0, 0.8);
             margin-bottom: 30px;
-            animation: goldShine 2s ease-in-out infinite;
-        }
-
-        @keyframes goldShine {
-            0% { text-shadow: 0 0 30px rgba(255, 170, 0, 0.8); }
-            50% { text-shadow: 0 0 50px rgba(255, 215, 0, 1), 0 0 80px rgba(255, 170, 0, 0.6); }
-            100% { text-shadow: 0 0 30px rgba(255, 170, 0, 0.8); }
         }
 
         .win-multiplier {
@@ -1554,7 +1588,6 @@
                 </button>
                 <button class="deposit-btn" onclick="depositCurrency('USDT')">
                     <img src="https://files.svgcdn.io/token-branded/usdt.png" alt="USDT" style="width: 24px; height: 24px;">
-                    USDT
                 </button>
             </div>
             <input type="number" class="modal-input" id="depositAmount" data-lang-placeholder="enter-deposit-amount" placeholder="Введите сумму для пополнения" min="1" step="1">
@@ -1957,25 +1990,7 @@
                 this.isLoggedIn = true;
                 this.playerNick = nickname;
                 this.updateLoginState();
-                this.addPlayerToList();
                 console.log('Пользователь вошел:', nickname);
-            }
-
-            addPlayerToList() {
-                // Добавляем игрока в список если его там нет
-                const existingPlayer = this.players.find(p => p.name === this.playerNick);
-                if (!existingPlayer) {
-                    this.players.unshift({
-                        name: this.playerNick,
-                        avatar: `https://i.pravatar.cc/150?u=${this.playerNick}`,
-                        bet: '0.00',
-                        isUser: true
-                    });
-                    if (this.players.length > 8) {
-                        this.players.pop();
-                    }
-                    this.updatePlayersDisplay();
-                }
             }
 
             startOnlineCounter() {
@@ -2003,26 +2018,24 @@
             }
 
             generatePlayers() {
-                const names = ['CryptoKing', 'TONMaster', 'RocketMan', 'DiamondHands', 'MoonWalker', 'CoinHunter', 'BlockChainer'];
-                const avatars = [
-                    'https://i.pravatar.cc/150?img=1',
-                    'https://i.pravatar.cc/150?img=2',
-                    'https://i.pravatar.cc/150?img=3',
-                    'https://i.pravatar.cc/150?img=4',
-                    'https://i.pravatar.cc/150?img=5',
-                    'https://i.pravatar.cc/150?img=6',
-                    'https://i.pravatar.cc/150?img=7'
-                ];
-
-                for (let i = 0; i < 7; i++) {
+                this.players = [];
+                const playersCount = Math.floor(Math.random() * 36) + 30; // От 30 до 65 игроков
+                
+                for (let i = 0; i < playersCount; i++) {
+                    const betAmount = Math.random() * 24.9 + 0.1; // От 0.1 до 25 TON
                     this.players.push({
-                        name: names[i],
-                        avatar: avatars[i],
-                        bet: (Math.random() * 10 + 0.1).toFixed(2),
-                        potentialWin: 0,
+                        name: 'ИГРОК',
+                        bet: betAmount.toFixed(2),
+                        cashout: '-',
+                        hasCashedOut: false,
+                        cashedOutAt: 0,
                         isUser: false
                     });
                 }
+                
+                // Сортируем игроков по размеру ставки (больше ставка - выше в списке)
+                this.players.sort((a, b) => parseFloat(b.bet) - parseFloat(a.bet));
+                
                 this.updatePlayersDisplay();
             }
 
@@ -2030,28 +2043,68 @@
                 const playersList = document.getElementById('playersList');
                 playersList.innerHTML = '';
                 
-                this.players.forEach(player => {
+                // Сначала добавляем пользователя если он есть ставка
+                if (this.isLoggedIn && (this.hasBet || this.nextGameBet)) {
+                    const userBetAmount = this.hasBet ? this.betAmount : this.nextGameBetAmount;
+                    const userDiv = document.createElement('div');
+                    userDiv.className = 'player-item user';
+                    
+                    let displayBet = userBetAmount.toFixed(2);
+                    let cashoutDisplay = '-';
+                    
+                    if (this.gameState === 'playing' && this.hasBet) {
+                        const potentialWin = (userBetAmount * this.currentMultiplier).toFixed(2);
+                        displayBet = `${userBetAmount.toFixed(2)} TON`;
+                        cashoutDisplay = `${potentialWin} TON`;
+                    } else if (this.hasBet) {
+                        displayBet = `${userBetAmount.toFixed(2)} TON`;
+                    }
+                    
+                    userDiv.innerHTML = `
+                        <div class="player-info">
+                            <div class="player-name">ИГРОК (ВЫ)</div>
+                            <div style="display: flex; gap: 15px; align-items: center;">
+                                <div class="player-bet">
+                                    ${displayBet} <img src="https://files.svgcdn.io/token-branded/ton.png" alt="TON" style="width: 16px; height: 16px;">
+                                </div>
+                                <div class="player-cashout">
+                                    ${cashoutDisplay}
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    playersList.appendChild(userDiv);
+                }
+                
+                // Потом добавляем остальных игроков
+                this.players.forEach((player, index) => {
                     const playerDiv = document.createElement('div');
                     playerDiv.className = 'player-item';
                     
-                    let displayBet = player.bet;
-                    if (this.gameState === 'playing' && parseFloat(player.bet) > 0) {
+                    let betDisplay = `${player.bet} TON`;
+                    let cashoutDisplay = player.cashout;
+                    
+                    if (this.gameState === 'playing' && !player.hasCashedOut) {
                         const potentialWin = (parseFloat(player.bet) * this.currentMultiplier).toFixed(2);
-                        displayBet = `${potentialWin} TON`;
-                    } else if (parseFloat(player.bet) > 0) {
-                        displayBet = `${player.bet} TON`;
-                    } else {
-                        displayBet = currentLanguage === 'ru' ? 'Ожидает' : 'Waiting';
+                        cashoutDisplay = `${potentialWin} TON`;
+                    } else if (player.hasCashedOut) {
+                        cashoutDisplay = player.cashout;
+                        playerDiv.classList.add('won');
+                    } else if (this.gameState === 'crashed' && !player.hasCashedOut) {
+                        playerDiv.classList.add('lost');
+                        cashoutDisplay = '-';
                     }
                     
-                    const youText = currentLanguage === 'ru' ? ' (Вы)' : ' (You)';
-                    
                     playerDiv.innerHTML = `
-                        <img src="${player.avatar}" alt="${player.name}" class="player-avatar">
                         <div class="player-info">
-                            <div class="player-name">${player.name}${player.isUser ? youText : ''}</div>
-                            <div class="player-bet">
-                                ${displayBet}
+                            <div class="player-name">${player.name}</div>
+                            <div style="display: flex; gap: 15px; align-items: center;">
+                                <div class="player-bet">
+                                    ${betDisplay} <img src="https://files.svgcdn.io/token-branded/ton.png" alt="TON" style="width: 16px; height: 16px;">
+                                </div>
+                                <div class="${player.hasCashedOut ? 'player-cashout' : (this.gameState === 'crashed' && !player.hasCashedOut ? 'player-lost' : 'player-cashout')}">
+                                    ${cashoutDisplay}
+                                </div>
                             </div>
                         </div>
                     `;
@@ -2062,6 +2115,7 @@
             startGameLoop() {
                 console.log('Начало игрового цикла');
                 this.clearAllIntervals();
+                this.generatePlayers(); // Генерируем новых игроков каждую игру
                 this.startCountdown();
             }
 
@@ -2100,16 +2154,13 @@
                     this.hasBet = true;
                     this.nextGameBet = false;
                     
-                    // Обновляем ставку игрока в списке
-                    const userPlayer = this.players.find(p => p.isUser);
-                    if (userPlayer) {
-                        userPlayer.bet = this.betAmount.toFixed(2);
-                    }
-                    
                     console.log('Активирована ставка на следующую игру:', this.betAmount);
                 }
                 
-                let count = 3;
+                this.updateGameActionButton();
+                this.updatePlayersDisplay();
+                
+                let count = 5; // 5 секунд обратного отсчета
                 countdownNumber.textContent = count;
                 countdownNumber.style.animation = 'heartbeat 1s ease-in-out';
 
@@ -2143,6 +2194,9 @@
                 
                 console.log('Точка краша:', this.crashPoint);
                 
+                // Симулируем кешауты других игроков
+                this.simulatePlayerCashouts();
+                
                 const gameGif = document.getElementById('gameGif');
                 gameGif.src = this.gameGifs[this.currentGifIndex];
                 gameGif.classList.add('show');
@@ -2174,6 +2228,23 @@
                 this.gameLoop();
             }
 
+            simulatePlayerCashouts() {
+                this.players.forEach(player => {
+                    player.hasCashedOut = false;
+                    player.cashedOutAt = 0;
+                    player.cashout = '-';
+                    
+                    // 70% шанс, что игрок попытается кешаутить
+                    if (Math.random() < 0.7) {
+                        // Случайный множитель от 1.2 до crashPoint - 0.5
+                        const maxCashout = Math.max(1.2, this.crashPoint - 0.5);
+                        const cashoutPoint = Math.random() * (maxCashout - 1.2) + 1.2;
+                        
+                        player.cashedOutAt = cashoutPoint;
+                    }
+                });
+            }
+
             generateCrashPoint() {
                 const rand = Math.random();
                 if (rand < 0.15) return 1.00 + Math.random() * 0.5;
@@ -2200,6 +2271,15 @@
                 multiplierElement.textContent = this.currentMultiplier.toFixed(2) + 'x';
 
                 this.updateTradingChart();
+
+                // Проверяем кешауты других игроков
+                this.players.forEach(player => {
+                    if (!player.hasCashedOut && player.cashedOutAt > 0 && this.currentMultiplier >= player.cashedOutAt) {
+                        player.hasCashedOut = true;
+                        const winAmount = (parseFloat(player.bet) * player.cashedOutAt).toFixed(2);
+                        player.cashout = `${winAmount} TON`;
+                    }
+                });
 
                 // Обновляем текущий выигрыш если есть ставка
                 if (this.hasBet && !this.isCrashed) {
@@ -2303,12 +2383,6 @@
                     this.hasBet = false;
                     this.currentWinAmount = 0;
                     
-                    // Сброс ставки игрока
-                    const userPlayer = this.players.find(p => p.isUser);
-                    if (userPlayer) {
-                        userPlayer.bet = '0.00';
-                    }
-                    
                     console.log('Игрок проиграл ставку:', this.betAmount);
                 } else {
                     this.gameHistory.push({ multiplier: this.crashPoint, win: null, bet: 0 });
@@ -2317,12 +2391,11 @@
                 this.totalGames++;
                 this.updateDisplay();
                 this.updateGameActionButton();
+                this.updatePlayersDisplay();
 
                 if (this.gameHistory.length > 10) {
                     this.gameHistory = this.gameHistory.slice(-10);
                 }
-
-                this.updatePlayersBets();
 
                 console.log('Запуск следующей игры через 3 секунды');
                 this.gameTimeout = setTimeout(() => {
@@ -2361,15 +2434,6 @@
                 }
             }
 
-            updatePlayersBets() {
-                this.players.forEach(player => {
-                    if (!player.isUser) {
-                        player.bet = (Math.random() * 10 + 0.1).toFixed(2);
-                    }
-                });
-                this.updatePlayersDisplay();
-            }
-
             placeBet(amount, autoCashout) {
                 if (!this.isLoggedIn) {
                     showLoginModal();
@@ -2391,12 +2455,6 @@
                         this.hasBet = true;
                         this.currentWinAmount = amount;
                         this.autoCashout = autoCashout || 0;
-                        
-                        // Обновляем ставку игрока в списке
-                        const userPlayer = this.players.find(p => p.isUser);
-                        if (userPlayer) {
-                            userPlayer.bet = this.betAmount.toFixed(2);
-                        }
                         
                         console.log('Ставка на текущую игру принята:', this.betAmount);
                     } else {
@@ -2452,12 +2510,6 @@
                 this.hasBet = false;
                 this.betAmount = 0;
                 this.currentWinAmount = 0;
-                
-                // Сброс ставки игрока
-                const userPlayer = this.players.find(p => p.isUser);
-                if (userPlayer) {
-                    userPlayer.bet = '0.00';
-                }
                 
                 console.log('Кэшаут! Выиграно:', winAmount);
                 
