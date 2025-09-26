@@ -377,69 +377,89 @@
         /* Новые стили для кошелька в стиле Binance - увеличиваем высоту в 1.2 раза */
         .wallet-content {
             padding: 0;
-            background: #0f0f23;
-            border-radius: 8px;
-            border: 1px solid #2f2f2f;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            border-radius: 20px;
+            border: 2px solid #fcd535;
             margin: 0 auto;
             max-width: 800px;
             position: relative;
             overflow: hidden;
-            min-height: 720px; /* Было 600px, увеличиваем в 1.2 раза */
+            min-height: 720px;
+            box-shadow: 0 10px 40px rgba(252, 213, 53, 0.3);
+        }
+
+        .wallet-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(252, 213, 53, 0.1) 0%, transparent 50%, rgba(252, 213, 53, 0.1) 100%);
+            pointer-events: none;
+            z-index: 1;
         }
 
         .wallet-header {
-            background: #181825;
+            background: linear-gradient(135deg, #181825 0%, #252542 100%);
             padding: 24px;
-            border-bottom: 1px solid #2f2f2f;
+            border-bottom: 2px solid rgba(252, 213, 53, 0.3);
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
+            z-index: 2;
         }
 
         .wallet-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #ffffff;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: #fcd535;
             margin: 0;
             text-transform: none;
+            text-shadow: 0 0 10px rgba(252, 213, 53, 0.5);
         }
 
         .refresh-button {
             background: #fcd535;
             color: #000;
             border: none;
-            padding: 8px 16px;
-            border-radius: 4px;
-            font-weight: 600;
-            font-size: 0.875rem;
+            padding: 10px 18px;
+            border-radius: 15px;
+            font-weight: 700;
+            font-size: 0.9rem;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(252, 213, 53, 0.3);
         }
 
         .refresh-button:hover {
             background: #e6c332;
-            transform: translateY(-1px);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(252, 213, 53, 0.4);
         }
 
         .wallet-overview {
-            padding: 24px;
-            background: #181825;
-            border-bottom: 1px solid #2f2f2f;
+            padding: 30px 24px;
+            background: linear-gradient(135deg, #181825 0%, #252542 100%);
+            border-bottom: 2px solid rgba(252, 213, 53, 0.2);
+            position: relative;
+            z-index: 2;
         }
 
         .total-balance {
             text-align: center;
-            margin-bottom: 24px;
+            margin-bottom: 30px;
         }
 
         .total-balance h3 {
-            font-size: 0.875rem;
-            color: #848e9c;
-            margin-bottom: 8px;
-            font-weight: 400;
+            font-size: 1rem;
+            color: #fcd535;
+            margin-bottom: 12px;
+            font-weight: 600;
             text-transform: none;
         }
 
@@ -452,44 +472,48 @@
         }
 
         .balance-amount-large {
-            font-size: 2rem;
-            font-weight: 600;
+            font-size: 2.5rem;
+            font-weight: 900;
             color: #ffffff;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
         }
 
         .balance-usd {
-            font-size: 0.875rem;
-            color: #848e9c;
+            font-size: 1rem;
+            color: #fcd535;
+            opacity: 0.8;
         }
 
         .wallet-actions {
             display: flex;
-            gap: 12px;
+            gap: 15px;
             justify-content: center;
         }
 
         .action-button {
-            background: #fcd535;
+            background: linear-gradient(45deg, #fcd535, #f4d03f);
             color: #000;
             border: none;
-            padding: 12px 24px;
-            border-radius: 4px;
-            font-weight: 600;
-            font-size: 0.875rem;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 1rem;
             cursor: pointer;
-            transition: all 0.2s ease;
-            min-width: 100px;
+            transition: all 0.3s ease;
+            min-width: 120px;
+            box-shadow: 0 4px 15px rgba(252, 213, 53, 0.3);
         }
 
         .action-button:hover {
-            background: #e6c332;
-            transform: translateY(-1px);
+            background: linear-gradient(45deg, #e6c332, #d4ac0d);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(252, 213, 53, 0.4);
         }
 
         .action-button.secondary {
             background: transparent;
             color: #fcd535;
-            border: 1px solid #fcd535;
+            border: 2px solid #fcd535;
         }
 
         .action-button.secondary:hover {
@@ -500,15 +524,18 @@
         /* Секция графиков криптовалют */
         .crypto-charts {
             padding: 20px 24px;
-            background: #181825;
-            border-bottom: 1px solid #2f2f2f;
+            background: linear-gradient(135deg, rgba(24, 24, 37, 0.9) 0%, rgba(37, 37, 66, 0.9) 100%);
+            border-bottom: 2px solid rgba(252, 213, 53, 0.2);
+            position: relative;
+            z-index: 2;
         }
 
         .charts-title {
-            font-size: 1rem;
-            color: #ffffff;
-            margin-bottom: 16px;
-            font-weight: 600;
+            font-size: 1.2rem;
+            color: #fcd535;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 0 0 10px rgba(252, 213, 53, 0.3);
         }
 
         .charts-grid {
@@ -518,99 +545,113 @@
         }
 
         .chart-item {
-            background: rgba(30, 30, 30, 0.5);
-            border-radius: 8px;
-            padding: 16px;
-            border: 1px solid #2f2f2f;
+            background: linear-gradient(135deg, rgba(30, 30, 30, 0.8) 0%, rgba(50, 50, 80, 0.8) 100%);
+            border-radius: 15px;
+            padding: 20px;
+            border: 2px solid rgba(252, 213, 53, 0.3);
             transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
 
         .chart-item:hover {
-            background: rgba(30, 30, 30, 0.7);
+            background: linear-gradient(135deg, rgba(30, 30, 30, 0.9) 0%, rgba(50, 50, 80, 0.9) 100%);
             border-color: #fcd535;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(252, 213, 53, 0.2);
         }
 
         .chart-header {
             display: flex;
             align-items: center;
-            gap: 8px;
-            margin-bottom: 12px;
+            gap: 12px;
+            margin-bottom: 15px;
         }
 
         .chart-icon {
-            width: 24px;
-            height: 24px;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
 
         .chart-name {
-            font-size: 0.875rem;
-            font-weight: 600;
+            font-size: 1rem;
+            font-weight: 700;
             color: #ffffff;
         }
 
         .chart-price {
-            font-size: 1.25rem;
+            font-size: 1.4rem;
             font-weight: 700;
-            color: #ffffff;
-            margin-bottom: 4px;
+            color: #fcd535;
+            margin-bottom: 8px;
         }
 
         .chart-change {
-            font-size: 0.75rem;
+            font-size: 0.85rem;
             font-weight: 600;
+            padding: 4px 8px;
+            border-radius: 8px;
         }
 
         .chart-change.positive {
             color: #00d4aa;
+            background: rgba(0, 212, 170, 0.2);
         }
 
         .chart-change.negative {
             color: #ff6b6b;
+            background: rgba(255, 107, 107, 0.2);
         }
 
         .mini-chart {
             width: 100%;
-            height: 40px;
-            margin-top: 8px;
-            opacity: 0.6;
+            height: 50px;
+            margin-top: 12px;
+            opacity: 0.8;
         }
 
         .wallet-tabs {
             display: flex;
-            border-bottom: 1px solid #2f2f2f;
-            background: #181825;
+            border-bottom: 2px solid rgba(252, 213, 53, 0.2);
+            background: linear-gradient(135deg, #181825 0%, #252542 100%);
+            position: relative;
+            z-index: 2;
         }
 
         .tab-button {
             background: none;
             border: none;
             color: #848e9c;
-            padding: 16px 24px;
+            padding: 20px 30px;
             cursor: pointer;
-            font-size: 0.875rem;
-            font-weight: 500;
-            border-bottom: 2px solid transparent;
-            transition: all 0.2s ease;
+            font-size: 1rem;
+            font-weight: 600;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
         }
 
         .tab-button.active {
             color: #fcd535;
             border-bottom-color: #fcd535;
+            background: rgba(252, 213, 53, 0.1);
         }
 
         .tab-button:hover {
             color: #ffffff;
+            background: rgba(252, 213, 53, 0.05);
         }
 
         .assets-section {
             padding: 0;
-            max-height: 300px; /* Ограничиваем высоту для прокрутки */
+            max-height: 300px;
             overflow-y: auto;
+            position: relative;
+            z-index: 2;
         }
 
         .assets-section::-webkit-scrollbar {
-            width: 6px;
+            width: 8px;
         }
 
         .assets-section::-webkit-scrollbar-track {
@@ -625,28 +666,31 @@
         .asset-item {
             display: flex;
             align-items: center;
-            padding: 16px 24px;
-            border-bottom: 1px solid #2f2f2f;
-            transition: background-color 0.2s ease;
+            padding: 20px 24px;
+            border-bottom: 2px solid rgba(252, 213, 53, 0.1);
+            transition: all 0.3s ease;
+            background: rgba(24, 24, 37, 0.5);
         }
 
         .asset-item:hover {
-            background: rgba(252, 213, 53, 0.05);
+            background: rgba(252, 213, 53, 0.1);
+            border-bottom-color: rgba(252, 213, 53, 0.3);
         }
 
         .asset-icon {
-            width: 32px;
-            height: 32px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
-            margin-right: 16px;
+            margin-right: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
 
         .asset-icon img {
-            width: 24px;
-            height: 24px;
+            width: 30px;
+            height: 30px;
             object-fit: contain;
         }
 
@@ -655,15 +699,16 @@
         }
 
         .asset-name {
-            font-weight: 500;
+            font-weight: 700;
             color: #ffffff;
-            font-size: 0.875rem;
-            margin-bottom: 2px;
+            font-size: 1rem;
+            margin-bottom: 4px;
         }
 
         .asset-symbol {
-            font-size: 0.75rem;
-            color: #848e9c;
+            font-size: 0.85rem;
+            color: #fcd535;
+            opacity: 0.8;
         }
 
         .asset-balance {
@@ -671,34 +716,38 @@
         }
 
         .asset-amount {
-            font-weight: 500;
+            font-weight: 700;
             color: #ffffff;
-            font-size: 0.875rem;
-            margin-bottom: 2px;
+            font-size: 1rem;
+            margin-bottom: 4px;
         }
 
         .asset-value {
-            font-size: 0.75rem;
-            color: #848e9c;
+            font-size: 0.85rem;
+            color: #fcd535;
+            opacity: 0.8;
         }
 
         /* Стили для фондового рынка */
         .stocks-section {
             padding: 20px 24px;
+            position: relative;
+            z-index: 2;
         }
 
         .stocks-title {
-            font-size: 1rem;
-            color: #ffffff;
-            margin-bottom: 16px;
-            font-weight: 600;
+            font-size: 1.2rem;
+            color: #fcd535;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 0 0 10px rgba(252, 213, 53, 0.3);
         }
 
         .stock-item {
             display: flex;
             align-items: center;
-            padding: 12px 0;
-            border-bottom: 1px solid #2f2f2f;
+            padding: 15px 0;
+            border-bottom: 2px solid rgba(252, 213, 53, 0.1);
         }
 
         .stock-info {
@@ -707,15 +756,16 @@
         }
 
         .stock-symbol {
-            font-weight: 600;
+            font-weight: 700;
             color: #ffffff;
-            font-size: 0.875rem;
+            font-size: 1rem;
         }
 
         .stock-name {
-            font-size: 0.75rem;
-            color: #848e9c;
-            margin-top: 2px;
+            font-size: 0.85rem;
+            color: #fcd535;
+            margin-top: 4px;
+            opacity: 0.8;
         }
 
         .stock-price {
@@ -724,27 +774,27 @@
         }
 
         .stock-price-value {
-            font-weight: 600;
+            font-weight: 700;
             color: #ffffff;
-            font-size: 0.875rem;
+            font-size: 1rem;
         }
 
         .stock-change {
             text-align: right;
-            font-size: 0.75rem;
-            font-weight: 600;
-            padding: 4px 8px;
-            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            padding: 6px 12px;
+            border-radius: 8px;
         }
 
         .stock-change.positive {
             color: #00d4aa;
-            background: rgba(0, 212, 170, 0.1);
+            background: rgba(0, 212, 170, 0.2);
         }
 
         .stock-change.negative {
             color: #ff6b6b;
-            background: rgba(255, 107, 107, 0.1);
+            background: rgba(255, 107, 107, 0.2);
         }
 
         /* Стили для промокода */
@@ -1089,10 +1139,15 @@
             position: relative;
         }
 
-        /* Кнопка отмены ставки в панели игроков */
-        .cancel-bet-button {
-            background: linear-gradient(45deg, #ff4444, #ff6666);
-            color: white;
+        /* Кнопки управления в панели игроков */
+        .players-controls {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .cancel-bet-button, .place-bet-button, .cashout-button {
             border: none;
             padding: 12px 20px;
             border-radius: 15px;
@@ -1102,9 +1157,13 @@
             cursor: pointer;
             transition: all 0.3s ease;
             text-transform: none;
-            margin-bottom: 15px;
             width: 100%;
             display: none;
+        }
+
+        .cancel-bet-button {
+            background: linear-gradient(45deg, #ff4444, #ff6666);
+            color: white;
         }
 
         .cancel-bet-button:hover {
@@ -1112,7 +1171,27 @@
             box-shadow: 0 5px 15px rgba(255, 68, 68, 0.4);
         }
 
-        .cancel-bet-button.show {
+        .place-bet-button {
+            background: linear-gradient(45deg, #007acc, #0099ff);
+            color: white;
+        }
+
+        .place-bet-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 153, 255, 0.4);
+        }
+
+        .cashout-button {
+            background: linear-gradient(45deg, #00aaff, #00ddff);
+            color: white;
+        }
+
+        .cashout-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 170, 255, 0.4);
+        }
+
+        .cancel-bet-button.show, .place-bet-button.show, .cashout-button.show {
             display: block;
         }
 
@@ -1381,55 +1460,6 @@
             100% { transform: translateX(-50%) scale(1); opacity: 0; }
         }
 
-        /* Кнопка ПОСТАВИТЬ увеличена в 1.25 раза */
-        .game-action-button {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%) scale(1.25);
-            padding: 15px 30px;
-            border: none;
-            border-radius: 25px;
-            font-family: 'Orbitron', monospace;
-            font-size: 1.2rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            z-index: 25;
-            text-transform: none;
-            width: auto;
-            max-width: 250px;
-        }
-
-        .game-action-button.bet {
-            background: linear-gradient(45deg, #007acc, #0099ff);
-            color: white;
-            box-shadow: 0 5px 15px rgba(0, 153, 255, 0.4);
-        }
-
-        .game-action-button.cashout {
-            background: linear-gradient(45deg, #00aaff, #00ddff);
-            color: white;
-            box-shadow: 0 5px 15px rgba(0, 170, 255, 0.4);
-        }
-
-        .game-action-button.cancel {
-            background: linear-gradient(45deg, #ff4444, #ff6666);
-            color: white;
-            box-shadow: 0 5px 15px rgba(255, 68, 68, 0.4);
-        }
-
-        .game-action-button.login {
-            background: #c72626;
-            color: white;
-            box-shadow: 0 5px 15px rgba(199, 38, 38, 0.4);
-            letter-spacing: 1px;
-        }
-
-        .game-action-button:hover {
-            transform: translateX(-50%) scale(1.25) translateY(-3px);
-        }
-
         .trading-chart {
             position: absolute;
             bottom: 0;
@@ -1505,11 +1535,11 @@
             left: 50%;
             transform: translate(-50%, -50%);
             font-size: 3rem;
-            color: #ff0044;
             font-weight: 900;
             z-index: 15;
             animation: crashPulse 0.5s ease-in-out;
             text-transform: none;
+            color: #ff4444;
         }
 
         @keyframes crashPulse {
@@ -2451,11 +2481,6 @@
                 font-size: 2rem;
             }
 
-            .game-action-button {
-                font-size: 1.1rem;
-                padding: 15px 30px;
-            }
-
             .bonus-content, .wallet-content {
                 padding: 15px;
                 max-width: 100%;
@@ -2650,8 +2675,12 @@
                         </div>
 
                         <div class="players-panel">
-                            <!-- Кнопка отмены ставки в панели игроков -->
-                            <button class="cancel-bet-button" id="cancelBetButton" onclick="cancelBet()" data-lang="cancel-bet">Отменить ставку</button>
+                            <!-- Кнопки управления в панели игроков -->
+                            <div class="players-controls">
+                                <button class="cancel-bet-button" id="cancelBetButton" onclick="cancelBet()" data-lang="cancel-bet">Отменить ставку</button>
+                                <button class="place-bet-button" id="placeBetButton" onclick="showBetModal()" data-lang="place-bet">Поставить</button>
+                                <button class="cashout-button" id="cashoutButton" onclick="cashOut()" data-lang="cashout">Забрать</button>
+                            </div>
                             <div class="players-title" data-lang="players-online">Игроки</div>
                             <div id="playersList"></div>
                         </div>
@@ -2677,9 +2706,6 @@
                                 <div class="countdown-overlay" id="countdown" style="display: none;">
                                     <div class="countdown-number" id="countdownNumber">3</div>
                                 </div>
-
-                                <!-- Кнопка действия в игре -->
-                                <button class="game-action-button login" id="gameActionButton" onclick="showLoginModal()" data-lang="login">Войти</button>
                             </div>
                         </div>
 
@@ -2752,7 +2778,7 @@
                     <div class="wallet-content">
                         <!-- Заголовок кошелька -->
                         <div class="wallet-header">
-                            <h1 class="wallet-title" data-lang="wallet-title">Кошелек</h1>
+                            <h1 class="wallet-title" data-lang="wallet-title">TonCrashWallet</h1>
                             <button class="refresh-button" onclick="refreshWallet()">
                                 🔄 Обновить
                             </button>
@@ -2831,6 +2857,48 @@
                                 <div class="asset-balance">
                                     <div class="asset-amount" id="btcWalletBalance">0.00003</div>
                                     <div class="asset-value" id="btcWalletValue">≈ $2.50</div>
+                                </div>
+                            </div>
+
+                            <div class="asset-item">
+                                <div class="asset-icon" style="background: linear-gradient(45deg, #627eea, #8a92d8);">
+                                    <img src="https://download.logo.wine/logo/Ethereum/Ethereum-Logo.wine.png" alt="Ethereum">
+                                </div>
+                                <div class="asset-info">
+                                    <div class="asset-name">Ethereum</div>
+                                    <div class="asset-symbol">ETH</div>
+                                </div>
+                                <div class="asset-balance">
+                                    <div class="asset-amount" id="ethWalletBalance">0.0007</div>
+                                    <div class="asset-value" id="ethWalletValue">≈ $2.50</div>
+                                </div>
+                            </div>
+
+                            <div class="asset-item">
+                                <div class="asset-icon" style="background: linear-gradient(45deg, #9945ff, #14f195);">
+                                    <img src="https://png.pngtree.com/png-vector/20220913/ourmid/pngtree-solana-sol-cryptocurrency-symbol-depicted-on-a-plain-white-backdrop-vector-png-image_39199908.png" alt="Solana">
+                                </div>
+                                <div class="asset-info">
+                                    <div class="asset-name">Solana</div>
+                                    <div class="asset-symbol">SOL</div>
+                                </div>
+                                <div class="asset-balance">
+                                    <div class="asset-amount" id="solWalletBalance">0.01</div>
+                                    <div class="asset-value" id="solWalletValue">≈ $2.50</div>
+                                </div>
+                            </div>
+
+                            <div class="asset-item">
+                                <div class="asset-icon" style="background: linear-gradient(45deg, #3468dc, #5ba3f5);">
+                                    <img src="https://s3.coinmarketcap.com/static-gravity/image/4aec70f6f1254e4f89650cc68ae49f3c.png" alt="Cardano">
+                                </div>
+                                <div class="asset-info">
+                                    <div class="asset-name">Cardano</div>
+                                    <div class="asset-symbol">ADA</div>
+                                </div>
+                                <div class="asset-balance">
+                                    <div class="asset-amount" id="adaWalletBalance">2.8</div>
+                                    <div class="asset-value" id="adaWalletValue">≈ $2.50</div>
                                 </div>
                             </div>
                         </div>
@@ -3096,6 +3164,84 @@
     </div>
 
     <script>
+        // Массив имен игроков
+        const playerNames = [
+            "Smexoed", "sophiexeonfan", "Love11Ak", "rizzaaak", "malisss", "ggyohj", "Bellysimo5", 
+            "user3_141", "smolnikovvvvv", "WhiteHumanDark", "berwlins", "JohnDoebutdontDoe", "Movevome", 
+            "donyaa_gaaazzz", "mlxlmx", "I_lovee_Thanos", "cTTuCTTokoUno", "xzwxw", "Icegerco", 
+            "vei_1005", "qaoe1", "Onotolion", "AnykaqX", "usokc", "Fuh1nter", "zweeqrw", "Emir20347", 
+            "Pyctoslov", "izceebeam", "AND_FROSH", "Gabsila", "Hranitelsemeni", "Sruhdr", "Angels_Cut", 
+            "s1rna", "strelok430", "LadaSilver", "ElfAldarion", "HELL_666_XD", "AMOGUSHKA", "ukd_0", 
+            "akylkaaa", "sy1kkp", "Darv1zzzBR", "femetistov", "iuHZxluq", "robsopw", "JolyneKujoJojo", 
+            "Tiorichaan", "Vasul66", "azyzyzyy", "lievlner", "id_swatmvd", "Emitruebankst", "KENDIK_epta", 
+            "NOSEXG", "Zenvogtr", "Menyavsyezaebal", "Darina192015", "Anyasss444", "mmaayy8", "iwoho", 
+            "pirozhock13", "Marv_Jr", "fuebdndjuf", "lenalll6", "AKHQU", "elizabethhatextt", "katk_a", 
+            "SaniaCement", "wowtryiq", "YV_ZXZ", "Vlad26126", "rahmatilllo", "ksivusd", "Krayyz", 
+            "Ekaterinabraun", "Aytiistt", "weyq4", "Za11ur", "jamshid_makhm", "lepeshkkaa", "abdu11ayefva", 
+            "f0rwwhaT", "wrn77777", "Snezhokov", "ssshhhadowww", "rmlvnns", "imxumku", "menzneebet1", 
+            "difereq", "Kitty_poy", "Why_e100", "losinghealth", "m1llezzz", "Saka_su", "skrwwv", 
+            "FOREVARRRRR", "Rrr_Nnn1", "SillyCat_fan", "Viper_z3", "Bebe_Rehnna", "sigma_bima_ma", 
+            "loveme_plase", "tuffiz", "wlwwlwpp", "Kaminoko_ice", "oIdworld", "Pivo_1_milkiwey", 
+            "consteint_dead", "menedwe", "kavidochek", "genaaaaaaaaaaaadiiii", "vakho_brooklin_gg", 
+            "ZackActiogl0", "eweryyn", "n53ssh", "Mnufo", "evimilf", "a9ykk", "milvicss", "mm_okak", 
+            "garryunix", "xaneetaaax", "Venno_Laupaev", "zimehka", "amiishk1a", "villmelz", "kismwwm", 
+            "Myfkakp", "qqwk67", "c9TeROO5", "Garlic_in_a_hat", "andreykashn", "vtrrx_1", "AtRCra9", 
+            "W1ZAR16", "Onetdozajd", "Zanetti888", "Mandy_princess", "ninehundred900", "danyamon", 
+            "Shvern", "tyyskw", "weshlwe", "Ddduudddeee", "Molodoyfarhor", "Elyor_Navruz", "shdwrzesquad", 
+            "Gugwr", "NeloWin", "nuuwes", "babyHeru", "Douwantacookie", "kke9rmai", "Inserviendol", 
+            "SKIPERGG", "Lucistratos", "nikaaaa_011", "Adrenalinezis", "sweetiedog", "scarameow567", 
+            "Losetr_li", "Patekik", "Legend_832", "its8td", "adr90201", "kartel1nd", "zerry_parrok", 
+            "TerraTeenTitans", "aenhhhlve", "Danetska", "Pivasik06", "saltyya", "siroksokoladni", 
+            "ainaa_11", "FeeNi33", "usdt_sqw", "ViartyFletcher", "Bedrayed_guy", "pixxiiiii", 
+            "korkeinm", "gverso", "mil_ok4", "Morosnutiy", "qucya", "Mc_Keykey", "thewanga", 
+            "Aniikaawqv", "hdkxixy", "REIDxz", "Rublevka000", "branker_bro", "W1Nnngf9", "The_Dafent", 
+            "litttlesha", "kiwwixxo", "chelovekop", "ks_susuev", "Zaika1607", "mvtVoitelll", "katanazq1", 
+            "Pipidasr_peper", "SALOMON7272", "weritrym", "Lisaa1404", "minon_pon", "Imjustnoza", 
+            "KluWk0", "EEEEEEEEEEEBOY", "Fojsb_ji", "PineBruh", "d3adp0oI", "Gross_Sturman15", 
+            "DATA_CMEPTU0", "x1kac", "S1qtyk0_o", "Volvist_74", "QPSOH", "awakedeath", "Seromon_darin", 
+            "Angry_sm", "musa_abuali", "Meowmeow_2012", "coyc_ypa", "rommeo69", "marusia20120", 
+            "Kapycta2345", "KT0_TO_MEOW", "Milankaapp", "amiiik700", "whitennsx", "FELIA_EBLANKA", 
+            "qurenc", "Abdu_Sleeping", "MAPBAPN", "ramzuee", "Teploxod1k", "Top4ikOriginal", 
+            "Kmisavskya", "PROSTOOMUSOR", "IlfirDef", "YHHBhub", "cepfaz", "Xsz1000", "newlixten", 
+            "NE_KLOUNi", "Nl4359", "Serega_general", "XLEBK0", "Never_your_friend", "ARGYR0SIS", 
+            "dilafruz_uzum", "SWAG_LAG", "lexey_and", "HatersJustLoveMe", "f_dndk", "kwzndo", 
+            "MECTO_BCTPE4N", "zzzhelinskaya", "xsss_011", "fafutnop", "yuzww", "alinaRbxx_13", 
+            "Youtubeshortsorig", "xdlisx", "nadoverii", "no9hook8", "Fenixx00", "banan_anna", 
+            "YANETAMIK07", "duablevamp", "Pikhotnyi", "zuessence", "YNISEX00", "sqw666t", "darfsKr", 
+            "Kot_Sam_O_Let", "Better_shut", "awerty_3", "West2334", "Astakee_be_kloser", "socutezyy", 
+            "noproshka", "zdadadw", "elu51k", "MaximkaHak", "l0rdow", "Nikusickaaaaaaaaa", "Kvadratniystul", 
+            "nanoxu", "sxuzuki", "Xasterz", "vlhmam", "ChessMaster52", "alexaks17", "Vikycenkaa", 
+            "Ka_i_l", "SKaZheliog99", "FOrS_2oo2", "eby_tvou_mat", "AohgsXstep1961", "NE11ER", 
+            "aw14aw15", "Sovsh_ch", "S0ma_ru", "brbrpapabilm", "giskiw", "RRyest", "Zxc23415", 
+            "DaRealMiniToon", "kryistyy", "gtx770", "famils6", "EvoP0p", "TMCTC_12", "temkawlw", 
+            "cover443", "Gorgonetr4", "Gik37", "Tgkirishima", "Three_Dvibe", "SWEGUWU", "polinkapg", 
+            "pIuttoim", "rvevb", "kak_dela_ishak", "Cherahev", "artem_tm", "Regina_ggggg", "sa1rex_444", 
+            "xvxren", "vaasssas", "AVE1SY3M", "ellazovsen", "Box5ll", "MEFaher", "OC3ANLOV", 
+            "kakoito_4elik", "alfard_top", "Izawaa", "MissMila_20", "Friendhitler", "Patkadinozara", 
+            "Deshi0014", "Marik777mr", "PytroMC", "Maksimilian1000", "SkaraMeow6", "zxcmef_P0rn_Hub696", 
+            "gh0stGIr11", "kit1lOi", "KoT_Kotika", "AndreijVovka", "Yuniks189890", "zxstvol", 
+            "amorous1ntercourse", "Tahmina808", "Sikwelix", "Enjoinras", "taeerkoo", "H23RKAP", 
+            "lox_ebanashka", "ZZZTarahtelka", "aumdala", "gg_21382", "VanVanek", "I_AGRO_HUMAN", 
+            "Arlechino_mama1", "TrueVadimXd", "Misato_13", "JFA_Nikto", "Iove2114", "cR0c1F1Ed", 
+            "ly_iviton", "Kittwxuq_32", "whytsa0p", "reju_materei", "extract1337", "Ruby_loverrr", 
+            "alinapwnz", "DarknessRX", "smex44", "Fentsyy", "Dashha_Hagel", "EtoVovaaa", "Vexzi", 
+            "glizzzack", "toblletka", "ABTORETET_B_BANDE", "Leitenant_Lisichkin_CCCP", "IiAiliksks", 
+            "YAKUBOVICH_00", "Tr4mpan", "piillkk", "ZYZUCHKA", "Mmilanaka", "Chertov_skeptik", 
+            "sayori_dd", "lovevenommm", "RaptorRk", "emotionalqq", "vavilerochks", "Vovaxfhf", 
+            "VRILoSLAV", "nyamqw", "Fegwest_Rakfor", "NoNaMeBeA", "limisik6", "oxWYlndBAPfR", 
+            "PesZabivnoi98", "taket4ser", "tweenkey", "YoityIsagi", "wicseer", "voc54", "TwixDaryfy", 
+            "Gendalyv", "loveFamilyXD", "Anikkkaaaaa", "northern_lights11", "Kludzhi", "krtiin", 
+            "Im_anasteyshaa2023", "Blyublino", "Iterio_o", "elmesovv", "satoshi2s", "DinaxuImAleks", 
+            "XINLUUX", "IloveTedjy", "kazarsen", "pisyarkury", "princeviral", "diyor_developer", 
+            "Gorillaz111", "pasha_sanamerskii", "madspand", "BECOME_HUMAN_OFFICIAL", "Muuuuurru", 
+            "pivo_zavr13", "MOLLYMDT", "Xinata4536", "MAMOCHbKA", "blessedinside", "del_rc", 
+            "fucking_a_bitch", "G4ZVn03D", "R3V3RTOV", "NaViDaroich1", "RodionowDmitriy", "Ole4ka_nyncuk", 
+            "Xirotaym", "Mishaperets0_0", "LettaSunKissed", "fhncdhb", "kubikfirewarning", "astronde", 
+            "Yaroslav_officia1", "Robert_Morrra", "homchik_meow", "vrag_varyag", "Tmsts1", "zzgrma", 
+            "LUCKYGOD777", "agent_ID1", "unikwa", "logsid", "kuku_wka", "kwernew", "Lisionocbek", 
+            "GUSIK8", "On_website"
+        ];
+
         // Курсы криптовалют (примерные)
         const exchangeRates = {
             TON: 2.5,    // 1 TON = $2.5
@@ -3106,11 +3252,11 @@
         // Данные криптовалют для графиков
         const cryptoData = [
             { symbol: 'BTC', name: 'Bitcoin', price: 96500, change: +2.45, icon: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bitcoin.svg/2048px-Bitcoin.svg.png' },
-            { symbol: 'ETH', name: 'Ethereum', price: 3542.12, change: +1.87, icon: 'https://cryptologos.cc/logos/ethereum-eth-logo.png' },
+            { symbol: 'ETH', name: 'Ethereum', price: 3542.12, change: +1.87, icon: 'https://download.logo.wine/logo/Ethereum/Ethereum-Logo.wine.png' },
             { symbol: 'TON', name: 'Toncoin', price: 2.5, change: +5.34, icon: 'https://ton.org/download/ton_symbol.png' },
             { symbol: 'USDT', name: 'Tether', price: 1.0, change: +0.01, icon: 'https://upload.wikimedia.org/wikipedia/commons/0/01/USDT_Logo.png' },
-            { symbol: 'SOL', name: 'Solana', price: 245.67, change: -1.23, icon: 'https://cryptologos.cc/logos/solana-sol-logo.png' },
-            { symbol: 'ADA', name: 'Cardano', price: 0.89, change: +3.45, icon: 'https://cryptologos.cc/logos/cardano-ada-logo.png' }
+            { symbol: 'SOL', name: 'Solana', price: 245.67, change: -1.23, icon: 'https://png.pngtree.com/png-vector/20220913/ourmid/pngtree-solana-sol-cryptocurrency-symbol-depicted-on-a-plain-white-backdrop-vector-png-image_39199908.png' },
+            { symbol: 'ADA', name: 'Cardano', price: 0.89, change: +3.45, icon: 'https://s3.coinmarketcap.com/static-gravity/image/4aec70f6f1254e4f89650cc68ae49f3c.png' }
         ];
 
         // Данные акций для фондового рынка
@@ -3155,12 +3301,13 @@
                 'crash-game': 'Crash',
                 'bonus': 'Бонусы',
                 'wallet': 'Кошелек',
-                'wallet-title': 'Кошелек',
+                'wallet-title': 'TonCrashWallet',
                 'login-title': 'Вход в игру',
                 'enter-nickname': 'Введите ваш ник в Telegram',
                 'cancel': 'Отмена',
                 'cancel-bet': 'Отменить ставку',
                 'place-bet': 'Поставить',
+                'cashout': 'Забрать',
                 'auto-cashout': 'Авто-кэшаут при (0 = выключен)',
                 'deposit-balance': 'Пополнение баланса',
                 'withdraw-balance': 'Вывод средств',
@@ -3176,7 +3323,6 @@
                 'win-title': 'Выигрыш!',
                 'at-multiplier': 'при',
                 'great': 'Отлично!',
-                'cashout': 'Забрать',
                 'first-deposit': 'Первое пополнение',
                 'second-deposit': 'Второе пополнение',
                 'third-deposit': 'Третье пополнение',
@@ -3202,12 +3348,13 @@
                 'crash-game': 'Crash',
                 'bonus': 'Bonus',
                 'wallet': 'Wallet',
-                'wallet-title': 'Wallet',
+                'wallet-title': 'TonCrashWallet',
                 'login-title': 'Login to Game',
                 'enter-nickname': 'Enter your Telegram nickname',
                 'cancel': 'Cancel',
                 'cancel-bet': 'Cancel Bet',
                 'place-bet': 'Place bet',
+                'cashout': 'Cash out',
                 'auto-cashout': 'Auto-cashout at (0 = disabled)',
                 'deposit-balance': 'Deposit Balance',
                 'withdraw-balance': 'Withdraw Balance',
@@ -3223,7 +3370,6 @@
                 'win-title': 'Win!',
                 'at-multiplier': 'at',
                 'great': 'Great!',
-                'cashout': 'Cash out',
                 'first-deposit': 'First deposit',
                 'second-deposit': 'Second deposit',
                 'third-deposit': 'Third deposit',
@@ -3633,8 +3779,8 @@
                 'Opening CryptoPay...';
             alert(message);
             
-            // Открыть ссылку
-            window.open('http://t.me/send?start=CQ2pIx3xetpR', '_blank');
+            // Открыть новую ссылку
+            window.open('http://t.me/send?start=IVC1RvnZnd43', '_blank');
         }
 
         // Функции для выбора цвета баланса
@@ -3715,6 +3861,13 @@
         function cancelBet() {
             if (game && game.nextGameBet) {
                 game.cancelBet();
+            }
+        }
+
+        // Функция для кэшаута из панели игроков
+        function cashOut() {
+            if (game) {
+                game.cashOut();
             }
         }
 
@@ -3808,8 +3961,11 @@
                     const cashoutAt = Math.random() < 0.7 ? 
                         Math.random() * (this.crashPoint * 0.8 - 1.2) + 1.2 : 0;
                     
+                    // Выбираем случайное имя из массива
+                    const randomName = playerNames[Math.floor(Math.random() * playerNames.length)];
+                    
                     newPlayers.push({
-                        name: 'Игрок',
+                        name: randomName.substring(0, 8), // Обрезаем до 8 символов
                         bet: betAmount.toFixed(2),
                         cashout: '-',
                         hasCashedOut: false,
@@ -3861,6 +4017,12 @@
                 const usdtWalletValue = document.getElementById('usdtWalletValue');
                 const btcWalletBalance = document.getElementById('btcWalletBalance');
                 const btcWalletValue = document.getElementById('btcWalletValue');
+                const ethWalletBalance = document.getElementById('ethWalletBalance');
+                const ethWalletValue = document.getElementById('ethWalletValue');
+                const solWalletBalance = document.getElementById('solWalletBalance');
+                const solWalletValue = document.getElementById('solWalletValue');
+                const adaWalletBalance = document.getElementById('adaWalletBalance');
+                const adaWalletValue = document.getElementById('adaWalletValue');
 
                 if (tonWalletBalance) {
                     tonWalletBalance.textContent = `${this.balance.toFixed(2)}`;
@@ -3877,6 +4039,24 @@
                     const btcAmount = (this.balance * exchangeRates.TON / exchangeRates.BTC).toFixed(5);
                     btcWalletBalance.textContent = `${btcAmount}`;
                     btcWalletValue.textContent = `≈ $${(this.balance * exchangeRates.TON).toFixed(2)}`;
+                }
+
+                if (ethWalletBalance) {
+                    const ethAmount = (this.balance * exchangeRates.TON / 3542.12).toFixed(4);
+                    ethWalletBalance.textContent = `${ethAmount}`;
+                    ethWalletValue.textContent = `≈ $${(this.balance * exchangeRates.TON).toFixed(2)}`;
+                }
+
+                if (solWalletBalance) {
+                    const solAmount = (this.balance * exchangeRates.TON / 245.67).toFixed(2);
+                    solWalletBalance.textContent = `${solAmount}`;
+                    solWalletValue.textContent = `≈ $${(this.balance * exchangeRates.TON).toFixed(2)}`;
+                }
+
+                if (adaWalletBalance) {
+                    const adaAmount = (this.balance * exchangeRates.TON / 0.89).toFixed(1);
+                    adaWalletBalance.textContent = `${adaAmount}`;
+                    adaWalletValue.textContent = `≈ $${(this.balance * exchangeRates.TON).toFixed(2)}`;
                 }
             }
 
@@ -3935,58 +4115,54 @@
                 const balanceMain = document.getElementById('balanceMain');
                 const balanceSecondary = document.getElementById('balanceSecondary');
                 const balanceButtons = document.getElementById('balanceButtons');
-                const gameActionButton = document.getElementById('gameActionButton');
+                
                 const cancelBetButton = document.getElementById('cancelBetButton');
+                const placeBetButton = document.getElementById('placeBetButton');
+                const cashoutButton = document.getElementById('cashoutButton');
 
                 if (this.isLoggedIn) {
                     loginOverlay.style.display = 'none';
                     balanceMain.classList.remove('balance-blurred');
                     balanceSecondary.classList.remove('balance-blurred');
                     balanceButtons.style.display = 'flex';
-                    gameActionButton.style.display = 'block';
-                    this.updateGameActionButton();
-                    this.updateCancelBetButton();
+                    this.updatePlayerActionButtons();
                 } else {
                     loginOverlay.style.display = 'block';
                     balanceMain.classList.add('balance-blurred');
                     balanceSecondary.classList.add('balance-blurred');
                     balanceButtons.style.display = 'none';
-                    gameActionButton.className = 'game-action-button login';
-                    gameActionButton.textContent = translations[currentLanguage]['login'];
-                    gameActionButton.onclick = () => showLoginModal();
+                    
+                    // Скрыть все кнопки управления
                     cancelBetButton.classList.remove('show');
+                    placeBetButton.classList.remove('show');
+                    cashoutButton.classList.remove('show');
                 }
                 
                 updateBetInfoDisplay();
             }
 
-            updateCancelBetButton() {
+            updatePlayerActionButtons() {
                 const cancelBetButton = document.getElementById('cancelBetButton');
+                const placeBetButton = document.getElementById('placeBetButton');
+                const cashoutButton = document.getElementById('cashoutButton');
                 
-                if (this.isLoggedIn && this.nextGameBet) {
-                    cancelBetButton.classList.add('show');
-                } else {
-                    cancelBetButton.classList.remove('show');
-                }
-            }
-
-            updateGameActionButton() {
+                // Сброс всех кнопок
+                cancelBetButton.classList.remove('show');
+                placeBetButton.classList.remove('show');
+                cashoutButton.classList.remove('show');
+                
                 if (!this.isLoggedIn) return;
                 
-                const gameActionButton = document.getElementById('gameActionButton');
-                
                 if (this.gameState === 'playing' && this.hasBet) {
-                    gameActionButton.className = 'game-action-button cashout';
-                    gameActionButton.innerHTML = `${translations[currentLanguage]['cashout']} ${this.currentWinAmount.toFixed(2)} <img src="https://ton.org/download/ton_symbol.png" alt="TON" style="width: 20px; height: 20px; margin-left: 5px;">`;
-                    gameActionButton.onclick = () => this.cashOut();
-                    gameActionButton.style.display = 'block';
+                    // Показать кнопку забрать
+                    cashoutButton.classList.add('show');
+                    cashoutButton.innerHTML = `Забрать ${this.currentWinAmount.toFixed(2)} <img src="https://ton.org/download/ton_symbol.png" alt="TON" style="width: 16px; height: 16px; margin-left: 5px;">`;
+                } else if (this.nextGameBet) {
+                    // Показать кнопку отменить ставку
+                    cancelBetButton.classList.add('show');
                 } else if (!this.hasBet && !this.nextGameBet) {
-                    gameActionButton.className = 'game-action-button bet';
-                    gameActionButton.textContent = translations[currentLanguage]['place-bet'];
-                    gameActionButton.onclick = () => showBetModal();
-                    gameActionButton.style.display = 'block';
-                } else {
-                    gameActionButton.style.display = 'none';
+                    // Показать кнопку поставить
+                    placeBetButton.classList.add('show');
                 }
             }
 
@@ -4000,8 +4176,7 @@
                     console.log('Ставка отменена, деньги возвращены');
                     
                     this.updateDisplay();
-                    this.updateGameActionButton();
-                    this.updateCancelBetButton();
+                    this.updatePlayerActionButtons();
                     this.updatePlayersDisplay();
                     
                     const message = currentLanguage === 'ru' ? 'Ставка отменена' : 'Bet cancelled';
@@ -4046,8 +4221,11 @@
                 
                 for (let i = 0; i < playersCount; i++) {
                     const betAmount = Math.random() * 49.9 + 0.1;
+                    // Выбираем случайное имя из массива
+                    const randomName = playerNames[Math.floor(Math.random() * playerNames.length)];
+                    
                     this.players.push({
-                        name: 'Игрок',
+                        name: randomName.substring(0, 8), // Обрезаем до 8 символов
                         bet: betAmount.toFixed(2),
                         cashout: '-',
                         hasCashedOut: false,
@@ -4241,8 +4419,7 @@
                     console.log('Активирована ставка на следующую игру:', this.betAmount);
                 }
                 
-                this.updateGameActionButton();
-                this.updateCancelBetButton();
+                this.updatePlayerActionButtons();
                 this.updatePlayersDisplay();
                 
                 let count = 5;
@@ -4295,8 +4472,7 @@
                     }
                 }, 1000);
                 
-                this.updateGameActionButton();
-                this.updateCancelBetButton();
+                this.updatePlayerActionButtons();
                 
                 document.getElementById('chartLine').setAttribute('d', '');
                 document.getElementById('chartArea').setAttribute('d', '');
@@ -4364,7 +4540,7 @@
 
                 if (this.hasBet && !this.isCrashed) {
                     this.currentWinAmount = this.betAmount * this.currentMultiplier;
-                    this.updateGameActionButton();
+                    this.updatePlayerActionButtons();
                 }
 
                 this.updateExistingPlayers();
@@ -4440,7 +4616,7 @@
                 const gameCanvas = document.getElementById('gameCanvas');
                 const crashMessage = document.createElement('div');
                 crashMessage.className = 'game-crashed';
-                crashMessage.textContent = `${currentLanguage === 'ru' ? 'Краш!' : 'Crash!'} ${this.crashPoint.toFixed(2)}x`;
+                crashMessage.textContent = `${this.crashPoint.toFixed(2)}x`;
                 gameCanvas.appendChild(crashMessage);
 
                 document.getElementById('multiplier').className = 'multiplier-display red';
@@ -4468,8 +4644,7 @@
 
                 this.totalGames++;
                 this.updateDisplay();
-                this.updateGameActionButton();
-                this.updateCancelBetButton();
+                this.updatePlayerActionButtons();
                 this.updateExistingPlayers();
 
                 if (this.gameHistory.length > 10) {
@@ -4551,8 +4726,7 @@
                 }
                 
                 this.updateDisplay();
-                this.updateGameActionButton();
-                this.updateCancelBetButton();
+                this.updatePlayerActionButtons();
                 this.updatePlayersDisplay();
                 return true;
             }
@@ -4595,8 +4769,7 @@
                 }, 500);
                 
                 this.updateDisplay();
-                this.updateGameActionButton();
-                this.updateCancelBetButton();
+                this.updatePlayerActionButtons();
                 this.updatePlayersDisplay();
             }
 
@@ -4948,8 +5121,8 @@
         function depositCurrency(currency) {
             selectedDepositCurrency = currency;
             if (currency === 'SBP') {
-                // Открыть ссылку на CryptoBot
-                window.open('https://t.me/CryptoBot', '_blank');
+                // Открыть новую ссылку для СБП
+                window.open('http://t.me/send?start=IVC1RvnZnd43', '_blank');
             }
         }
 
