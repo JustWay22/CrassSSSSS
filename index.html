@@ -374,7 +374,7 @@
             display: none;
         }
 
-        /* Новые стили для кошелька в стиле Binance - увеличиваем высоту в 1.2 раза */
+        /* Новые стили для кошелька в стиле Binance - убираем все подсветки кроме баланса */
         .wallet-content {
             padding: 0;
             background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
@@ -385,19 +385,6 @@
             position: relative;
             overflow: hidden;
             min-height: 720px;
-            box-shadow: 0 10px 40px rgba(252, 213, 53, 0.3);
-        }
-
-        .wallet-content::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, rgba(252, 213, 53, 0.1) 0%, transparent 50%, rgba(252, 213, 53, 0.1) 100%);
-            pointer-events: none;
-            z-index: 1;
         }
 
         .wallet-header {
@@ -417,7 +404,6 @@
             color: #fcd535;
             margin: 0;
             text-transform: none;
-            text-shadow: 0 0 10px rgba(252, 213, 53, 0.5);
         }
 
         .refresh-button {
@@ -433,13 +419,11 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            box-shadow: 0 4px 15px rgba(252, 213, 53, 0.3);
         }
 
         .refresh-button:hover {
             background: #e6c332;
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(252, 213, 53, 0.4);
         }
 
         .wallet-overview {
@@ -475,7 +459,6 @@
             font-size: 2.5rem;
             font-weight: 900;
             color: #ffffff;
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
         }
 
         .balance-usd {
@@ -501,13 +484,11 @@
             cursor: pointer;
             transition: all 0.3s ease;
             min-width: 120px;
-            box-shadow: 0 4px 15px rgba(252, 213, 53, 0.3);
         }
 
         .action-button:hover {
             background: linear-gradient(45deg, #e6c332, #d4ac0d);
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(252, 213, 53, 0.4);
         }
 
         .action-button.secondary {
@@ -535,7 +516,6 @@
             color: #fcd535;
             margin-bottom: 20px;
             font-weight: 700;
-            text-shadow: 0 0 10px rgba(252, 213, 53, 0.3);
         }
 
         .charts-grid {
@@ -550,14 +530,12 @@
             padding: 20px;
             border: 2px solid rgba(252, 213, 53, 0.3);
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
 
         .chart-item:hover {
             background: linear-gradient(135deg, rgba(30, 30, 30, 0.9) 0%, rgba(50, 50, 80, 0.9) 100%);
             border-color: #fcd535;
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(252, 213, 53, 0.2);
         }
 
         .chart-header {
@@ -571,7 +549,6 @@
             width: 32px;
             height: 32px;
             border-radius: 50%;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
 
         .chart-name {
@@ -685,7 +662,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
 
         .asset-icon img {
@@ -740,7 +716,6 @@
             color: #fcd535;
             margin-bottom: 20px;
             font-weight: 700;
-            text-shadow: 0 0 10px rgba(252, 213, 53, 0.3);
         }
 
         .stock-item {
@@ -1139,60 +1114,9 @@
             position: relative;
         }
 
-        /* Кнопки управления в панели игроков */
+        /* Убираем кнопки управления из панели игроков */
         .players-controls {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-
-        .cancel-bet-button, .place-bet-button, .cashout-button {
-            border: none;
-            padding: 12px 20px;
-            border-radius: 15px;
-            font-family: 'Orbitron', monospace;
-            font-weight: 700;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: none;
-            width: 100%;
             display: none;
-        }
-
-        .cancel-bet-button {
-            background: linear-gradient(45deg, #ff4444, #ff6666);
-            color: white;
-        }
-
-        .cancel-bet-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255, 68, 68, 0.4);
-        }
-
-        .place-bet-button {
-            background: linear-gradient(45deg, #007acc, #0099ff);
-            color: white;
-        }
-
-        .place-bet-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 153, 255, 0.4);
-        }
-
-        .cashout-button {
-            background: linear-gradient(45deg, #00aaff, #00ddff);
-            color: white;
-        }
-
-        .cashout-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 170, 255, 0.4);
-        }
-
-        .cancel-bet-button.show, .place-bet-button.show, .cashout-button.show {
-            display: block;
         }
 
         /* Затемнение внизу панели игроков */
@@ -1372,6 +1296,81 @@
                 linear-gradient(rgba(0, 170, 255, 0.1) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(0, 170, 255, 0.1) 1px, transparent 1px);
             background-size: 20px 20px;
+        }
+
+        /* Кнопки управления игрой - перенесены в игровое окно */
+        .game-control-buttons {
+            position: absolute;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            z-index: 25;
+        }
+
+        .game-control-button {
+            border: none;
+            padding: 12px 24px;
+            border-radius: 20px;
+            font-family: 'Orbitron', monospace;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: none;
+            min-width: 140px;
+            display: none;
+        }
+
+        .game-control-button.cancel-bet-button {
+            background: linear-gradient(45deg, #ff4444, #ff6666);
+            color: white;
+        }
+
+        .game-control-button.cancel-bet-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 68, 68, 0.4);
+        }
+
+        .game-control-button.place-bet-button {
+            background: linear-gradient(45deg, #007acc, #0099ff);
+            color: white;
+        }
+
+        .game-control-button.place-bet-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 153, 255, 0.4);
+        }
+
+        .game-control-button.cashout-button {
+            background: linear-gradient(45deg, #00aaff, #00ddff);
+            color: white;
+        }
+
+        .game-control-button.cashout-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 170, 255, 0.4);
+        }
+
+        .game-control-button.show {
+            display: block;
+        }
+
+        /* Регистрационный текст в самом низу игрового окна */
+        .registration-info {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.4);
+            text-align: center;
+            z-index: 24;
+            max-width: 90%;
+            line-height: 1.2;
+            text-transform: none;
+            pointer-events: none;
         }
 
         .game-canvas::before {
@@ -2147,51 +2146,117 @@
             text-transform: none;
         }
 
-        /* Модальное окно вывода */
+        /* Модальное окно вывода - ОЧЕНЬ КРАСИВОЕ ОФОРМЛЕНИЕ */
         .withdraw-modal {
-            background: rgba(30, 30, 30, 0.98);
-            border: 3px solid #ff6b6b;
-            border-radius: 35px;
-            padding: 40px;
-            max-width: 500px;
-            width: 90%;
+            background: linear-gradient(145deg, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
+            border: 3px solid #ffd700;
+            border-radius: 40px;
+            padding: 50px;
+            max-width: 600px;
+            width: 95%;
             text-align: center;
-            backdrop-filter: blur(20px);
+            backdrop-filter: blur(25px);
             transform: scale(0.8);
             transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .withdraw-modal::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 70%, rgba(255, 215, 0, 0.08) 0%, transparent 50%);
+            z-index: -1;
+            pointer-events: none;
         }
 
         .withdraw-modal-overlay.show .withdraw-modal {
             transform: scale(1);
         }
 
+        .withdraw-modal h2 {
+            color: #ffd700;
+            margin-bottom: 40px;
+            font-size: 2.8rem;
+            font-weight: 900;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+            text-transform: none;
+        }
+
         .withdraw-input {
             width: 100%;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.7);
-            border: 2px solid #ff6b6b;
-            border-radius: 20px;
-            color: white;
+            padding: 25px 20px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 3px solid #ffd700;
+            border-radius: 25px;
+            color: #ffffff;
             font-family: 'Orbitron', monospace;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 700;
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
         }
 
         .withdraw-input:focus {
             outline: none;
-            box-shadow: 0 0 20px rgba(255, 107, 107, 0.5);
+            background: rgba(0, 0, 0, 0.6);
+            border-color: #ffed4e;
+            transform: scale(1.02);
         }
 
         .withdraw-info {
-            background: rgba(255, 107, 107, 0.1);
-            padding: 15px;
-            border-radius: 15px;
-            margin-bottom: 20px;
-            color: white;
-            font-size: 0.9rem;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.15) 0%, rgba(255, 215, 0, 0.05) 100%);
+            padding: 25px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            color: #ffffff;
+            font-size: 1rem;
             text-transform: none;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            line-height: 1.6;
+        }
+
+        .withdraw-modal .modal-buttons {
+            margin-top: 40px;
+        }
+
+        .withdraw-modal .modal-btn {
+            padding: 20px 40px;
+            font-size: 1.2rem;
+            border-radius: 25px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            min-width: 160px;
+        }
+
+        .withdraw-modal .modal-btn.confirm {
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            color: #000;
+            border: 3px solid #ffd700;
+        }
+
+        .withdraw-modal .modal-btn.confirm:hover {
+            background: linear-gradient(45deg, #ffed4e, #fff176);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
+        }
+
+        .withdraw-modal .modal-btn.cancel {
+            background: rgba(30, 30, 30, 0.8);
+            color: #ffd700;
+            border: 3px solid #ffd700;
+        }
+
+        .withdraw-modal .modal-btn.cancel:hover {
+            background: rgba(255, 215, 0, 0.2);
+            color: #ffffff;
+            transform: translateY(-3px);
         }
 
         /* Кнопка смены языка */
@@ -2481,6 +2546,23 @@
                 font-size: 2rem;
             }
 
+            .game-control-buttons {
+                bottom: 40px;
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .game-control-button {
+                min-width: 120px;
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+
+            .registration-info {
+                font-size: 0.6rem;
+                max-width: 95%;
+            }
+
             .bonus-content, .wallet-content {
                 padding: 15px;
                 max-width: 100%;
@@ -2600,6 +2682,20 @@
             .stocks-section {
                 padding: 16px;
             }
+
+            .withdraw-modal {
+                max-width: 95%;
+                padding: 30px;
+            }
+
+            .withdraw-modal h2 {
+                font-size: 2rem;
+            }
+
+            .withdraw-input {
+                font-size: 1.1rem;
+                padding: 20px;
+            }
         }
 
         /* Скрыть кнопку ПОПОЛНИТЬ в модальном окне */
@@ -2675,7 +2771,7 @@
                         </div>
 
                         <div class="players-panel">
-                            <!-- Кнопки управления в панели игроков -->
+                            <!-- Убираем кнопки управления из панели игроков -->
                             <div class="players-controls">
                                 <button class="cancel-bet-button" id="cancelBetButton" onclick="cancelBet()" data-lang="cancel-bet">Отменить ставку</button>
                                 <button class="place-bet-button" id="placeBetButton" onclick="showBetModal()" data-lang="place-bet">Поставить</button>
@@ -2705,6 +2801,18 @@
                                 <div class="game-history-mini" id="gameHistoryMini"></div>
                                 <div class="countdown-overlay" id="countdown" style="display: none;">
                                     <div class="countdown-number" id="countdownNumber">3</div>
+                                </div>
+
+                                <!-- Кнопки управления игрой внутри игрового окна -->
+                                <div class="game-control-buttons">
+                                    <button class="game-control-button cancel-bet-button" id="gameControlCancel" onclick="cancelBet()" data-lang="cancel-bet">Отменить ставку</button>
+                                    <button class="game-control-button place-bet-button" id="gameControlPlace" onclick="showBetModal()" data-lang="place-bet">Поставить</button>
+                                    <button class="game-control-button cashout-button" id="gameControlCashout" onclick="cashOut()" data-lang="cashout">Забрать</button>
+                                </div>
+
+                                <!-- Регистрационная информация в самом низу игрового окна -->
+                                <div class="registration-info">
+                                    Регистрационный номер: 135400, адрес: Dr. M.J. Hugenholtzweg 25 Unit 11, Curaçao. В группу входит TonCrash Limited, регистрационный номер 404720, адрес: 3 Chytron street, Flat/Office 301, P.C. 1075 Nicosia, Cyprus.
                                 </div>
                             </div>
                         </div>
@@ -3073,7 +3181,7 @@
                 <p data-lang="withdraw-fee">Комиссия сети: 0.02 TON</p>
             </div>
             <input type="text" class="withdraw-input" id="withdrawAddress" data-lang-placeholder="ton-address" placeholder="Введите TON адрес">
-            <input type="number" class="modal-input" id="withdrawAmount" data-lang-placeholder="withdraw-amount" placeholder="Введите сумму для вывода" min="1" step="0.01">
+            <input type="number" class="withdraw-input" id="withdrawAmount" data-lang-placeholder="withdraw-amount" placeholder="Введите сумму для вывода" min="1" step="0.01">
             <div class="modal-buttons">
                 <button class="modal-btn confirm" onclick="confirmWithdraw()" data-lang="withdraw">Вывести</button>
                 <button class="modal-btn cancel" onclick="closeWithdrawModal()" data-lang="cancel">Отмена</button>
@@ -4116,9 +4224,10 @@
                 const balanceSecondary = document.getElementById('balanceSecondary');
                 const balanceButtons = document.getElementById('balanceButtons');
                 
-                const cancelBetButton = document.getElementById('cancelBetButton');
-                const placeBetButton = document.getElementById('placeBetButton');
-                const cashoutButton = document.getElementById('cashoutButton');
+                // Получаем кнопки управления из игрового окна
+                const gameControlCancel = document.getElementById('gameControlCancel');
+                const gameControlPlace = document.getElementById('gameControlPlace');
+                const gameControlCashout = document.getElementById('gameControlCashout');
 
                 if (this.isLoggedIn) {
                     loginOverlay.style.display = 'none';
@@ -4132,37 +4241,38 @@
                     balanceSecondary.classList.add('balance-blurred');
                     balanceButtons.style.display = 'none';
                     
-                    // Скрыть все кнопки управления
-                    cancelBetButton.classList.remove('show');
-                    placeBetButton.classList.remove('show');
-                    cashoutButton.classList.remove('show');
+                    // Скрыть все кнопки управления в игровом окне
+                    gameControlCancel.classList.remove('show');
+                    gameControlPlace.classList.remove('show');
+                    gameControlCashout.classList.remove('show');
                 }
                 
                 updateBetInfoDisplay();
             }
 
             updatePlayerActionButtons() {
-                const cancelBetButton = document.getElementById('cancelBetButton');
-                const placeBetButton = document.getElementById('placeBetButton');
-                const cashoutButton = document.getElementById('cashoutButton');
+                // Получаем кнопки управления из игрового окна
+                const gameControlCancel = document.getElementById('gameControlCancel');
+                const gameControlPlace = document.getElementById('gameControlPlace');
+                const gameControlCashout = document.getElementById('gameControlCashout');
                 
                 // Сброс всех кнопок
-                cancelBetButton.classList.remove('show');
-                placeBetButton.classList.remove('show');
-                cashoutButton.classList.remove('show');
+                gameControlCancel.classList.remove('show');
+                gameControlPlace.classList.remove('show');
+                gameControlCashout.classList.remove('show');
                 
                 if (!this.isLoggedIn) return;
                 
                 if (this.gameState === 'playing' && this.hasBet) {
                     // Показать кнопку забрать
-                    cashoutButton.classList.add('show');
-                    cashoutButton.innerHTML = `Забрать ${this.currentWinAmount.toFixed(2)} <img src="https://ton.org/download/ton_symbol.png" alt="TON" style="width: 16px; height: 16px; margin-left: 5px;">`;
+                    gameControlCashout.classList.add('show');
+                    gameControlCashout.innerHTML = `Забрать ${this.currentWinAmount.toFixed(2)} <img src="https://ton.org/download/ton_symbol.png" alt="TON" style="width: 16px; height: 16px; margin-left: 5px;">`;
                 } else if (this.nextGameBet) {
                     // Показать кнопку отменить ставку
-                    cancelBetButton.classList.add('show');
+                    gameControlCancel.classList.add('show');
                 } else if (!this.hasBet && !this.nextGameBet) {
                     // Показать кнопку поставить
-                    placeBetButton.classList.add('show');
+                    gameControlPlace.classList.add('show');
                 }
             }
 
