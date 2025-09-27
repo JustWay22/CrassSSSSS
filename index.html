@@ -351,7 +351,7 @@
             display: grid;
             grid-template-columns: 320px 1fr 420px;
             gap: 30px;
-            height: 864px; /* Увеличено с 720px до 864px (720 * 1.2) */
+            height: 720px;
             overflow: visible;
         }
 
@@ -384,7 +384,7 @@
             max-width: 800px;
             position: relative;
             overflow: hidden;
-            min-height: 864px; /* Увеличено с 720px до 864px */
+            min-height: 720px;
         }
 
         .wallet-header {
@@ -1109,54 +1109,7 @@
             border: 2px solid #00aaff;
             padding: 20px;
             backdrop-filter: blur(10px);
-            max-height: 864px; /* Увеличено с 720px до 864px */
-            overflow: hidden;
-            position: relative;
-        }
-
-        /* Новые стили для навигации по игрокам */
-        .players-navigation {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-            position: relative;
-            z-index: 15;
-        }
-
-        .players-nav-btn {
-            background: rgba(0, 170, 255, 0.3);
-            border: 2px solid #00aaff;
-            border-radius: 50%;
-            width: 35px;
-            height: 35px;
-            color: white;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            font-size: 1.2rem;
-        }
-
-        .players-nav-btn:hover {
-            background: rgba(0, 170, 255, 0.5);
-            transform: scale(1.1);
-        }
-
-        .players-nav-btn:disabled {
-            opacity: 0.3;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .players-count-info {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .players-list-container {
-            max-height: 750px; /* Увеличено для нового размера окна */
+            max-height: 720px;
             overflow: hidden;
             position: relative;
         }
@@ -1337,7 +1290,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 864px; /* Увеличено с 720px до 864px (720 * 1.2) */
+            height: 720px;
             width: 100%;
             background-image: 
                 linear-gradient(rgba(0, 170, 255, 0.1) 1px, transparent 1px),
@@ -1345,28 +1298,28 @@
             background-size: 20px 20px;
         }
 
-        /* Кнопки управления игрой - перенесены в игровое окно и увеличены в 1.4 раза */
+        /* Кнопки управления игрой - перенесены в игровое окно */
         .game-control-buttons {
             position: absolute;
-            bottom: 80px; /* Увеличено для нового размера окна */
+            bottom: 60px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
-            gap: 20px; /* Увеличен отступ */
+            gap: 15px;
             z-index: 25;
         }
 
         .game-control-button {
             border: none;
-            padding: 17px 34px; /* Увеличено в 1.4 раза (12px * 1.4 = 17px, 24px * 1.4 = 34px) */
-            border-radius: 28px; /* Увеличено в 1.4 раза (20px * 1.4 = 28px) */
+            padding: 12px 24px;
+            border-radius: 20px;
             font-family: 'Orbitron', monospace;
             font-weight: 700;
-            font-size: 1.4rem; /* Увеличено в 1.4 раза (1rem * 1.4 = 1.4rem) */
+            font-size: 1rem;
             cursor: pointer;
             transition: all 0.3s ease;
             text-transform: none;
-            min-width: 196px; /* Увеличено в 1.4 раза (140px * 1.4 = 196px) */
+            min-width: 140px;
             display: none;
         }
 
@@ -1376,8 +1329,8 @@
         }
 
         .game-control-button.cancel-bet-button:hover {
-            transform: translateY(-3px); /* Увеличено в 1.4 раза */
-            box-shadow: 0 7px 21px rgba(255, 68, 68, 0.4); /* Увеличено в 1.4 раза */
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 68, 68, 0.4);
         }
 
         .game-control-button.place-bet-button {
@@ -1386,8 +1339,8 @@
         }
 
         .game-control-button.place-bet-button:hover {
-            transform: translateY(-3px); /* Увеличено в 1.4 раза */
-            box-shadow: 0 7px 21px rgba(0, 153, 255, 0.4); /* Увеличено в 1.4 раза */
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 153, 255, 0.4);
         }
 
         .game-control-button.cashout-button {
@@ -1396,8 +1349,8 @@
         }
 
         .game-control-button.cashout-button:hover {
-            transform: translateY(-3px); /* Увеличено в 1.4 раза */
-            box-shadow: 0 7px 21px rgba(0, 170, 255, 0.4); /* Увеличено в 1.4 раза */
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 170, 255, 0.4);
         }
 
         .game-control-button.show {
@@ -1407,15 +1360,15 @@
         /* Регистрационный текст в самом низу игрового окна */
         .registration-info {
             position: absolute;
-            bottom: 14px; /* Увеличено в 1.4 раза (10px * 1.4 = 14px) */
+            bottom: 10px;
             left: 50%;
             transform: translateX(-50%);
-            font-size: 0.98rem; /* Увеличено в 1.4 раза (0.7rem * 1.4 = 0.98rem) */
+            font-size: 0.7rem;
             color: rgba(255, 255, 255, 0.4);
             text-align: center;
             z-index: 24;
             max-width: 90%;
-            line-height: 1.68; /* Увеличено в 1.4 раза (1.2 * 1.4 = 1.68) */
+            line-height: 1.2;
             text-transform: none;
             pointer-events: none;
         }
@@ -1467,7 +1420,7 @@
 
         .multiplier-display {
             position: absolute;
-            top: 70px; /* Увеличено для нового размера окна */
+            top: 50px;
             left: 50%;
             transform: translateX(-50%);
             font-size: 4rem;
@@ -1483,7 +1436,7 @@
 
         .win-display {
             position: absolute;
-            top: 168px; /* Увеличено для нового размера окна */
+            top: 120px;
             left: 50%;
             transform: translateX(-50%);
             font-size: 2.5rem;
@@ -2510,16 +2463,12 @@
             }
             
             .game-canvas {
-                height: 576px; /* 480px * 1.2 = 576px для планшетов */
+                height: 480px;
             }
 
             .players-panel {
                 order: 2;
-                max-height: 576px; /* Соответствует размеру игрового окна */
-            }
-
-            .players-list-container {
-                max-height: 480px;
+                max-height: 400px;
             }
 
             .betting-panel {
@@ -2537,10 +2486,6 @@
             .header-center {
                 position: static;
                 transform: none;
-            }
-
-            .wallet-content {
-                min-height: 576px;
             }
         }
 
@@ -2589,42 +2534,39 @@
             }
 
             .game-canvas {
-                height: 480px; /* 400px * 1.2 = 480px для мобильных */
+                height: 400px;
                 margin-bottom: 20px;
             }
 
             .multiplier-display {
                 font-size: 3rem;
-                top: 50px; /* Адаптировано для мобильного размера */
             }
 
             .win-display {
                 font-size: 2rem;
-                top: 120px; /* Адаптировано для мобильного размера */
             }
 
             .game-control-buttons {
-                bottom: 50px; /* Адаптировано для мобильного размера */
+                bottom: 40px;
                 flex-direction: column;
-                gap: 12px; /* Увеличен отступ в 1.4 раза */
+                gap: 8px;
             }
 
             .game-control-button {
-                min-width: 168px; /* Уменьшено для мобильных, но все еще в 1.4 раза больше оригинала */
-                padding: 14px 28px; /* Немного уменьшено для мобильных */
-                font-size: 1.26rem; /* Немного уменьшено для мобильных */
+                min-width: 120px;
+                padding: 8px 16px;
+                font-size: 0.9rem;
             }
 
             .registration-info {
-                font-size: 0.84rem; /* Адаптировано для мобильных */
+                font-size: 0.6rem;
                 max-width: 95%;
-                bottom: 10px;
             }
 
             .bonus-content, .wallet-content {
                 padding: 15px;
                 max-width: 100%;
-                min-height: 480px; /* Адаптировано для мобильных */
+                min-height: 600px;
             }
 
             .bonus-title, .wallet-title {
@@ -2693,11 +2635,7 @@
             }
 
             .players-panel {
-                max-height: 480px; /* Адаптировано для мобильных */
-            }
-
-            .players-list-container {
-                max-height: 380px;
+                max-height: 300px;
             }
 
             .player-item {
@@ -2717,7 +2655,7 @@
             }
 
             .wallet-content {
-                min-height: 480px; /* Адаптировано для мобильных */
+                min-height: 500px;
             }
 
             .wallet-header {
@@ -2833,15 +2771,6 @@
                         </div>
 
                         <div class="players-panel">
-                            <!-- Навигация по игрокам -->
-                            <div class="players-navigation">
-                                <button class="players-nav-btn" id="playersUpBtn" onclick="scrollPlayers('up')">↑</button>
-                                <div class="players-count-info">
-                                    <span id="playersVisible">0</span> / <span id="playersTotal">0</span> игроков
-                                </div>
-                                <button class="players-nav-btn" id="playersDownBtn" onclick="scrollPlayers('down')">↓</button>
-                            </div>
-                            
                             <!-- Убираем кнопки управления из панели игроков -->
                             <div class="players-controls">
                                 <button class="cancel-bet-button" id="cancelBetButton" onclick="cancelBet()" data-lang="cancel-bet">Отменить ставку</button>
@@ -2849,9 +2778,7 @@
                                 <button class="cashout-button" id="cashoutButton" onclick="cashOut()" data-lang="cashout">Забрать</button>
                             </div>
                             <div class="players-title" data-lang="players-online">Игроки</div>
-                            <div class="players-list-container" id="playersListContainer">
-                                <div id="playersList"></div>
-                            </div>
+                            <div id="playersList"></div>
                         </div>
 
                         <div class="game-area">
@@ -2870,13 +2797,13 @@
                                     <path class="chart-line" id="chartLine" d=""></path>
                                 </svg>
                                 
-                                <img src="" alt="Game Animation" class="game-gif" id="gameGif">
+                                <img src="/placeholder.svg" alt="Game Animation" class="game-gif" id="gameGif">
                                 <div class="game-history-mini" id="gameHistoryMini"></div>
                                 <div class="countdown-overlay" id="countdown" style="display: none;">
                                     <div class="countdown-number" id="countdownNumber">3</div>
                                 </div>
 
-                                <!-- Кнопки управления игрой внутри игрового окна - увеличены в 1.4 раза -->
+                                <!-- Кнопки управления игрой внутри игрового окна -->
                                 <div class="game-control-buttons">
                                     <button class="game-control-button cancel-bet-button" id="gameControlCancel" onclick="cancelBet()" data-lang="cancel-bet">Отменить ставку</button>
                                     <button class="game-control-button place-bet-button" id="gameControlPlace" onclick="showBetModal()" data-lang="place-bet">Поставить</button>
@@ -3123,6 +3050,13 @@
         <div class="modal">
             <h2 data-lang="login-title">Вход в игру</h2>
             <input type="text" class="modal-input" id="telegramNick" data-lang-placeholder="enter-nickname" placeholder="Введите ваш ник в Telegram" maxlength="20">
+            <!-- добавил чекбокс для запоминания данных -->
+            <div class="remember-me-container" style="margin: 10px 0; text-align: left;">
+                <label style="display: flex; align-items: center; color: #fff; font-size: 14px; cursor: pointer;">
+                    <input type="checkbox" id="rememberMe" style="margin-right: 8px; transform: scale(1.2);">
+                    <span data-lang="remember-me">Запомнить меня</span>
+                </label>
+            </div>
             <div class="modal-buttons">
                 <button class="modal-btn confirm" onclick="login()" data-lang="login">Войти</button>
                 <button class="modal-btn cancel" onclick="closeLoginModal()" data-lang="cancel">Отмена</button>
@@ -3423,10 +3357,6 @@
             "GUSIK8", "On_website"
         ];
 
-        // Переменные для прокрутки игроков
-        let currentPlayersScrollPosition = 0;
-        const playersPerPage = 15; // Количество игроков на странице
-
         // Курсы криптовалют (примерные)
         const exchangeRates = {
             TON: 2.5,    // 1 TON = $2.5
@@ -3489,6 +3419,7 @@
                 'wallet-title': 'TonCrashWallet',
                 'login-title': 'Вход в игру',
                 'enter-nickname': 'Введите ваш ник в Telegram',
+                'remember-me': 'Запомнить меня',
                 'cancel': 'Отмена',
                 'cancel-bet': 'Отменить ставку',
                 'place-bet': 'Поставить',
@@ -3536,6 +3467,7 @@
                 'wallet-title': 'TonCrashWallet',
                 'login-title': 'Login to Game',
                 'enter-nickname': 'Enter your Telegram nickname',
+                'remember-me': 'Remember me',
                 'cancel': 'Cancel',
                 'cancel-bet': 'Cancel Bet',
                 'place-bet': 'Place bet',
@@ -3596,54 +3528,6 @@
                 game.updateBonusDisplay();
                 game.updateWalletDisplay();
             }
-        }
-
-        // Функция для прокрутки игроков
-        function scrollPlayers(direction) {
-            if (!game || !game.players.length) return;
-
-            const totalPlayers = game.players.length;
-            const maxScrollPosition = Math.max(0, totalPlayers - playersPerPage);
-
-            if (direction === 'up' && currentPlayersScrollPosition > 0) {
-                currentPlayersScrollPosition = Math.max(0, currentPlayersScrollPosition - 5);
-            } else if (direction === 'down' && currentPlayersScrollPosition < maxScrollPosition) {
-                currentPlayersScrollPosition = Math.min(maxScrollPosition, currentPlayersScrollPosition + 5);
-            }
-
-            updatePlayersScrollDisplay();
-        }
-
-        function updatePlayersScrollDisplay() {
-            if (!game || !game.players.length) return;
-
-            const playersList = document.getElementById('playersList');
-            const playersVisible = document.getElementById('playersVisible');
-            const playersTotal = document.getElementById('playersTotal');
-            const upBtn = document.getElementById('playersUpBtn');
-            const downBtn = document.getElementById('playersDownBtn');
-
-            // Обновляем счетчик
-            const totalPlayers = game.players.length;
-            const visibleStart = currentPlayersScrollPosition + 1;
-            const visibleEnd = Math.min(currentPlayersScrollPosition + playersPerPage, totalPlayers);
-            
-            playersVisible.textContent = `${visibleStart}-${visibleEnd}`;
-            playersTotal.textContent = totalPlayers;
-
-            // Обновляем состояние кнопок
-            upBtn.disabled = currentPlayersScrollPosition === 0;
-            downBtn.disabled = currentPlayersScrollPosition >= totalPlayers - playersPerPage;
-
-            // Скрываем игроков вне видимой области
-            const playerItems = playersList.querySelectorAll('.player-item');
-            playerItems.forEach((item, index) => {
-                if (index < currentPlayersScrollPosition || index >= currentPlayersScrollPosition + playersPerPage) {
-                    item.style.display = 'none';
-                } else {
-                    item.style.display = 'flex';
-                }
-            });
         }
 
         // Функция переключения валюты отображения баланса
@@ -4218,8 +4102,6 @@
                     return parseFloat(b.bet) - parseFloat(a.bet);
                 });
                 
-                // Сбрасываем позицию прокрутки
-                currentPlayersScrollPosition = 0;
                 this.updatePlayersDisplay();
             }
 
@@ -4393,7 +4275,7 @@
                 if (this.gameState === 'playing' && this.hasBet) {
                     // Показать кнопку забрать
                     gameControlCashout.classList.add('show');
-                    gameControlCashout.innerHTML = `Забрать ${this.currentWinAmount.toFixed(2)} <img src="https://ton.org/download/ton_symbol.png" alt="TON" style="width: 22px; height: 22px; margin-left: 7px;">`;
+                    gameControlCashout.innerHTML = `Забрать ${this.currentWinAmount.toFixed(2)} <img src="https://ton.org/download/ton_symbol.png" alt="TON" style="width: 16px; height: 16px; margin-left: 5px;">`;
                 } else if (this.nextGameBet) {
                     // Показать кнопку отменить ставку
                     gameControlCancel.classList.add('show');
@@ -4470,7 +4352,6 @@
                         isUser: false
                     });
                 }
-                
                 this.players.sort((a, b) => parseFloat(b.bet) - parseFloat(a.bet));
                 console.log('Игроки сгенерированы:', this.players.length);
             }
@@ -4481,7 +4362,6 @@
                 // Очищаем список игроков в начале каждой игры
                 if (this.gameState === 'countdown') {
                     playersList.innerHTML = '';
-                    currentPlayersScrollPosition = 0; // Сбрасываем позицию прокрутки
                 }
                 
                 this.addUserToPlayersList();
@@ -4491,15 +4371,10 @@
                         const delay = (index * 5000) / this.players.length;
                         setTimeout(() => {
                             this.addPlayerToDisplay(player, index);
-                            // Обновляем отображение прокрутки после добавления каждого игрока
-                            if (index === this.players.length - 1) {
-                                updatePlayersScrollDisplay();
-                            }
                         }, delay);
                     });
                 } else if (this.gameState !== 'countdown') {
                     this.updateExistingPlayers();
-                    updatePlayersScrollDisplay();
                 }
             }
 
@@ -4787,7 +4662,6 @@
                 }
 
                 this.updateExistingPlayers();
-                updatePlayersScrollDisplay();
 
                 if (this.hasBet && this.autoCashout > 0 && this.currentMultiplier >= this.autoCashout && !this.isCrashed) {
                     console.log('Авто-кэшаут сработал при:', this.currentMultiplier);
@@ -4890,7 +4764,6 @@
                 this.updateDisplay();
                 this.updatePlayerActionButtons();
                 this.updateExistingPlayers();
-                updatePlayersScrollDisplay();
 
                 if (this.gameHistory.length > 10) {
                     this.gameHistory = this.gameHistory.slice(-10);
@@ -5216,13 +5089,44 @@
             }
         }
 
+        function saveUserData(nickname) {
+            const rememberMe = document.getElementById('rememberMe').checked;
+            if (rememberMe) {
+                localStorage.setItem('crashGameNickname', nickname);
+                localStorage.setItem('crashGameRememberMe', 'true');
+            } else {
+                localStorage.removeItem('crashGameNickname');
+                localStorage.removeItem('crashGameRememberMe');
+            }
+        }
+
+        function loadUserData() {
+            const savedNickname = localStorage.getItem('crashGameNickname');
+            const rememberMe = localStorage.getItem('crashGameRememberMe') === 'true';
+            
+            if (savedNickname && rememberMe) {
+                document.getElementById('telegramNick').value = savedNickname;
+                document.getElementById('rememberMe').checked = true;
+                
+                if (savedNickname.length >= 2) {
+                    game.login(savedNickname);
+                    return true; // указывает что автовход произошел
+                }
+            }
+            return false;
+        }
+
         function showLoginModal() {
             const modal = document.getElementById('loginModal');
             const input = document.getElementById('telegramNick');
             
-            input.value = '';
-            modal.classList.add('show');
-            input.focus();
+            const autoLoggedIn = loadUserData();
+            
+            // Если автовход не произошел, показываем модальное окно
+            if (!autoLoggedIn) {
+                modal.classList.add('show');
+                input.focus();
+            }
         }
 
         function closeLoginModal() {
@@ -5238,9 +5142,15 @@
                 return;
             }
             
+            saveUserData(nickname);
+            
             game.login(nickname);
             closeLoginModal();
         }
+
+        window.addEventListener('load', function() {
+            loadUserData();
+        });
 
         function showBetModal() {
             if (!game.isLoggedIn) {
