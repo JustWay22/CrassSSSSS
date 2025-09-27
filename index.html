@@ -259,10 +259,10 @@
             transform: translateY(-1px);
         }
 
-        /* Кнопка поддержки изменений */
+        /* Кнопка поддержки изменений - теперь голубая */
         .refresh-balance-button {
-            background: rgba(0, 170, 255, 0.3);
-            border: 1px solid rgba(0, 170, 255, 0.5);
+            background: #00aaff;
+            border: 1px solid #00aaff;
             border-radius: 50%;
             width: 35px;
             height: 35px;
@@ -277,7 +277,7 @@
         }
 
         .refresh-balance-button:hover {
-            background: rgba(0, 170, 255, 0.5);
+            background: #0099dd;
             transform: scale(1.1);
         }
 
@@ -374,12 +374,12 @@
             display: none;
         }
 
-        /* Новые стили для кошелька в стиле Binance - убираем все подсветки кроме баланса */
+        /* Новые стили для кошелька в стиле Binance - убираем обводку */
         .wallet-content {
             padding: 0;
             background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
             border-radius: 20px;
-            border: 2px solid #fcd535;
+            border: none;
             margin: 0 auto;
             max-width: 800px;
             position: relative;
@@ -401,7 +401,7 @@
         .wallet-title {
             font-size: 1.8rem;
             font-weight: 900;
-            color: #fcd535;
+            color: white;
             margin: 0;
             text-transform: none;
         }
@@ -513,7 +513,7 @@
 
         .charts-title {
             font-size: 1.2rem;
-            color: #fcd535;
+            color: white;
             margin-bottom: 20px;
             font-weight: 700;
         }
@@ -534,7 +534,7 @@
 
         .chart-item:hover {
             background: linear-gradient(135deg, rgba(30, 30, 30, 0.9) 0%, rgba(50, 50, 80, 0.9) 100%);
-            border-color: #fcd535;
+            border-color: #00aaff;
             transform: translateY(-3px);
         }
 
@@ -1298,7 +1298,7 @@
             background-size: 20px 20px;
         }
 
-        /* Кнопки управления игрой - перенесены в игровое окно */
+        /* Кнопки управления игрой - перенесены в игровое окно и увеличены в 1.2 раза */
         .game-control-buttons {
             position: absolute;
             bottom: 60px;
@@ -1311,16 +1311,17 @@
 
         .game-control-button {
             border: none;
-            padding: 12px 24px;
+            padding: 14px 29px;
             border-radius: 20px;
             font-family: 'Orbitron', monospace;
             font-weight: 700;
-            font-size: 1rem;
+            font-size: 1.2rem;
             cursor: pointer;
             transition: all 0.3s ease;
             text-transform: none;
-            min-width: 140px;
+            min-width: 168px;
             display: none;
+            transform: scale(1.2);
         }
 
         .game-control-button.cancel-bet-button {
@@ -1329,7 +1330,7 @@
         }
 
         .game-control-button.cancel-bet-button:hover {
-            transform: translateY(-2px);
+            transform: scale(1.2) translateY(-2px);
             box-shadow: 0 5px 15px rgba(255, 68, 68, 0.4);
         }
 
@@ -1339,7 +1340,7 @@
         }
 
         .game-control-button.place-bet-button:hover {
-            transform: translateY(-2px);
+            transform: scale(1.2) translateY(-2px);
             box-shadow: 0 5px 15px rgba(0, 153, 255, 0.4);
         }
 
@@ -1349,7 +1350,7 @@
         }
 
         .game-control-button.cashout-button:hover {
-            transform: translateY(-2px);
+            transform: scale(1.2) translateY(-2px);
             box-shadow: 0 5px 15px rgba(0, 170, 255, 0.4);
         }
 
@@ -2146,7 +2147,7 @@
             text-transform: none;
         }
 
-        /* Модальное окно вывода - ОЧЕНЬ КРАСИВОЕ ОФОРМЛЕНИЕ */
+        /* Модальное окно вывода - убираем все эффекты теней */
         .withdraw-modal {
             background: linear-gradient(145deg, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
             border: 3px solid #ffd700;
@@ -2184,7 +2185,6 @@
             margin-bottom: 40px;
             font-size: 2.8rem;
             font-weight: 900;
-            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
             text-transform: none;
         }
 
@@ -2244,7 +2244,6 @@
         .withdraw-modal .modal-btn.confirm:hover {
             background: linear-gradient(45deg, #ffed4e, #fff176);
             transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
         }
 
         .withdraw-modal .modal-btn.cancel {
@@ -2556,6 +2555,11 @@
                 min-width: 120px;
                 padding: 8px 16px;
                 font-size: 0.9rem;
+                transform: scale(1.2);
+            }
+
+            .game-control-button:hover {
+                transform: scale(1.2) translateY(-2px);
             }
 
             .registration-info {
@@ -2886,7 +2890,7 @@
                     <div class="wallet-content">
                         <!-- Заголовок кошелька -->
                         <div class="wallet-header">
-                            <h1 class="wallet-title" data-lang="wallet-title">TonCrashWallet</h1>
+                            <h1 class="wallet-title" data-lang="wallet-title">TonCrash Wallet</h1>
                             <button class="refresh-button" onclick="refreshWallet()">
                                 🔄 
                             </button>
@@ -3416,7 +3420,7 @@
                 'crash-game': 'Crash',
                 'bonus': 'Бонусы',
                 'wallet': 'Кошелек',
-                'wallet-title': 'TonCrashWallet',
+                'wallet-title': 'TonCrash Wallet',
                 'login-title': 'Вход в игру',
                 'enter-nickname': 'Введите ваш ник в Telegram',
                 'remember-me': 'Запомнить меня',
@@ -3464,7 +3468,7 @@
                 'crash-game': 'Crash',
                 'bonus': 'Bonus',
                 'wallet': 'Wallet',
-                'wallet-title': 'TonCrashWallet',
+                'wallet-title': 'TonCrash Wallet',
                 'login-title': 'Login to Game',
                 'enter-nickname': 'Enter your Telegram nickname',
                 'remember-me': 'Remember me',
@@ -5391,4 +5395,3 @@
     </script>
 </body>
 </html>
-
