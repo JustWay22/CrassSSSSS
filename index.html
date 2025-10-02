@@ -339,9 +339,9 @@
 
         .bonus-content {
             padding: 20px;
-            background: #1a1a2e;
+            background: #2a2a2a;
             border-radius: 20px;
-            border: 1px solid rgba(139, 69, 255, 0.3);
+            border: 1px solid rgba(150, 150, 150, 0.3);
             margin: 0 auto;
             max-width: 800px;
             overflow-y: auto;
@@ -358,7 +358,6 @@
             padding: 0;
             background: #0d0d0d;
             border-radius: 20px;
-            border: 1px solid rgba(139, 69, 255, 0.3);
             margin: 0 auto;
             max-width: 800px;
             position: relative;
@@ -445,8 +444,9 @@
 
         .wallet-actions {
             display: flex;
-            gap: 20px;
+            gap: 15px;
             justify-content: center;
+            flex-wrap: wrap;
         }
 
         .action-button {
@@ -564,6 +564,7 @@
             width: 32px;
             height: 32px;
             object-fit: contain;
+            border-radius: 50%;
         }
 
         .asset-info {
@@ -693,14 +694,14 @@
         .promo-section {
             margin-top: 15px;
             padding: 15px;
-            background: rgba(139, 69, 255, 0.1);
+            background: rgba(150, 150, 150, 0.1);
             border-radius: 8px;
-            border: 1px solid rgba(139, 69, 255, 0.2);
+            border: 1px solid rgba(150, 150, 150, 0.2);
         }
 
         .promo-title {
             font-size: 0.9rem;
-            color: #8b45ff;
+            color: #888;
             margin-bottom: 10px;
             font-weight: 600;
             text-transform: none;
@@ -710,7 +711,7 @@
             width: 100%;
             padding: 10px;
             background: rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(139, 69, 255, 0.3);
+            border: 1px solid rgba(150, 150, 150, 0.3);
             border-radius: 4px;
             color: white;
             font-family: 'Orbitron', monospace;
@@ -720,11 +721,11 @@
 
         .promo-input:focus {
             outline: none;
-            border-color: #8b45ff;
+            border-color: #888;
         }
 
         .promo-button {
-            background: #8b45ff;
+            background: #888;
             color: white;
             border: none;
             padding: 8px 16px;
@@ -736,7 +737,7 @@
         }
 
         .promo-button:hover {
-            background: #7a3de6;
+            background: #666;
         }
 
         .bonus-title {
@@ -746,7 +747,7 @@
             color: white;
             margin-bottom: 30px;
             text-transform: none;
-            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9), 0 0 15px rgba(139, 69, 255, 0.3);
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9), 0 0 15px rgba(150, 150, 150, 0.3);
         }
 
         .bonus-stages {
@@ -757,8 +758,8 @@
         }
 
         .bonus-stage {
-            background: rgba(139, 69, 255, 0.1);
-            border: 2px solid rgba(139, 69, 255, 0.3);
+            background: rgba(150, 150, 150, 0.1);
+            border: 2px solid rgba(150, 150, 150, 0.3);
             border-radius: 15px;
             padding: 20px;
             text-align: center;
@@ -769,10 +770,10 @@
         }
 
         .bonus-stage.active {
-            background: rgba(139, 69, 255, 0.2);
-            border-color: #8b45ff;
+            background: rgba(150, 150, 150, 0.2);
+            border-color: #888;
             opacity: 1;
-            box-shadow: 0 0 20px rgba(139, 69, 255, 0.3);
+            box-shadow: 0 0 20px rgba(150, 150, 150, 0.3);
         }
 
         .bonus-stage.completed {
@@ -792,7 +793,7 @@
         }
 
         .bonus-stage.active .bonus-stage-number {
-            color: #8b45ff;
+            color: #888;
         }
 
         .bonus-stage.completed .bonus-stage-number {
@@ -809,7 +810,7 @@
         }
 
         .bonus-stage.active .bonus-percentage {
-            color: #8b45ff;
+            color: #888;
         }
 
         .bonus-stage.completed .bonus-percentage {
@@ -826,11 +827,11 @@
         }
 
         .bonus-info {
-            background: rgba(139, 69, 255, 0.1);
+            background: rgba(150, 150, 150, 0.1);
             border-radius: 15px;
             padding: 20px;
             margin-bottom: 30px;
-            border: 1px solid rgba(139, 69, 255, 0.3);
+            border: 1px solid rgba(150, 150, 150, 0.3);
         }
 
         .bonus-progress {
@@ -856,7 +857,7 @@
 
         .bonus-progress-fill {
             height: 100%;
-            background: linear-gradient(90deg, #8b45ff, #a855f7);
+            background: linear-gradient(90deg, #888, #aaa);
             border-radius: 10px;
             transition: width 0.3s ease;
         }
@@ -869,10 +870,10 @@
         }
 
         .bonus-stat {
-            background: rgba(139, 69, 255, 0.1);
+            background: rgba(150, 150, 150, 0.1);
             padding: 15px;
             border-radius: 15px;
-            border: 1px solid rgba(139, 69, 255, 0.3);
+            border: 1px solid rgba(150, 150, 150, 0.3);
         }
 
         .bonus-stat-value {
@@ -890,14 +891,14 @@
         }
 
         .pepe-contest {
-            background: rgba(139, 69, 255, 0.1);
+            background: rgba(150, 150, 150, 0.1);
             border-radius: 15px;
             padding: 30px;
             margin-bottom: 30px;
             display: flex;
             align-items: center;
             gap: 20px;
-            border: 2px solid rgba(139, 69, 255, 0.3);
+            border: 2px solid rgba(150, 150, 150, 0.3);
         }
 
         .pepe-contest-image {
@@ -918,11 +919,11 @@
             color: white;
             margin-bottom: 20px;
             text-transform: none;
-            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9), 0 0 15px rgba(139, 69, 255, 0.3);
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9), 0 0 15px rgba(150, 150, 150, 0.3);
         }
 
         .pepe-contest-button {
-            background: #8b45ff;
+            background: #888;
             color: white;
             border: none;
             padding: 15px 30px;
@@ -936,7 +937,7 @@
         }
 
         .pepe-contest-button:hover {
-            background: #7a3de6;
+            background: #666;
             transform: translateY(-2px);
         }
 
@@ -1205,13 +1206,14 @@
         }
 
         .game-control-button.place-bet-button {
-            background: #8b45ff;
-            color: white;
-            border: 1px solid #8b45ff;
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            color: #000;
+            border: 1px solid #ffd700;
+            font-weight: 700;
         }
 
         .game-control-button.place-bet-button:hover {
-            background: #7a3de6;
+            background: linear-gradient(45deg, #ffed4e, #ffd700);
             transform: translateY(-2px);
         }
 
@@ -1262,6 +1264,13 @@
             animation: heartbeatPulse 0.8s ease-in-out;
         }
 
+        .game-canvas.grid-shake {
+            background-image: 
+                linear-gradient(rgba(139, 69, 255, 0.2) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(139, 69, 255, 0.2) 1px, transparent 1px);
+            animation: gridShake 0.8s ease-in-out;
+        }
+
         @keyframes backgroundPulse {
             0% { opacity: 0.5; }
             100% { opacity: 1; }
@@ -1287,6 +1296,25 @@
             100% { 
                 opacity: 0.5; 
                 transform: scale(1);
+            }
+        }
+
+        @keyframes gridShake {
+            0%, 100% { 
+                background-size: 20px 20px; 
+                background-position: 0 0;
+            }
+            25% { 
+                background-size: 21px 21px; 
+                background-position: 1px 1px;
+            }
+            50% { 
+                background-size: 19px 19px; 
+                background-position: -1px -1px;
+            }
+            75% { 
+                background-size: 20px 20px; 
+                background-position: 0.5px 0.5px;
             }
         }
 
@@ -1456,9 +1484,9 @@
         }
 
         .history-panel {
-            background: rgba(139, 69, 255, 0.1);
+            background: #444444;
             border-radius: 12px;
-            border: 1px solid rgba(139, 69, 255, 0.3);
+            border: 1px solid rgba(150, 150, 150, 0.3);
             padding: 20px;
         }
 
@@ -1487,8 +1515,23 @@
             color: white;
         }
 
-        .history-item.lose {
-            background: rgba(255, 68, 68, 0.3);
+        .history-item.lose.red-multiplier {
+            background: #ff4444;
+            color: white;
+        }
+
+        .history-item.lose.yellow-multiplier {
+            background: #ffd700;
+            color: #000;
+        }
+
+        .history-item.lose.orange-multiplier {
+            background: #ffa500;
+            color: white;
+        }
+
+        .history-item.lose.green-multiplier {
+            background: #00d4aa;
             color: white;
         }
 
@@ -1515,21 +1558,27 @@
         }
 
         .mini-result.red {
-            background: rgba(255, 68, 68, 0.3);
-            color: #ff4444;
+            background: #ff4444;
+            color: white;
             border-color: #ff4444;
         }
 
+        .mini-result.yellow {
+            background: #ffd700;
+            color: #000;
+            border-color: #ffd700;
+        }
+
         .mini-result.orange {
-            background: rgba(255, 165, 0, 0.3);
-            color: #ffa500;
+            background: #ffa500;
+            color: white;
             border-color: #ffa500;
         }
 
-        .mini-result.white {
-            background: rgba(255, 255, 255, 0.3);
-            color: #ffffff;
-            border-color: #ffffff;
+        .mini-result.green {
+            background: #00d4aa;
+            color: white;
+            border-color: #00d4aa;
         }
 
         .mini-result.pending {
@@ -1595,8 +1644,8 @@
         }
 
         .modal {
-            background: #1a1a2e;
-            border: 2px solid rgba(139, 69, 255, 0.5);
+            background: #2a2a2a;
+            border: 2px solid rgba(150, 150, 150, 0.5);
             border-radius: 20px;
             padding: 30px;
             max-width: 450px;
@@ -1621,7 +1670,7 @@
             width: 100%;
             padding: 15px;
             background: rgba(0, 0, 0, 0.5);
-            border: 2px solid rgba(139, 69, 255, 0.3);
+            border: 2px solid rgba(150, 150, 150, 0.3);
             border-radius: 12px;
             color: white;
             font-family: 'Orbitron', monospace;
@@ -1633,7 +1682,7 @@
 
         .modal-input:focus {
             outline: none;
-            border-color: #8b45ff;
+            border-color: #888;
         }
 
         .modal-buttons {
@@ -1657,14 +1706,14 @@
         }
 
         .modal-btn.confirm {
-            background: #8b45ff;
+            background: #888;
             color: white;
         }
 
         .modal-btn.cancel {
-            background: rgba(139, 69, 255, 0.2);
-            color: #8b45ff;
-            border: 1px solid rgba(139, 69, 255, 0.3);
+            background: rgba(150, 150, 150, 0.2);
+            color: #888;
+            border: 1px solid rgba(150, 150, 150, 0.3);
         }
 
         .modal-btn:hover {
@@ -1680,8 +1729,8 @@
 
         .deposit-btn {
             padding: 15px;
-            background: rgba(139, 69, 255, 0.2);
-            border: 1px solid rgba(139, 69, 255, 0.3);
+            background: rgba(150, 150, 150, 0.2);
+            border: 1px solid rgba(150, 150, 150, 0.3);
             border-radius: 12px;
             color: white;
             cursor: pointer;
@@ -1697,12 +1746,12 @@
         }
 
         .deposit-btn:hover {
-            background: rgba(139, 69, 255, 0.3);
+            background: rgba(150, 150, 150, 0.3);
             transform: translateY(-2px);
         }
 
         .cryptopay-btn {
-            background: #8b45ff;
+            background: #888;
             color: white;
             border: none;
             padding: 12px 20px;
@@ -1717,7 +1766,7 @@
         }
 
         .cryptopay-btn:hover {
-            background: #7a3de6;
+            background: #666;
             transform: translateY(-2px);
         }
 
@@ -1761,7 +1810,7 @@
         .deposit-status {
             text-align: center;
             padding: 15px;
-            background: rgba(139, 69, 255, 0.1);
+            background: rgba(150, 150, 150, 0.1);
             border-radius: 12px;
             margin-bottom: 15px;
         }
@@ -1771,7 +1820,7 @@
         }
 
         .account-info {
-            background: rgba(139, 69, 255, 0.1);
+            background: rgba(150, 150, 150, 0.1);
             padding: 20px;
             border-radius: 15px;
             margin-bottom: 25px;
@@ -1802,7 +1851,7 @@
         }
 
         .bet-item {
-            background: rgba(139, 69, 255, 0.1);
+            background: rgba(150, 150, 150, 0.1);
             padding: 12px;
             border-radius: 12px;
             margin-bottom: 10px;
@@ -1821,8 +1870,8 @@
         }
 
         .bet-modal {
-            background: #1a1a2e;
-            border: 2px solid rgba(139, 69, 255, 0.5);
+            background: #2a2a2a;
+            border: 2px solid rgba(150, 150, 150, 0.5);
             border-radius: 20px;
             padding: 30px;
             max-width: 450px;
@@ -1838,7 +1887,7 @@
         }
 
         .bet-modal h2 {
-            color: #8b45ff;
+            color: #888;
             margin-bottom: 25px;
             font-size: 1.8rem;
             font-weight: 700;
@@ -1849,7 +1898,7 @@
             width: 100%;
             padding: 18px 15px;
             background: rgba(0, 0, 0, 0.5);
-            border: 2px solid rgba(139, 69, 255, 0.3);
+            border: 2px solid rgba(150, 150, 150, 0.3);
             border-radius: 15px;
             color: #ffffff;
             font-family: 'Orbitron', monospace;
@@ -1863,7 +1912,7 @@
         .bet-amount-input:focus {
             outline: none;
             background: rgba(0, 0, 0, 0.7);
-            border-color: #8b45ff;
+            border-color: #888;
             transform: scale(1.02);
         }
 
@@ -1876,8 +1925,8 @@
 
         .currency-btn {
             padding: 10px 20px;
-            background: rgba(139, 69, 255, 0.2);
-            border: 2px solid rgba(139, 69, 255, 0.3);
+            background: rgba(150, 150, 150, 0.2);
+            border: 2px solid rgba(150, 150, 150, 0.3);
             border-radius: 12px;
             color: white;
             cursor: pointer;
@@ -1891,12 +1940,12 @@
         }
 
         .currency-btn.active {
-            background: rgba(139, 69, 255, 0.5);
-            border-color: #8b45ff;
+            background: rgba(150, 150, 150, 0.5);
+            border-color: #888;
         }
 
         .currency-btn:hover {
-            background: rgba(139, 69, 255, 0.3);
+            background: rgba(150, 150, 150, 0.3);
             transform: translateY(-2px);
         }
 
@@ -1909,8 +1958,8 @@
 
         .quick-bet {
             padding: 12px 10px;
-            background: rgba(139, 69, 255, 0.2);
-            border: 1px solid rgba(139, 69, 255, 0.3);
+            background: rgba(150, 150, 150, 0.2);
+            border: 1px solid rgba(150, 150, 150, 0.3);
             border-radius: 10px;
             color: white;
             cursor: pointer;
@@ -1925,13 +1974,13 @@
         }
 
         .quick-bet:hover {
-            background: rgba(139, 69, 255, 0.4);
+            background: rgba(150, 150, 150, 0.4);
             transform: translateY(-2px);
         }
 
         .win-modal {
-            background: #1a1a2e;
-            border: 2px solid rgba(139, 69, 255, 0.5);
+            background: #2a2a2a;
+            border: 2px solid rgba(150, 150, 150, 0.5);
             border-radius: 20px;
             padding: 40px;
             max-width: 400px;
@@ -1950,14 +1999,14 @@
             transform: translateX(-50%);
             width: 120px;
             height: 120px;
-            background: rgba(139, 69, 255, 0.3);
+            background: rgba(150, 150, 150, 0.3);
             border-radius: 15px;
             background-image: url('https://podarki-tg.com/wp-content/uploads/2025/06/image-520.png');
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
             z-index: -1;
-            border: 2px solid rgba(139, 69, 255, 0.5);
+            border: 2px solid rgba(150, 150, 150, 0.5);
         }
 
         .win-modal-overlay.show .win-modal {
@@ -1974,7 +2023,7 @@
         .win-amount {
             font-size: 3.5rem;
             font-weight: 900;
-            color: #8b45ff;
+            color: #888;
             margin-bottom: 25px;
             display: flex;
             align-items: center;
@@ -1990,8 +2039,8 @@
         }
 
         .withdraw-modal {
-            background: #1a1a2e;
-            border: 2px solid rgba(139, 69, 255, 0.5);
+            background: #2a2a2a;
+            border: 2px solid rgba(150, 150, 150, 0.5);
             border-radius: 20px;
             padding: 40px;
             max-width: 550px;
@@ -2006,7 +2055,7 @@
         }
 
         .withdraw-modal h2 {
-            color: #8b45ff;
+            color: #888;
             margin-bottom: 30px;
             font-size: 2rem;
             font-weight: 900;
@@ -2017,7 +2066,7 @@
             width: 100%;
             padding: 18px 15px;
             background: rgba(0, 0, 0, 0.5);
-            border: 2px solid rgba(139, 69, 255, 0.3);
+            border: 2px solid rgba(150, 150, 150, 0.3);
             border-radius: 15px;
             color: #ffffff;
             font-family: 'Orbitron', monospace;
@@ -2031,18 +2080,18 @@
         .withdraw-input:focus {
             outline: none;
             background: rgba(0, 0, 0, 0.7);
-            border-color: #8b45ff;
+            border-color: #888;
         }
 
         .withdraw-info {
-            background: rgba(139, 69, 255, 0.1);
+            background: rgba(150, 150, 150, 0.1);
             padding: 20px;
             border-radius: 15px;
             margin-bottom: 25px;
             color: #ffffff;
             font-size: 0.9rem;
             text-transform: none;
-            border: 1px solid rgba(139, 69, 255, 0.3);
+            border: 1px solid rgba(150, 150, 150, 0.3);
             line-height: 1.5;
         }
 
@@ -2068,8 +2117,8 @@
         }
 
         .color-picker-modal {
-            background: #1a1a2e;
-            border: 2px solid rgba(139, 69, 255, 0.5);
+            background: #2a2a2a;
+            border: 2px solid rgba(150, 150, 150, 0.5);
             border-radius: 20px;
             padding: 30px;
             max-width: 350px;
@@ -2086,7 +2135,7 @@
         .color-picker {
             width: 100%;
             height: 50px;
-            border: 2px solid rgba(139, 69, 255, 0.3);
+            border: 2px solid rgba(150, 150, 150, 0.3);
             border-radius: 12px;
             margin-bottom: 15px;
             cursor: pointer;
@@ -2106,8 +2155,8 @@
         }
 
         .support-modal {
-            background: #1a1a2e;
-            border: 2px solid rgba(139, 69, 255, 0.5);
+            background: #2a2a2a;
+            border: 2px solid rgba(150, 150, 150, 0.5);
             border-radius: 20px;
             padding: 30px;
             max-width: 450px;
@@ -2124,7 +2173,7 @@
         .support-chat {
             height: 250px;
             overflow-y: auto;
-            border: 2px solid rgba(139, 69, 255, 0.3);
+            border: 2px solid rgba(150, 150, 150, 0.3);
             border-radius: 12px;
             padding: 12px;
             margin-bottom: 15px;
@@ -2138,7 +2187,7 @@
         }
 
         .chat-message.user {
-            background: rgba(139, 69, 255, 0.3);
+            background: rgba(150, 150, 150, 0.3);
             text-align: right;
         }
 
@@ -2155,14 +2204,14 @@
             flex: 1;
             padding: 8px;
             background: rgba(0, 0, 0, 0.5);
-            border: 2px solid rgba(139, 69, 255, 0.3);
+            border: 2px solid rgba(150, 150, 150, 0.3);
             border-radius: 8px;
             color: white;
             font-family: 'Orbitron', monospace;
         }
 
         .support-send {
-            background: #8b45ff;
+            background: #888;
             color: white;
             border: none;
             padding: 8px 16px;
@@ -2174,8 +2223,8 @@
         }
 
         .pepe-welcome-modal {
-            background: #1a1a2e;
-            border: 2px solid rgba(139, 69, 255, 0.5);
+            background: #2a2a2a;
+            border: 2px solid rgba(150, 150, 150, 0.5);
             border-radius: 20px;
             padding: 30px;
             max-width: 450px;
@@ -2203,7 +2252,7 @@
             color: white;
             margin-bottom: 20px;
             text-transform: none;
-            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9), 0 0 15px rgba(139, 69, 255, 0.3);
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9), 0 0 15px rgba(150, 150, 150, 0.3);
         }
 
         .pepe-welcome-description {
@@ -2361,7 +2410,7 @@
             }
 
             .wallet-actions {
-                flex-direction: column;
+                grid-template-columns: repeat(2, 1fr);
                 gap: 15px;
             }
 
@@ -2502,13 +2551,14 @@
                     </div>
                     <div class="balance-buttons" id="balanceButtons" style="display: none;">
                         <button class="balance-button deposit" onclick="showDepositModal()" data-lang="deposit">Пополнить</button>
-                        <button class="balance-button" onclick="showP2PModal()" data-lang="p2p">P2P</button>
+                        <button class="balance-button" onclick="showWithdrawModal()" data-lang="withdraw">Вывести</button>
+                        <button class="balance-button" onclick="showP2PModal()" data-lang="exchange">Обмен</button>
+                        <button class="balance-button" onclick="showP2PModal()" data-lang="trading">Биржа</button>
                         <div class="refresh-balance-button" onclick="refreshBalance()" title="Поддержать изменения">
                             🔄
                         </div>
                         <div style="position: relative;">
                             <div class="dropdown-menu" id="dropdownMenu">
-                                <button class="dropdown-item" onclick="showWithdrawModal(); toggleMenu()" data-lang="withdraw">Вывод средств</button>
                                 <button class="dropdown-item" onclick="switchToSlide(2); toggleMenu()">Кошелек</button>
                                 <button class="dropdown-item" onclick="showAccountModal(); toggleMenu()">Профиль</button>
                             </div>
@@ -2654,7 +2704,11 @@
                                 <h3>Общий баланс в USD</h3>
                                 <div class="balance-display">
                                     <div class="balance-amount-large" id="totalBalanceDisplay">$0</div>
-                                    <div style="color: #8b45ff; font-size: 1.5rem; margin-left: 10px; cursor: pointer;" onclick="toggleWalletBalanceVisibility()">👁</div>
+                                    <div style="color: #8b45ff; font-size: 1.5rem; margin-left: 10px; cursor: pointer;" onclick="toggleWalletBalanceVisibility()">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M12 4.5C7.5 4.5 3.9 7.2 2.7 11.2C2.6 11.5 2.6 11.8 2.7 12.1C3.9 16.1 7.5 18.8 12 18.8C16.5 18.8 20.1 16.1 21.3 12.1C21.4 11.8 21.4 11.5 21.3 11.2C20.1 7.2 16.5 4.5 12 4.5ZM12 16.2C9.5 16.2 7.5 14.2 7.5 11.7C7.5 9.2 9.5 7.2 12 7.2C14.5 7.2 16.5 9.2 16.5 11.7C16.5 14.2 14.5 16.2 12 16.2ZM12 9C10.3 9 9 10.3 9 12C9 13.7 10.3 15 12 15C13.7 15 15 13.7 15 12C15 10.3 13.7 9 12 9Z"/>
+                                        </svg>
+                                    </div>
                                 </div>
                             </div>
                             
@@ -3099,6 +3153,7 @@
         let depositTimer = null;
         let depositAmount = 0;
         let isInDepositWindow = false;
+        let gridShakeInterval = null;
 
         let currentDisplayCurrency = 'USD';
         let currentBetCurrency = 'TON';
@@ -3261,11 +3316,11 @@
                 balanceMain.textContent = '***';
                 balanceSecondary.textContent = '***';
                 balanceContainer.classList.add('balance-hidden');
-                eyeButton.textContent = '🙈';
+                eyeButton.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M2 12C2 13.6569 4.69649 16 12 16C19.3035 16 22 13.6569 22 12C22 10.3431 19.3035 8 12 8C4.69649 8 2 10.3431 2 12ZM12 10C13.1046 10 14 10.8954 14 12C14 13.1046 13.1046 14 12 14C10.8954 14 10 13.1046 10 12C10 10.8954 10.8954 10 12 10Z"/><line x1="1" y1="1" x2="23" y2="23" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
             } else {
                 game.updateDisplay();
                 balanceContainer.classList.remove('balance-hidden');
-                eyeButton.textContent = '👁';
+                eyeButton.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4.5C7.5 4.5 3.9 7.2 2.7 11.2C2.6 11.5 2.6 11.8 2.7 12.1C3.9 16.1 7.5 18.8 12 18.8C16.5 18.8 20.1 16.1 21.3 12.1C21.4 11.8 21.4 11.5 21.3 11.2C20.1 7.2 16.5 4.5 12 4.5ZM12 16.2C9.5 16.2 7.5 14.2 7.5 11.7C7.5 9.2 9.5 7.2 12 7.2C14.5 7.2 16.5 9.2 16.5 11.7C16.5 14.2 14.5 16.2 12 16.2ZM12 9C10.3 9 9 10.3 9 12C9 13.7 10.3 15 12 15C13.7 15 15 13.7 15 12C15 10.3 13.7 9 12 9Z"/></svg>';
             }
         }
 
@@ -3599,6 +3654,22 @@
             }
         }
 
+        function startGridShakeEffect() {
+            if (gridShakeInterval) {
+                clearInterval(gridShakeInterval);
+            }
+            
+            gridShakeInterval = setInterval(() => {
+                const gameCanvas = document.getElementById('gameCanvas');
+                if (gameCanvas) {
+                    gameCanvas.classList.add('grid-shake');
+                    setTimeout(() => {
+                        gameCanvas.classList.remove('grid-shake');
+                    }, 800);
+                }
+            }, 2000);
+        }
+
         class CrashGame {
             constructor() {
                 this.balance = 1.00;
@@ -3657,6 +3728,7 @@
                 this.startHeartbeatEffect();
                 this.startOnlineCounter();
                 this.initializeBonusSystem();
+                startGridShakeEffect();
                 
                 setTimeout(() => {
                     showPepeWelcomeModal();
@@ -4414,12 +4486,14 @@
                     pendingItem.textContent = multiplier.toFixed(2) + 'x';
                     pendingItem.classList.remove('pending');
                     
-                    if (multiplier < 1.5) {
+                    if (multiplier < 2.00) {
                         pendingItem.classList.add('red');
-                    } else if (multiplier < 3.0) {
+                    } else if (multiplier >= 2.01 && multiplier <= 5.00) {
+                        pendingItem.classList.add('yellow');
+                    } else if (multiplier > 5.00 && multiplier <= 10.00) {
                         pendingItem.classList.add('orange');
                     } else {
-                        pendingItem.classList.add('white');
+                        pendingItem.classList.add('green');
                     }
                 }
             }
@@ -4564,11 +4638,25 @@
                 
                 this.gameHistory.slice().reverse().forEach(game => {
                     const item = document.createElement('div');
-                    item.className = `history-item ${game.win === true ? 'win' : game.win === false ? 'lose' : 'neutral'}`;
+                    let className = 'history-item';
                     
                     if (game.win === true) {
+                        className += ' win';
                         item.textContent = `${game.multiplier.toFixed(2)}x ✓`;
                     } else if (game.win === false) {
+                        className += ' lose';
+                        
+                        // Определяем цвет множителя
+                        if (game.multiplier < 2.00) {
+                            className += ' red-multiplier';
+                        } else if (game.multiplier >= 2.01 && game.multiplier <= 5.00) {
+                            className += ' yellow-multiplier';
+                        } else if (game.multiplier > 5.00 && game.multiplier <= 10.00) {
+                            className += ' orange-multiplier';
+                        } else {
+                            className += ' green-multiplier';
+                        }
+                        
                         item.textContent = `${game.multiplier.toFixed(2)}x ✗`;
                     } else {
                         item.textContent = `${game.multiplier.toFixed(2)}x`;
@@ -4576,6 +4664,7 @@
                         item.style.color = '#8b45ff';
                     }
                     
+                    item.className = className;
                     historyList.appendChild(item);
                 });
             }
