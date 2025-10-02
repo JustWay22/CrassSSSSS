@@ -141,23 +141,6 @@
             gap: 5px;
         }
 
-        .balance-eye-button {
-            background: transparent;
-            border: none;
-            color: #8b45ff;
-            font-size: 1.2rem;
-            cursor: pointer;
-            padding: 4px;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-            margin-left: 10px;
-        }
-
-        .balance-eye-button:hover {
-            background: rgba(139, 69, 255, 0.2);
-            transform: scale(1.1);
-        }
-
         .currency-switch {
             background: rgba(139, 69, 255, 0.2);
             border: 1px solid #8b45ff;
@@ -446,7 +429,8 @@
             display: flex;
             gap: 15px;
             justify-content: center;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
+            align-items: center;
         }
 
         .action-button {
@@ -491,20 +475,6 @@
 
         .action-button.withdraw::before {
             content: '↑';
-            color: white;
-            font-size: 16px;
-            font-weight: bold;
-        }
-
-        .action-button.exchange::before {
-            content: '⇄';
-            color: white;
-            font-size: 16px;
-            font-weight: bold;
-        }
-
-        .action-button.trading::before {
-            content: '📈';
             color: white;
             font-size: 16px;
             font-weight: bold;
@@ -725,7 +695,7 @@
         }
 
         .promo-button {
-            background: #888;
+            background: #ff8640;
             color: white;
             border: none;
             padding: 8px 16px;
@@ -737,7 +707,7 @@
         }
 
         .promo-button:hover {
-            background: #666;
+            background: #e6732e;
         }
 
         .bonus-title {
@@ -923,7 +893,7 @@
         }
 
         .pepe-contest-button {
-            background: #888;
+            background: #ff8640;
             color: white;
             border: none;
             padding: 15px 30px;
@@ -937,7 +907,7 @@
         }
 
         .pepe-contest-button:hover {
-            background: #666;
+            background: #e6732e;
             transform: translateY(-2px);
         }
 
@@ -1206,25 +1176,25 @@
         }
 
         .game-control-button.place-bet-button {
-            background: linear-gradient(45deg, #ffd700, #ffed4e);
-            color: #000;
-            border: 1px solid #ffd700;
+            background: #ff8640;
+            color: white;
+            border: 1px solid #ff8640;
             font-weight: 700;
         }
 
         .game-control-button.place-bet-button:hover {
-            background: linear-gradient(45deg, #ffed4e, #ffd700);
+            background: #e6732e;
             transform: translateY(-2px);
         }
 
         .game-control-button.cashout-button {
-            background: #00d4aa;
+            background: #ff8640;
             color: white;
-            border: 1px solid #00d4aa;
+            border: 1px solid #ff8640;
         }
 
         .game-control-button.cashout-button:hover {
-            background: #00b894;
+            background: #e6732e;
             transform: translateY(-2px);
         }
 
@@ -1751,7 +1721,7 @@
         }
 
         .cryptopay-btn {
-            background: #888;
+            background: #1fbcff;
             color: white;
             border: none;
             padding: 12px 20px;
@@ -1766,7 +1736,7 @@
         }
 
         .cryptopay-btn:hover {
-            background: #666;
+            background: #1ca8e6;
             transform: translateY(-2px);
         }
 
@@ -2282,6 +2252,16 @@
             100% { transform: scale(1); opacity: 1; }
         }
 
+        /* Специальная кнопка "ПОСТАВИТЬ" в модальном окне ставки */
+        .bet-modal .modal-btn.confirm {
+            background: #ff8640;
+            color: white;
+        }
+
+        .bet-modal .modal-btn.confirm:hover {
+            background: #e6732e;
+        }
+
         @media (max-width: 1400px) {
             .main-content {
                 grid-template-columns: 1fr;
@@ -2412,6 +2392,7 @@
             .wallet-actions {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 15px;
+                flex-wrap: wrap;
             }
 
             .balance-amount-large {
@@ -2542,7 +2523,6 @@
                     <div class="balance-amount" id="balance" onclick="toggleCurrency()">
                         <div class="balance-main balance-blurred" id="balanceMain">
                             <span id="balanceMainText">$2.50</span>
-                            <button class="balance-eye-button" id="balanceEyeButton" onclick="toggleBalanceVisibility(event)">👁</button>
                         </div>
                         <div class="balance-secondary balance-blurred" id="balanceSecondary">
                             <span id="balanceSecondaryText">1.00 TON</span>
@@ -2552,8 +2532,6 @@
                     <div class="balance-buttons" id="balanceButtons" style="display: none;">
                         <button class="balance-button deposit" onclick="showDepositModal()" data-lang="deposit">Пополнить</button>
                         <button class="balance-button" onclick="showWithdrawModal()" data-lang="withdraw">Вывести</button>
-                        <button class="balance-button" onclick="showP2PModal()" data-lang="exchange">Обмен</button>
-                        <button class="balance-button" onclick="showP2PModal()" data-lang="trading">Биржа</button>
                         <div class="refresh-balance-button" onclick="refreshBalance()" title="Поддержать изменения">
                             🔄
                         </div>
@@ -2715,8 +2693,6 @@
                             <div class="wallet-actions">
                                 <button class="action-button deposit" onclick="showDepositModal()" data-lang="deposit">Пополнить</button>
                                 <button class="action-button withdraw" onclick="showWithdrawModal()" data-lang="withdraw">Вывести</button>
-                                <button class="action-button exchange" onclick="showP2PModal()" data-lang="exchange">Обмен</button>
-                                <button class="action-button trading" onclick="showP2PModal()" data-lang="trading">Биржа</button>
                             </div>
                         </div>
                         
@@ -3300,27 +3276,6 @@
             if (game) {
                 game.updateDisplay();
                 game.updateWalletDisplay();
-            }
-        }
-
-        function toggleBalanceVisibility(event) {
-            event.stopPropagation();
-            isBalanceHidden = !isBalanceHidden;
-            
-            const balanceMain = document.getElementById('balanceMainText');
-            const balanceSecondary = document.getElementById('balanceSecondaryText');
-            const balanceContainer = document.getElementById('balance');
-            const eyeButton = document.getElementById('balanceEyeButton');
-            
-            if (isBalanceHidden) {
-                balanceMain.textContent = '***';
-                balanceSecondary.textContent = '***';
-                balanceContainer.classList.add('balance-hidden');
-                eyeButton.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M2 12C2 13.6569 4.69649 16 12 16C19.3035 16 22 13.6569 22 12C22 10.3431 19.3035 8 12 8C4.69649 8 2 10.3431 2 12ZM12 10C13.1046 10 14 10.8954 14 12C14 13.1046 13.1046 14 12 14C10.8954 14 10 13.1046 10 12C10 10.8954 10.8954 10 12 10Z"/><line x1="1" y1="1" x2="23" y2="23" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-            } else {
-                game.updateDisplay();
-                balanceContainer.classList.remove('balance-hidden');
-                eyeButton.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4.5C7.5 4.5 3.9 7.2 2.7 11.2C2.6 11.5 2.6 11.8 2.7 12.1C3.9 16.1 7.5 18.8 12 18.8C16.5 18.8 20.1 16.1 21.3 12.1C21.4 11.8 21.4 11.5 21.3 11.2C20.1 7.2 16.5 4.5 12 4.5ZM12 16.2C9.5 16.2 7.5 14.2 7.5 11.7C7.5 9.2 9.5 7.2 12 7.2C14.5 7.2 16.5 9.2 16.5 11.7C16.5 14.2 14.5 16.2 12 16.2ZM12 9C10.3 9 9 10.3 9 12C9 13.7 10.3 15 12 15C13.7 15 15 13.7 15 12C15 10.3 13.7 9 12 9Z"/></svg>';
             }
         }
 
