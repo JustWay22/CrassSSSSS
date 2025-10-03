@@ -20,7 +20,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('https://i.postimg.cc/prHY6zyZ/Airbrush-image-extender-20.jpg');
+            background-image: url('https://i.postimg.cc/nrwHRYhn/Airbrush-Image-Enhancer-1759474814685-1.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -39,7 +39,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.2); /* Затемнение на 20% */
+            background: rgba(0, 0, 0, 0.3); /* Затемнение на 30% (увеличено на 10%) */
         }
 
         .loading-spinner {
@@ -483,12 +483,21 @@
             justify-content: center;
             gap: 12px;
             margin-bottom: 8px;
+            flex-direction: column;
         }
 
         .balance-amount-large {
             font-size: 3rem;
             font-weight: 700;
             color: #ffffff;
+        }
+
+        .balance-ton-secondary {
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: #ffffff;
+            opacity: 0.7;
+            margin-top: -10px;
         }
 
         .wallet-actions {
@@ -570,6 +579,12 @@
             font-size: 0.9rem;
             font-weight: 400;
             text-align: right;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .assets-title:hover {
+            color: #8b45ff;
         }
 
         .asset-item {
@@ -1555,31 +1570,33 @@
             border-radius: 20px;
             font-weight: 700;
             font-size: 0.9rem;
+            opacity: 0.6; /* Делаем историю тусклой */
+            filter: brightness(0.7); /* Дополнительное затемнение */
         }
 
         .history-item.win {
-            background: rgba(139, 69, 255, 0.3);
-            color: white;
+            background: rgba(139, 69, 255, 0.2); /* Уменьшаем яркость */
+            color: rgba(255, 255, 255, 0.7); /* Делаем текст менее ярким */
         }
 
         .history-item.lose.red-multiplier {
-            background: #ff4444;
-            color: white;
+            background: rgba(255, 68, 68, 0.4); /* Уменьшаем яркость */
+            color: rgba(255, 255, 255, 0.7);
         }
 
         .history-item.lose.yellow-multiplier {
-            background: #ffd700;
-            color: #000;
+            background: rgba(255, 215, 0, 0.4); /* Уменьшаем яркость */
+            color: rgba(0, 0, 0, 0.7);
         }
 
         .history-item.lose.orange-multiplier {
-            background: #ffa500;
-            color: white;
+            background: rgba(255, 165, 0, 0.4); /* Уменьшаем яркость */
+            color: rgba(255, 255, 255, 0.7);
         }
 
         .history-item.lose.green-multiplier {
-            background: #00d4aa;
-            color: white;
+            background: rgba(0, 212, 170, 0.4); /* Уменьшаем яркость */
+            color: rgba(255, 255, 255, 0.7);
         }
 
         .game-history-mini {
@@ -1602,30 +1619,32 @@
             font-size: 0.9rem;
             border: 2px solid;
             animation: slideIn 0.5s ease-out;
+            opacity: 0.6; /* Делаем мини-результаты тусклыми */
+            filter: brightness(0.7); /* Дополнительное затемнение */
         }
 
         .mini-result.red {
-            background: #ff4444;
-            color: white;
-            border-color: #ff4444;
+            background: rgba(255, 68, 68, 0.6); /* Уменьшаем яркость */
+            color: rgba(255, 255, 255, 0.8);
+            border-color: rgba(255, 68, 68, 0.6);
         }
 
         .mini-result.yellow {
-            background: #ffd700;
-            color: #000;
-            border-color: #ffd700;
+            background: rgba(255, 215, 0, 0.6); /* Уменьшаем яркость */
+            color: rgba(0, 0, 0, 0.8);
+            border-color: rgba(255, 215, 0, 0.6);
         }
 
         .mini-result.orange {
-            background: #ffa500;
-            color: white;
-            border-color: #ffa500;
+            background: rgba(255, 165, 0, 0.6); /* Уменьшаем яркость */
+            color: rgba(255, 255, 255, 0.8);
+            border-color: rgba(255, 165, 0, 0.6);
         }
 
         .mini-result.green {
-            background: #00d4aa;
-            color: white;
-            border-color: #00d4aa;
+            background: rgba(0, 212, 170, 0.6); /* Уменьшаем яркость */
+            color: rgba(255, 255, 255, 0.8);
+            border-color: rgba(0, 212, 170, 0.6);
         }
 
         .mini-result.pending {
@@ -1637,7 +1656,7 @@
 
         @keyframes slideIn {
             0% { transform: translateX(100px); opacity: 0; }
-            100% { transform: translateX(0); opacity: 1; }
+            100% { transform: translateX(0); opacity: 0.6; } /* Изменяем конечную прозрачность */
         }
 
         @keyframes pulse {
@@ -2339,6 +2358,17 @@
             background: #3a85e6; /* Темнее на hover */
         }
 
+        /* Добавляем стили для скрытых балансов */
+        .asset-balance.hidden .asset-amount,
+        .asset-balance.hidden .asset-value {
+            color: #8b45ff !important;
+            font-weight: 900;
+        }
+
+        .asset-balance.hidden .asset-amount {
+            font-size: 1.2rem;
+        }
+
         @media (max-width: 1400px) {
             .main-content {
                 grid-template-columns: 1fr;
@@ -2770,7 +2800,8 @@
                             <div class="total-balance">
                                 <h3>Общий баланс в USD</h3>
                                 <div class="balance-display">
-                                    <div class="balance-amount-large" id="totalBalanceDisplay">$0</div>
+                                    <div class="balance-amount-large" id="totalBalanceDisplay">$0.00</div>
+                                    <div class="balance-ton-secondary" id="balanceTonSecondary">0.00 TON</div>
                                     <div style="color: #8b45ff; font-size: 1.5rem; margin-left: 10px; cursor: pointer;" onclick="toggleWalletBalanceVisibility()">
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                                             <path d="M12 4.5C7.5 4.5 3.9 7.2 2.7 11.2C2.6 11.5 2.6 11.8 2.7 12.1C3.9 16.1 7.5 18.8 12 18.8C16.5 18.8 20.1 16.1 21.3 12.1C21.4 11.8 21.4 11.5 21.3 11.2C20.1 7.2 16.5 4.5 12 4.5ZM12 16.2C9.5 16.2 7.5 14.2 7.5 11.7C7.5 9.2 9.5 7.2 12 7.2C14.5 7.2 16.5 9.2 16.5 11.7C16.5 14.2 14.5 16.2 12 16.2ZM12 9C10.3 9 9 10.3 9 12C9 13.7 10.3 15 12 15C13.7 15 15 13.7 15 12C15 10.3 13.7 9 12 9Z"/>
@@ -2786,7 +2817,7 @@
                         </div>
                         
                         <div class="assets-header">
-                            <div class="assets-title">Скрыть мелкие балансы</div>
+                            <div class="assets-title" onclick="toggleSmallBalances()">Скрыть мелкие балансы</div>
                         </div>
                         
                         <div class="assets-section" id="assetsSection">
@@ -2801,9 +2832,9 @@
                                         <div class="asset-change positive">+0.01%</div>
                                     </div>
                                 </div>
-                                <div class="asset-balance">
+                                <div class="asset-balance" id="usdtAssetBalance">
                                     <div class="asset-amount" id="usdtWalletBalance">0 USDT</div>
-                                    <div class="asset-value" id="usdtWalletValue">$0</div>
+                                    <div class="asset-value" id="usdtWalletValue">$0.00</div>
                                 </div>
                             </div>
                             
@@ -2820,7 +2851,7 @@
                                 </div>
                                 <div class="asset-balance">
                                     <div class="asset-amount" id="tonWalletBalance">0 TON</div>
-                                    <div class="asset-value" id="tonWalletValue">$0</div>
+                                    <div class="asset-value" id="tonWalletValue">$0.00</div>
                                 </div>
                             </div>
 
@@ -2835,9 +2866,9 @@
                                         <div class="asset-change negative">-0.11%</div>
                                     </div>
                                 </div>
-                                <div class="asset-balance">
+                                <div class="asset-balance" id="solAssetBalance">
                                     <div class="asset-amount" id="solWalletBalance">0 SOL</div>
-                                    <div class="asset-value" id="solWalletValue">$0</div>
+                                    <div class="asset-value" id="solWalletValue">$0.00</div>
                                 </div>
                             </div>
 
@@ -2852,9 +2883,9 @@
                                         <div class="asset-change positive">+0.39%</div>
                                     </div>
                                 </div>
-                                <div class="asset-balance">
+                                <div class="asset-balance" id="tronAssetBalance">
                                     <div class="asset-amount" id="tronWalletBalance">0 TRX</div>
-                                    <div class="asset-value" id="tronWalletValue">$0</div>
+                                    <div class="asset-value" id="tronWalletValue">$0.00</div>
                                 </div>
                             </div>
 
@@ -2869,9 +2900,9 @@
                                         <div class="asset-change positive">+0.50%</div>
                                     </div>
                                 </div>
-                                <div class="asset-balance">
+                                <div class="asset-balance" id="gramAssetBalance">
                                     <div class="asset-amount" id="gramWalletBalance">0 GRAM</div>
-                                    <div class="asset-value" id="gramWalletValue">$0</div>
+                                    <div class="asset-value" id="gramWalletValue">$0.00</div>
                                 </div>
                             </div>
 
@@ -2886,9 +2917,9 @@
                                         <div class="asset-change negative">-0.64%</div>
                                     </div>
                                 </div>
-                                <div class="asset-balance">
+                                <div class="asset-balance" id="btcAssetBalance">
                                     <div class="asset-amount" id="btcWalletBalance">0 BTC</div>
-                                    <div class="asset-value" id="btcWalletValue">$0</div>
+                                    <div class="asset-value" id="btcWalletValue">$0.00</div>
                                 </div>
                             </div>
                         </div>
@@ -3241,6 +3272,7 @@
         let currentBetCurrency = 'TON';
         let isBalanceHidden = false;
         let isWalletBalanceHidden = false;
+        let areSmallBalancesHidden = false;
 
         const translations = {
             ru: {
@@ -3389,12 +3421,42 @@
             isWalletBalanceHidden = !isWalletBalanceHidden;
             
             const totalBalanceDisplay = document.getElementById('totalBalanceDisplay');
+            const balanceTonSecondary = document.getElementById('balanceTonSecondary');
             
             if (isWalletBalanceHidden) {
                 totalBalanceDisplay.textContent = '***';
+                if (balanceTonSecondary) {
+                    balanceTonSecondary.textContent = '*** TON';
+                }
             } else {
                 game.updateWalletDisplay();
             }
+        }
+
+        function toggleSmallBalances() {
+            areSmallBalancesHidden = !areSmallBalancesHidden;
+            
+            const assetBalances = document.querySelectorAll('.asset-balance');
+            
+            // Не скрываем первый баланс (Tether) - верхний
+            assetBalances.forEach((balance, index) => {
+                if (index === 0) return; // Пропускаем первый элемент (Tether)
+                
+                if (areSmallBalancesHidden) {
+                    balance.classList.add('hidden');
+                    const amountEl = balance.querySelector('.asset-amount');
+                    const valueEl = balance.querySelector('.asset-value');
+                    
+                    if (amountEl) amountEl.textContent = '***';
+                    if (valueEl) valueEl.textContent = '***';
+                } else {
+                    balance.classList.remove('hidden');
+                    // Восстанавливаем балансы
+                    if (game) {
+                        game.updateWalletDisplay();
+                    }
+                }
+            });
         }
 
         function selectBetCurrency(currency) {
@@ -3887,58 +3949,66 @@
 
             updateWalletDisplay() {
                 const totalBalanceDisplay = document.getElementById('totalBalanceDisplay');
+                const balanceTonSecondary = document.getElementById('balanceTonSecondary');
                 
                 if (totalBalanceDisplay && !isWalletBalanceHidden) {
                     const usdValue = (this.balance * exchangeRates.TON);
-                    totalBalanceDisplay.textContent = `$${usdValue.toFixed(0)}`;
+                    totalBalanceDisplay.textContent = `$${usdValue.toFixed(2)}`; // Добавлены центы
                 }
 
-                const tonWalletBalance = document.getElementById('tonWalletBalance');
-                const tonWalletValue = document.getElementById('tonWalletValue');
-                const usdtWalletBalance = document.getElementById('usdtWalletBalance');
-                const usdtWalletValue = document.getElementById('usdtWalletValue');
-                const solWalletBalance = document.getElementById('solWalletBalance');
-                const solWalletValue = document.getElementById('solWalletValue');
-                const tronWalletBalance = document.getElementById('tronWalletBalance');
-                const tronWalletValue = document.getElementById('tronWalletValue');
-                const gramWalletBalance = document.getElementById('gramWalletBalance');
-                const gramWalletValue = document.getElementById('gramWalletValue');
-                const btcWalletBalance = document.getElementById('btcWalletBalance');
-                const btcWalletValue = document.getElementById('btcWalletValue');
-
-                if (tonWalletBalance) {
-                    tonWalletBalance.textContent = `${this.balance.toFixed(2)} TON`;
-                    tonWalletValue.textContent = `$${(this.balance * exchangeRates.TON).toFixed(0)}`;
+                if (balanceTonSecondary && !isWalletBalanceHidden) {
+                    balanceTonSecondary.textContent = `${this.balance.toFixed(2)} TON`;
                 }
 
-                if (usdtWalletBalance) {
-                    const usdtAmount = (this.balance * exchangeRates.TON).toFixed(0);
-                    usdtWalletBalance.textContent = `${usdtAmount} USDT`;
-                    usdtWalletValue.textContent = `$${usdtAmount}`;
-                }
+                // Обновляем балансы криптовалют только если они не скрыты
+                if (!areSmallBalancesHidden) {
+                    const tonWalletBalance = document.getElementById('tonWalletBalance');
+                    const tonWalletValue = document.getElementById('tonWalletValue');
+                    const usdtWalletBalance = document.getElementById('usdtWalletBalance');
+                    const usdtWalletValue = document.getElementById('usdtWalletValue');
+                    const solWalletBalance = document.getElementById('solWalletBalance');
+                    const solWalletValue = document.getElementById('solWalletValue');
+                    const tronWalletBalance = document.getElementById('tronWalletBalance');
+                    const tronWalletValue = document.getElementById('tronWalletValue');
+                    const gramWalletBalance = document.getElementById('gramWalletBalance');
+                    const gramWalletValue = document.getElementById('gramWalletValue');
+                    const btcWalletBalance = document.getElementById('btcWalletBalance');
+                    const btcWalletValue = document.getElementById('btcWalletValue');
 
-                if (solWalletBalance) {
-                    const solAmount = (this.balance * exchangeRates.TON / 201.83).toFixed(2);
-                    solWalletBalance.textContent = `${solAmount} SOL`;
-                    solWalletValue.textContent = `$${(this.balance * exchangeRates.TON).toFixed(0)}`;
-                }
+                    if (tonWalletBalance) {
+                        tonWalletBalance.textContent = `${this.balance.toFixed(2)} TON`;
+                        tonWalletValue.textContent = `$${(this.balance * exchangeRates.TON).toFixed(2)}`; // Добавлены центы
+                    }
 
-                if (tronWalletBalance) {
-                    const tronAmount = (this.balance * exchangeRates.TON / 0.337).toFixed(0);
-                    tronWalletBalance.textContent = `${tronAmount} TRX`;
-                    tronWalletValue.textContent = `$${(this.balance * exchangeRates.TON).toFixed(0)}`;
-                }
+                    if (usdtWalletBalance) {
+                        const usdtAmount = (this.balance * exchangeRates.TON);
+                        usdtWalletBalance.textContent = `${usdtAmount.toFixed(0)} USDT`;
+                        usdtWalletValue.textContent = `$${usdtAmount.toFixed(2)}`; // Добавлены центы
+                    }
 
-                if (gramWalletBalance) {
-                    const gramAmount = (this.balance * exchangeRates.TON / 0.00306).toFixed(0);
-                    gramWalletBalance.textContent = `${gramAmount} GRAM`;
-                    gramWalletValue.textContent = `$${(this.balance * exchangeRates.TON).toFixed(0)}`;
-                }
+                    if (solWalletBalance) {
+                        const solAmount = (this.balance * exchangeRates.TON / 201.83);
+                        solWalletBalance.textContent = `${solAmount.toFixed(2)} SOL`;
+                        solWalletValue.textContent = `$${(this.balance * exchangeRates.TON).toFixed(2)}`; // Добавлены центы
+                    }
 
-                if (btcWalletBalance) {
-                    const btcAmount = (this.balance * exchangeRates.TON / 109497).toFixed(8);
-                    btcWalletBalance.textContent = `${btcAmount} BTC`;
-                    btcWalletValue.textContent = `$${(this.balance * exchangeRates.TON).toFixed(0)}`;
+                    if (tronWalletBalance) {
+                        const tronAmount = (this.balance * exchangeRates.TON / 0.337);
+                        tronWalletBalance.textContent = `${tronAmount.toFixed(0)} TRX`;
+                        tronWalletValue.textContent = `$${(this.balance * exchangeRates.TON).toFixed(2)}`; // Добавлены центы
+                    }
+
+                    if (gramWalletBalance) {
+                        const gramAmount = (this.balance * exchangeRates.TON / 0.00306);
+                        gramWalletBalance.textContent = `${gramAmount.toFixed(0)} GRAM`;
+                        gramWalletValue.textContent = `$${(this.balance * exchangeRates.TON).toFixed(2)}`; // Добавлены центы
+                    }
+
+                    if (btcWalletBalance) {
+                        const btcAmount = (this.balance * exchangeRates.TON / 109497);
+                        btcWalletBalance.textContent = `${btcAmount.toFixed(8)} BTC`;
+                        btcWalletValue.textContent = `$${(this.balance * exchangeRates.TON).toFixed(2)}`; // Добавлены центы
+                    }
                 }
             }
 
@@ -4669,13 +4739,13 @@
                 
                 if (currentDisplayCurrency === 'USD') {
                     const usdValue = (this.balance * exchangeRates.TON);
-                    balanceMainText.textContent = `$${usdValue.toFixed(2)}`;
+                    balanceMainText.textContent = `$${usdValue.toFixed(2)}`; // Добавлены центы
                     balanceSecondaryText.textContent = `${this.balance.toFixed(2)} TON`;
                     currencySwitch.textContent = 'TON';
                 } else {
                     balanceMainText.textContent = `${this.balance.toFixed(2)} TON`;
                     const usdValue = (this.balance * exchangeRates.TON);
-                    balanceSecondaryText.textContent = `$${usdValue.toFixed(2)}`;
+                    balanceSecondaryText.textContent = `$${usdValue.toFixed(2)}`; // Добавлены центы
                     currencySwitch.textContent = 'USD';
                 }
                 
