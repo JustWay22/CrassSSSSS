@@ -29,7 +29,7 @@
             align-items: center;
             justify-content: center;
             opacity: 1;
-            transition: opacity 1s ease-out;
+            transition: opacity 0.8s ease-out;
         }
 
         .loading-overlay::before {
@@ -3710,22 +3710,56 @@
     </div>
 
     <script>
-        // Показать загрузочный экран и скрыть через 3 секунды
-        window.addEventListener('load', function() {
+        // Исправленная система загрузки
+        function initializeApp() {
             const loadingOverlay = document.getElementById('loadingOverlay');
             
-            setTimeout(() => {
-                loadingOverlay.classList.add('fade-out');
-                
-                // Полностью удаляем элемент после завершения анимации
-                setTimeout(() => {
-                    loadingOverlay.style.display = 'none';
-                    loadingOverlay.remove();
-                }, 1000);
-            }, 3000);
+            // Основная инициализация
+            game = new CrashGame();
+            updateLanguage();
             
+            // Автозагрузка пользователя
             loadUserData();
-        });
+            
+            // Скрываем загрузочный экран
+            setTimeout(() => {
+                if (loadingOverlay) {
+                    loadingOverlay.classList.add('fade-out');
+                    
+                    setTimeout(() => {
+                        if (loadingOverlay && loadingOverlay.parentNode) {
+                            loadingOverlay.style.display = 'none';
+                            loadingOverlay.remove();
+                        }
+                    }, 800);
+                }
+            }, 1500); // Сокращено с 3000 до 1500 мс
+        }
+
+        // Fallback система загрузки
+        function fallbackLoadingRemoval() {
+            const loadingOverlay = document.getElementById('loadingOverlay');
+            if (loadingOverlay) {
+                loadingOverlay.classList.add('fade-out');
+                setTimeout(() => {
+                    if (loadingOverlay && loadingOverlay.parentNode) {
+                        loadingOverlay.style.display = 'none';
+                        loadingOverlay.remove();
+                    }
+                }, 800);
+            }
+        }
+
+        // Множественная инициализация для надежности
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeApp);
+        } else {
+            // Если документ уже загружен
+            initializeApp();
+        }
+
+        // Fallback через 5 секунд на случай проблем
+        setTimeout(fallbackLoadingRemoval, 5000);
 
         const playerNames = [
             "Smexoed", "sophiexeonfan", "Love11Ak", "rizzaaak", "malisss", "ggyohj", "Bellysimo5", 
@@ -5934,7 +5968,7 @@
             }
         }
 
-        function showWithdraw Modal() {
+        function showWithdrawModal() {
             if (!game.isLoggedIn) {
                 showLoginModal();
                 return;
@@ -6074,11 +6108,6 @@
             if (e.key === 'Enter') {
                 confirmWithdraw();
             }
-        });
-
-        document.addEventListener('DOMContentLoaded', function() {
-            game = new CrashGame();
-            updateLanguage();
         });
     </script>
 </body>
