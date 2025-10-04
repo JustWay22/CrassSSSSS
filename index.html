@@ -39,7 +39,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.3); /* Затемнение на 30% (увеличено на 10%) */
+            background: rgba(0, 0, 0, 0.3);
         }
 
         .loading-spinner {
@@ -122,7 +122,7 @@
             transition: all 0.3s ease;
             text-transform: none;
             position: relative;
-            opacity: 0.7; /* Делаем кнопки более тусклыми */
+            opacity: 0.7;
         }
 
         .nav-button::after {
@@ -132,7 +132,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(transparent 70%, rgba(0, 0, 0, 0.4) 100%); /* Затемнение на конце */
+            background: linear-gradient(transparent 70%, rgba(0, 0, 0, 0.4) 100%);
             border-radius: 12px;
             pointer-events: none;
         }
@@ -403,12 +403,12 @@
             display: none;
         }
 
-        /* Стили для кейсов */
+        /* Стили для кейсов - изменены с желтого на серый */
         .cases-content {
             padding: 20px;
             background: #2a2a2a;
             border-radius: 20px;
-            border: 1px solid rgba(255, 215, 0, 0.3);
+            border: 1px solid rgba(128, 128, 128, 0.3); /* Изменено с золотого на серый */
             margin: 0 auto;
             max-width: 800px;
             overflow-y: auto;
@@ -429,12 +429,12 @@
             color: white;
             margin-bottom: 40px;
             text-transform: none;
-            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9), 0 0 15px rgba(255, 215, 0, 0.3);
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9), 0 0 15px rgba(128, 128, 128, 0.3); /* Изменено с золотого на серый */
         }
 
         .start-case {
-            background: rgba(255, 215, 0, 0.1);
-            border: 3px solid rgba(255, 215, 0, 0.5);
+            background: rgba(128, 128, 128, 0.1); /* Изменено с золотого на серый */
+            border: 3px solid rgba(128, 128, 128, 0.5); /* Изменено с золотого на серый */
             border-radius: 20px;
             padding: 40px;
             text-align: center;
@@ -443,12 +443,13 @@
             overflow: hidden;
             max-width: 500px;
             margin: 0 auto;
+            cursor: pointer;
         }
 
         .start-case:hover {
-            background: rgba(255, 215, 0, 0.2);
-            border-color: #ffd700;
-            box-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
+            background: rgba(128, 128, 128, 0.2); /* Изменено с золотого на серый */
+            border-color: #808080; /* Изменено с золотого на серый */
+            box-shadow: 0 0 30px rgba(128, 128, 128, 0.4); /* Изменено с золотого на серый */
             transform: translateY(-5px);
         }
 
@@ -463,7 +464,7 @@
         .case-name {
             font-size: 2rem;
             font-weight: 900;
-            color: #ffd700;
+            color: #808080; /* Изменено с золотого на серый */
             margin-bottom: 15px;
             text-transform: none;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
@@ -472,7 +473,7 @@
         .case-price {
             font-size: 1.8rem;
             font-weight: 900;
-            color: #ffd700;
+            color: white; /* Белый цвет */
             margin-bottom: 25px;
         }
 
@@ -484,7 +485,7 @@
         }
 
         .case-open-btn {
-            background: #ffd700;
+            background: #808080; /* Изменено с золотого на серый */
             color: #000;
             border: none;
             padding: 15px 30px;
@@ -498,9 +499,9 @@
         }
 
         .case-open-btn:hover {
-            background: #ffed4e;
+            background: #999999; /* Изменено с золотого на серый */
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+            box-shadow: 0 5px 15px rgba(128, 128, 128, 0.3); /* Изменено с золотого на серый */
         }
 
         .case-demo-btn {
@@ -528,12 +529,17 @@
             background: rgba(0, 0, 0, 0.3);
             padding: 20px;
             border-radius: 15px;
-            border: 1px solid rgba(255, 215, 0, 0.2);
+            border: 1px solid rgba(128, 128, 128, 0.2); /* Изменено с золотого на серый */
+            display: none; /* Скрыто по умолчанию */
+        }
+
+        .case-prizes.show {
+            display: block;
         }
 
         .case-prizes-title {
             font-size: 1.2rem;
-            color: #ffd700;
+            color: #808080; /* Изменено с золотого на серый */
             margin-bottom: 15px;
             font-weight: 700;
             text-align: center;
@@ -542,19 +548,20 @@
         .prizes-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 10px;
+            gap: 15px;
         }
 
         .prize-item {
             display: flex;
             align-items: center;
             gap: 10px;
-            padding: 8px;
-            background: rgba(255, 215, 0, 0.1);
-            border-radius: 8px;
+            padding: 12px;
+            background: rgba(128, 128, 128, 0.1); /* Изменено с золотого на серый */
+            border-radius: 12px; /* Скругленные углы */
             font-size: 0.8rem;
             color: white;
-            border: 1px solid rgba(255, 215, 0, 0.2);
+            border: 1px solid rgba(128, 128, 128, 0.2); /* Изменено с золотого на серый */
+            position: relative;
         }
 
         .prize-icon {
@@ -576,7 +583,7 @@
         }
 
         .prize-price {
-            color: #ffd700;
+            color: #808080; /* Изменено с золотого на серый */
             font-weight: 700;
             font-size: 0.7rem;
         }
@@ -1434,29 +1441,23 @@
             transform: translateY(-2px);
         }
 
-        /* Кнопка ПОСТАВИТЬ - уменьшена в 1.3 раза по ширине, затем увеличена на 1.4 по всем параметрам, изменен цвет */
         .game-control-button.place-bet-button {
-            background: #459cff; /* Новый цвет */
+            background: #459cff;
             color: white;
             border: 1px solid #459cff;
             font-weight: 700;
-            /* Уменьшено в 1.3 раза по ширине: 140px / 1.3 ≈ 108px */
-            /* Затем увеличено на 1.4: 108px * 1.4 = 151px */
             min-width: 151px;
-            /* Увеличено на 1.4: 12px * 1.4 = 17px, 24px * 1.4 = 34px */
             padding: 17px 34px;
-            /* Увеличен размер шрифта на 1.4: 1rem * 1.4 = 1.4rem */
             font-size: 1.4rem;
         }
 
         .game-control-button.place-bet-button:hover {
-            background: #3a85e6; /* Темнее на hover */
+            background: #3a85e6;
             transform: translateY(-2px);
         }
 
-        /* Кнопка ЗАБРАТЬ с новым цветом */
         .game-control-button.cashout-button {
-            background: #459cff; /* Тот же новый цвет */
+            background: #459cff;
             color: white;
             border: 1px solid #459cff;
             padding: 12px 24px;
@@ -1748,32 +1749,32 @@
             border-radius: 20px;
             font-weight: 700;
             font-size: 0.9rem;
-            opacity: 0.6; /* Делаем историю тусклой */
-            filter: brightness(0.7); /* Дополнительное затемнение */
+            opacity: 0.6;
+            filter: brightness(0.7);
         }
 
         .history-item.win {
-            background: rgba(139, 69, 255, 0.2); /* Уменьшаем яркость */
-            color: rgba(255, 255, 255, 0.7); /* Делаем текст менее ярким */
+            background: rgba(139, 69, 255, 0.2);
+            color: rgba(255, 255, 255, 0.7);
         }
 
         .history-item.lose.red-multiplier {
-            background: rgba(255, 68, 68, 0.4); /* Уменьшаем яркость */
+            background: rgba(255, 68, 68, 0.4);
             color: rgba(255, 255, 255, 0.7);
         }
 
         .history-item.lose.yellow-multiplier {
-            background: rgba(255, 215, 0, 0.4); /* Уменьшаем яркость */
+            background: rgba(255, 215, 0, 0.4);
             color: rgba(0, 0, 0, 0.7);
         }
 
         .history-item.lose.orange-multiplier {
-            background: rgba(255, 165, 0, 0.4); /* Уменьшаем яркость */
+            background: rgba(255, 165, 0, 0.4);
             color: rgba(255, 255, 255, 0.7);
         }
 
         .history-item.lose.green-multiplier {
-            background: rgba(0, 212, 170, 0.4); /* Уменьшаем яркость */
+            background: rgba(0, 212, 170, 0.4);
             color: rgba(255, 255, 255, 0.7);
         }
 
@@ -1797,30 +1798,30 @@
             font-size: 0.9rem;
             border: 2px solid;
             animation: slideIn 0.5s ease-out;
-            opacity: 0.6; /* Делаем мини-результаты тусклыми */
-            filter: brightness(0.7); /* Дополнительное затемнение */
+            opacity: 0.6;
+            filter: brightness(0.7);
         }
 
         .mini-result.red {
-            background: rgba(255, 68, 68, 0.6); /* Уменьшаем яркость */
+            background: rgba(255, 68, 68, 0.6);
             color: rgba(255, 255, 255, 0.8);
             border-color: rgba(255, 68, 68, 0.6);
         }
 
         .mini-result.yellow {
-            background: rgba(255, 215, 0, 0.6); /* Уменьшаем яркость */
+            background: rgba(255, 215, 0, 0.6);
             color: rgba(0, 0, 0, 0.8);
             border-color: rgba(255, 215, 0, 0.6);
         }
 
         .mini-result.orange {
-            background: rgba(255, 165, 0, 0.6); /* Уменьшаем яркость */
+            background: rgba(255, 165, 0, 0.6);
             color: rgba(255, 255, 255, 0.8);
             border-color: rgba(255, 165, 0, 0.6);
         }
 
         .mini-result.green {
-            background: rgba(0, 212, 170, 0.6); /* Уменьшаем яркость */
+            background: rgba(0, 212, 170, 0.6);
             color: rgba(255, 255, 255, 0.8);
             border-color: rgba(0, 212, 170, 0.6);
         }
@@ -1834,7 +1835,7 @@
 
         @keyframes slideIn {
             0% { transform: translateX(100px); opacity: 0; }
-            100% { transform: translateX(0); opacity: 0.6; } /* Изменяем конечную прозрачность */
+            100% { transform: translateX(0); opacity: 0.6; }
         }
 
         @keyframes pulse {
@@ -2526,17 +2527,15 @@
             100% { transform: scale(1); opacity: 1; }
         }
 
-        /* Кнопка "ПОСТАВИТЬ" в модальном окне ставки с новым цветом */
         .bet-modal .modal-btn.confirm {
-            background: #459cff; /* Новый цвет */
+            background: #459cff;
             color: white;
         }
 
         .bet-modal .modal-btn.confirm:hover {
-            background: #3a85e6; /* Темнее на hover */
+            background: #3a85e6;
         }
 
-        /* Добавляем стили для скрытых балансов */
         .asset-balance.hidden .asset-amount,
         .asset-balance.hidden .asset-value {
             color: #8b45ff !important;
@@ -2547,10 +2546,10 @@
             font-size: 1.2rem;
         }
 
-        /* Модальное окно кейса */
+        /* Модальное окно кейса - изменено с золотого на серый */
         .case-modal {
             background: #2a2a2a;
-            border: 2px solid rgba(255, 215, 0, 0.5);
+            border: 2px solid rgba(128, 128, 128, 0.5); /* Изменено с золотого на серый */
             border-radius: 20px;
             padding: 30px;
             max-width: 600px;
@@ -2565,77 +2564,91 @@
         }
 
         .case-modal h2 {
-            color: #ffd700;
+            color: #808080; /* Изменено с золотого на серый */
             margin-bottom: 25px;
             font-size: 1.8rem;
             font-weight: 700;
             text-transform: none;
         }
 
-        /* Анимация кейса */
-        .case-animation {
-            width: 200px;
-            height: 200px;
+        /* Горизонтальная слот-анимация для кейса */
+        .case-slot-container {
+            width: 400px;
+            height: 160px;
             margin: 0 auto 30px;
-            background: linear-gradient(45deg, #ffd700, #ffed4e, #ffd700, #ffed4e);
+            background: linear-gradient(45deg, #808080, #999999, #808080, #999999); /* Изменено с золотого на серый */
             background-size: 400% 400%;
-            animation: caseSpinning 2s ease-in-out;
             border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
             overflow: hidden;
+            border: 3px solid #666666; /* Изменено с золотого на серый */
         }
 
-        .case-animation img {
+        .slot-wheel {
+            width: 7500px; /* Увеличена ширина для горизонтального движения */
+            height: 150px;
+            display: flex;
+            flex-direction: row; /* Горизонтальное направление */
+            position: absolute;
+            animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .slot-item {
             width: 150px;
             height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .slot-item img {
+            width: 120px;
+            height: 120px;
             object-fit: contain;
             border-radius: 15px;
-            animation: caseShake 2s ease-in-out;
         }
 
-        @keyframes caseSpinning {
-            0% { 
-                background-position: 0% 50%;
-                transform: scale(1);
-            }
-            25% {
-                background-position: 100% 50%;
-                transform: scale(1.05);
-            }
-            50% { 
-                background-position: 100% 50%;
-                transform: scale(1.1);
-            }
-            75% {
-                background-position: 0% 50%;
-                transform: scale(1.05);
-            }
-            100% { 
-                background-position: 0% 50%;
-                transform: scale(1);
-            }
+        .slot-spinning {
+            animation: slotSpinHorizontal 4s ease-out;
         }
 
-        @keyframes caseShake {
-            0%, 100% { transform: translateX(0px); }
-            10% { transform: translateX(-5px); }
-            20% { transform: translateX(5px); }
-            30% { transform: translateX(-5px); }
-            40% { transform: translateX(5px); }
-            50% { transform: translateX(-3px); }
-            60% { transform: translateX(3px); }
-            70% { transform: translateX(-2px); }
-            80% { transform: translateX(2px); }
-            90% { transform: translateX(-1px); }
+        @keyframes slotSpinHorizontal {
+            0% {
+                transform: translateX(0px) translateY(-50%);
+            }
+            20% {
+                transform: translateX(-1500px) translateY(-50%);
+                animation-timing-function: ease-out;
+            }
+            60% {
+                transform: translateX(-3000px) translateY(-50%);
+                animation-timing-function: ease-out;
+            }
+            80% {
+                transform: translateX(-3600px) translateY(-50%);
+                animation-timing-function: ease-in-out;
+            }
+            95% {
+                transform: translateX(-3750px) translateY(-50%);
+                animation-timing-function: ease-in;
+            }
+            100% {
+                transform: translateX(-3600px) translateY(-50%);
+            }
         }
 
         /* Результат кейса */
         .case-result {
-            background: rgba(255, 215, 0, 0.1);
-            border: 2px solid #ffd700;
+            background: rgba(128, 128, 128, 0.1); /* Изменено с золотого на серый */
+            border: 2px solid #808080; /* Изменено с золотого на серый */
             border-radius: 15px;
             padding: 30px;
             margin-bottom: 20px;
@@ -2654,7 +2667,7 @@
         .case-result-title {
             font-size: 1.8rem;
             font-weight: 700;
-            color: #ffd700;
+            color: #FFD700; /* Золотой цвет для названия выигранного приза */
             margin-bottom: 15px;
         }
 
@@ -2669,7 +2682,7 @@
         .case-result-price {
             font-size: 2rem;
             font-weight: 900;
-            color: #ffd700;
+            color: #808080; /* Изменено с золотого на серый */
             margin-bottom: 25px;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
         }
@@ -2682,7 +2695,7 @@
         }
 
         .sell-btn {
-            background: #ffd700;
+            background: #808080; /* Изменено с золотого на серый */
             color: #000;
             border: none;
             padding: 15px 30px;
@@ -2696,9 +2709,17 @@
         }
 
         .sell-btn:hover {
-            background: #ffed4e;
+            background: #999999; /* Изменено с золотого на серый */
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+            box-shadow: 0 5px 15px rgba(128, 128, 128, 0.3); /* Изменено с золотого на серый */
+        }
+
+        .sell-btn:disabled {
+            background: #555555;
+            color: #888888;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
         }
 
         .get-btn {
@@ -2719,6 +2740,15 @@
             background: rgba(255, 255, 255, 0.2);
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+        }
+
+        .get-btn:disabled {
+            background: rgba(255, 255, 255, 0.05);
+            color: #888888;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+            border-color: rgba(255, 255, 255, 0.1);
         }
 
         @media (max-width: 1400px) {
@@ -2823,11 +2853,10 @@
                 font-size: 0.9rem;
             }
 
-            /* Мобильная версия кнопки ПОСТАВИТЬ */
             .game-control-button.place-bet-button {
-                min-width: 130px; /* Уменьшено для мобильных */
-                padding: 14px 28px; /* Уменьшено для мобильных */
-                font-size: 1.2rem; /* Уменьшено для мобильных */
+                min-width: 130px;
+                padding: 14px 28px;
+                font-size: 1.2rem;
             }
 
             .registration-info {
@@ -2979,14 +3008,19 @@
                 grid-template-columns: 1fr;
             }
 
-            .case-animation {
-                width: 150px;
-                height: 150px;
+            .case-slot-container {
+                width: 300px;
+                height: 120px;
             }
 
-            .case-animation img {
-                width: 100px;
-                height: 100px;
+            .slot-item {
+                width: 120px;
+                height: 120px;
+            }
+
+            .slot-item img {
+                width: 80px;
+                height: 80px;
             }
 
             .prize-action-buttons {
@@ -3182,17 +3216,17 @@
                     <div class="cases-content">
                         <div class="cases-title">🎁 Кейсы с подарками</div>
                         
-                        <div class="start-case">
+                        <div class="start-case" onclick="toggleCasePrizes()">
                             <img src="https://i.postimg.cc/G3QdGS3H/image.png" alt="START Case" class="case-image">
                             <div class="case-name">START</div>
-                            <div class="case-price">0.1 TON</div>
+                            <div class="case-price">3.00 TON</div>
                             
                             <div class="case-buttons">
-                                <button class="case-open-btn" onclick="openStartCase()">Открыть кейс</button>
-                                <button class="case-demo-btn" onclick="demoStartCase()">Демо прокрут</button>
+                                <button class="case-open-btn" onclick="event.stopPropagation(); openStartCase()">Открыть кейс</button>
+                                <button class="case-demo-btn" onclick="event.stopPropagation(); demoStartCase()">Демо прокрут</button>
                             </div>
                             
-                            <div class="case-prizes">
+                            <div class="case-prizes" id="casePrizes">
                                 <div class="case-prizes-title">Возможные призы:</div>
                                 <div class="prizes-grid">
                                     <div class="prize-item">
@@ -3651,8 +3685,10 @@
         <div class="modal case-modal">
             <h2 id="caseModalTitle">Открытие кейса START</h2>
             
-            <div class="case-animation" id="caseAnimation">
-                <img src="https://i.postimg.cc/G3QdGS3H/image.png" alt="START Case">
+            <div class="case-slot-container" id="caseSlotContainer">
+                <div class="slot-wheel" id="slotWheel">
+                    <!-- Призы будут добавлены динамически -->
+                </div>
             </div>
             
             <div class="case-result" id="caseResult">
@@ -3663,7 +3699,7 @@
                 
                 <div class="prize-action-buttons">
                     <button class="sell-btn" id="sellPrizeBtn" onclick="sellPrize()">Продать за 0.10 TON</button>
-                    <button class="get-btn" onclick="getPrize()">Получить</button>
+                    <button class="get-btn" id="getPrizeBtn" onclick="getPrize()">Получить</button>
                 </div>
             </div>
             
@@ -3785,7 +3821,7 @@
         let isWalletBalanceHidden = false;
         let areSmallBalancesHidden = false;
 
-        // Новые данные для START кейса
+        // Данные для START кейса с обновленными ценами
         const startCasePrizes = [
             {
                 name: "Мишка",
@@ -3860,6 +3896,7 @@
         ];
 
         let currentWonPrize = null;
+        let isDemoCase = false; // Флаг для отслеживания демо-режима
 
         const translations = {
             ru: {
@@ -4213,6 +4250,12 @@
             }
         }
 
+        // Функция для показа/скрытия призов кейса
+        function toggleCasePrizes() {
+            const casePrizes = document.getElementById('casePrizes');
+            casePrizes.classList.toggle('show');
+        }
+
         // Функции для START кейса
         function openStartCase() {
             if (!game.isLoggedIn) {
@@ -4220,13 +4263,13 @@
                 return;
             }
             
-            if (game.balance < 0.1) {
+            if (game.balance < 3.00) { // Обновлена цена с 0.1 на 3.00
                 alert('Недостаточно средств для открытия кейса!');
                 return;
             }
             
             // Списываем средства
-            game.balance -= 0.1;
+            game.balance -= 3.00; // Обновлена цена
             game.saveGameData();
             game.updateDisplay();
             game.updateWalletDisplay();
@@ -4241,27 +4284,86 @@
                 return;
             }
             
-            // Демо прокрут без списания средств, но с увеличенным шансом на хорошие призы
+            // Демо прокрут без списания средств
             showStartCaseModal(true);
         }
 
         function showStartCaseModal(isDemo) {
+            isDemoCase = isDemo; // Сохраняем флаг демо-режима
             const modal = document.getElementById('caseModal');
             const title = document.getElementById('caseModalTitle');
-            const animation = document.getElementById('caseAnimation');
+            const slotContainer = document.getElementById('caseSlotContainer');
             const result = document.getElementById('caseResult');
             
             title.textContent = isDemo ? 'Демо кейс START' : 'Открытие кейса START';
-            animation.style.display = 'flex';
+            slotContainer.style.display = 'flex';
             result.style.display = 'none';
             
             modal.classList.add('show');
             
-            // Анимация открытия
+            // Создаем слот-анимацию
+            createSlotAnimation();
+            
+            // Запускаем анимацию через небольшую задержку
             setTimeout(() => {
-                const prize = selectStartCasePrize(isDemo);
-                showStartCasePrize(prize);
-            }, 2000);
+                startSlotAnimation(isDemo);
+            }, 500);
+        }
+
+        function createSlotAnimation() {
+            const slotWheel = document.getElementById('slotWheel');
+            slotWheel.innerHTML = '';
+            
+            // Создаем множество призов для прокрутки (горизонтально)
+            const totalItems = 50;
+            for (let i = 0; i < totalItems; i++) {
+                const prize = startCasePrizes[i % startCasePrizes.length];
+                const slotItem = document.createElement('div');
+                slotItem.className = 'slot-item';
+                
+                const img = document.createElement('img');
+                img.src = prize.image;
+                img.alt = prize.name;
+                
+                slotItem.appendChild(img);
+                slotWheel.appendChild(slotItem);
+            }
+        }
+
+        function startSlotAnimation(isDemo) {
+            const slotWheel = document.getElementById('slotWheel');
+            const selectedPrize = selectStartCasePrize(isDemo);
+            
+            // Находим индекс выигрышного приза среди всех элементов
+            let winningIndex = -1;
+            const slotItems = slotWheel.querySelectorAll('.slot-item img');
+            
+            for (let i = 0; i < slotItems.length; i++) {
+                if (slotItems[i].src === selectedPrize.image) {
+                    winningIndex = i;
+                    break;
+                }
+            }
+            
+            // Если не найден, берем случайный элемент с нужной картинкой
+            if (winningIndex === -1) {
+                winningIndex = Math.floor(Math.random() * 40) + 10; // Позиция для остановки
+                const winningImg = slotItems[winningIndex];
+                winningImg.src = selectedPrize.image;
+                winningImg.alt = selectedPrize.name;
+            }
+            
+            // Вычисляем финальную позицию для горизонтальной анимации
+            const finalPosition = -(winningIndex * 150) + 125; // 150px - ширина одного элемента, центрирование
+            
+            // Добавляем CSS-анимацию (горизонтально)
+            slotWheel.style.transform = `translateX(${finalPosition}px) translateY(-50%)`;
+            slotWheel.classList.add('slot-spinning');
+            
+            // Показываем результат после завершения анимации
+            setTimeout(() => {
+                showStartCasePrize(selectedPrize);
+            }, 4000); // Длительность анимации
         }
 
         function selectStartCasePrize(isDemo) {
@@ -4291,15 +4393,16 @@
         }
 
         function showStartCasePrize(prize) {
-            const animation = document.getElementById('caseAnimation');
+            const slotContainer = document.getElementById('caseSlotContainer');
             const result = document.getElementById('caseResult');
             const resultImage = document.getElementById('caseResultImage');
             const resultTitle = document.getElementById('caseResultTitle');
             const resultDescription = document.getElementById('caseResultDescription');
             const resultPrice = document.getElementById('caseResultPrice');
             const sellBtn = document.getElementById('sellPrizeBtn');
+            const getBtn = document.getElementById('getPrizeBtn');
             
-            animation.style.display = 'none';
+            slotContainer.style.display = 'none';
             
             resultImage.src = prize.image;
             resultTitle.textContent = prize.name;
@@ -4307,12 +4410,34 @@
             resultPrice.textContent = `${prize.price.toFixed(2)} TON`;
             sellBtn.textContent = `Продать за ${prize.price.toFixed(2)} TON`;
             
+            // Отключаем кнопки для демо режима
+            if (isDemoCase) {
+                sellBtn.disabled = true;
+                sellBtn.textContent = 'DEMO - Нельзя продать';
+                sellBtn.style.opacity = '0.5';
+                sellBtn.style.cursor = 'not-allowed';
+                
+                getBtn.disabled = true;
+                getBtn.textContent = 'DEMO - Нельзя получить';
+                getBtn.style.opacity = '0.5';
+                getBtn.style.cursor = 'not-allowed';
+            } else {
+                sellBtn.disabled = false;
+                sellBtn.style.opacity = '1';
+                sellBtn.style.cursor = 'pointer';
+                
+                getBtn.disabled = false;
+                getBtn.textContent = 'Получить';
+                getBtn.style.opacity = '1';
+                getBtn.style.cursor = 'pointer';
+            }
+            
             currentWonPrize = prize;
             result.style.display = 'block';
         }
 
         function sellPrize() {
-            if (currentWonPrize && game.isLoggedIn) {
+            if (currentWonPrize && game.isLoggedIn && !isDemoCase) {
                 game.balance += currentWonPrize.price;
                 game.saveGameData();
                 game.updateDisplay();
@@ -4326,10 +4451,17 @@
                 setTimeout(() => {
                     document.getElementById('balance').classList.remove('pulse-animation');
                 }, 500);
+            } else if (isDemoCase) {
+                alert('В демо-режиме нельзя продавать призы!');
             }
         }
 
         function getPrize() {
+            if (isDemoCase) {
+                alert('В демо-режиме нельзя получать призы!');
+                return;
+            }
+            
             // Переводим на Telegram бот
             window.open('https://t.me/suphiex', '_blank');
             closeCaseModal();
@@ -4339,6 +4471,12 @@
             const modal = document.getElementById('caseModal');
             modal.classList.remove('show');
             currentWonPrize = null;
+            isDemoCase = false;
+            
+            // Сбрасываем анимацию
+            const slotWheel = document.getElementById('slotWheel');
+            slotWheel.classList.remove('slot-spinning');
+            slotWheel.style.transform = 'translateX(0px) translateY(-50%)';
         }
 
         const supportResponses = {
@@ -4684,8 +4822,8 @@
                 }
 
                 if (balanceTonSecondary && !isWalletBalanceHidden) {
-                    // Уменьшаем баланс в тонах в 2 раза
-                    balanceTonSecondary.textContent = `${(this.balance / 2).toFixed(2)} TON`;
+                    // Уменьшаем баланс в тонах в 1.5 раза
+                    balanceTonSecondary.textContent = `${(this.balance / 1.5).toFixed(2)} TON`;
                 }
 
                 // Обновляем балансы криптовалют только если они не скрыты
@@ -4704,8 +4842,8 @@
                     const btcWalletValue = document.getElementById('btcWalletValue');
 
                     if (tonWalletBalance) {
-                        // Уменьшаем баланс в тонах в 2 раза
-                        tonWalletBalance.textContent = `${(this.balance / 2).toFixed(2)} TON`;
+                        // Уменьшаем баланс в тонах в 1.5 раз
+                        tonWalletBalance.textContent = `${(this.balance / 1.5).toFixed(2)} TON`;
                         tonWalletValue.textContent = `$${(this.balance * exchangeRates.TON).toFixed(2)}`;
                     }
 
@@ -5796,7 +5934,7 @@
             }
         }
 
-        function showWithdrawModal() {
+        function showWithdraw Modal() {
             if (!game.isLoggedIn) {
                 showLoginModal();
                 return;
