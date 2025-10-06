@@ -324,6 +324,7 @@
             left: 0;
             right: 0;
             background: #2a2a2a;
+            opacity: 0.8; /* Прозрачность 20% */
             padding: 15px 0;
             border-top: 1px solid rgba(139, 69, 255, 0.3);
             z-index: 1000;
@@ -1345,7 +1346,7 @@
 
         .game-canvas {
             background: #1a1a2e;
-            border-radius: 20px;
+            border-radius: 25px; /* Увеличен радиус для круглых окон */
             border: 2px solid rgba(139, 69, 255, 0.3);
             position: relative;
             overflow: hidden;
@@ -1357,7 +1358,7 @@
             background-image: 
                 linear-gradient(rgba(139, 69, 255, 0.1) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(139, 69, 255, 0.1) 1px, transparent 1px);
-            background-size: 20px 20px;
+            background-size: 30px 30px; /* Увеличено пространство между клетками */
         }
 
         .game-control-buttons {
@@ -1496,19 +1497,19 @@
 
         @keyframes gridShake {
             0%, 100% { 
-                background-size: 20px 20px; 
+                background-size: 30px 30px; /* Увеличено пространство */
                 background-position: 0 0;
             }
             25% { 
-                background-size: 21px 21px; 
+                background-size: 31px 31px; 
                 background-position: 1px 1px;
             }
             50% { 
-                background-size: 19px 19px; 
+                background-size: 29px 29px; 
                 background-position: -1px -1px;
             }
             75% { 
-                background-size: 20px 20px; 
+                background-size: 30px 30px; 
                 background-position: 0.5px 0.5px;
             }
         }
@@ -1564,10 +1565,10 @@
         }
 
         .chart-line {
-            stroke: #8b45ff;
+            stroke: #96ff54; /* ИЗМЕНЕН ЦВЕТ С ФИОЛЕТОВОГО НА ЗЕЛЕНЫЙ */
             stroke-width: 4;
             fill: none;
-            filter: drop-shadow(0 0 10px #8b45ff);
+            filter: drop-shadow(0 0 10px #96ff54);
             transition: stroke 0.3s ease;
         }
 
@@ -1613,7 +1614,7 @@
         .countdown-number {
             font-size: 8rem;
             font-weight: 900;
-            color: #8b45ff;
+            color: white; /* ИЗМЕНЕН ЦВЕТ ОБРАТНОГО ОТСЧЕТА НА БЕЛЫЙ */
             animation: heartbeat 1s ease-in-out;
         }
 
@@ -3005,31 +3006,29 @@
             </div>
             
             <div class="balance-container">
-                <div class="balance-logo">
-                    <img src="https://files.svgcdn.io/token-branded/ton.png" alt="TON" class="ton-icon">
+                <div class="ton-icon">
+                    <img src="https://files.svgcdn.io/token-branded/ton.png" alt="TON" style="width: 24px; height: 24px;">
                 </div>
-                <div>
-                    <div style="font-size: 0.9rem; opacity: 0.8;" data-lang="balance">Баланс</div>
-                    <div class="balance-amount" id="balance" onclick="toggleCurrency()">
-                        <div class="balance-main balance-blurred" id="balanceMain">
-                            <span id="balanceMainText">$2.50</span>
-                        </div>
-                        <div class="balance-secondary balance-blurred" id="balanceSecondary">
-                            <span id="balanceSecondaryText">1.00 TON</span>
-                            <span class="currency-switch" id="currencySwitch">TON</span>
-                        </div>
+                <div class="balance-amount" id="balance" onclick="toggleCurrency()">
+                    <div class="balance-main balance-blurred" id="balanceMain">
+                        <span id="balanceMainText">100</span>
+                        <img src="https://files.svgcdn.io/token-branded/ton.png" alt="TON" style="width: 20px; height: 20px; margin-left: 8px;">
                     </div>
-                    <div class="balance-buttons" id="balanceButtons" style="display: none;">
-                        <button class="balance-button deposit" onclick="showDepositModal()" title="Пополнить">+</button>
-                        <button class="balance-button" onclick="showWithdrawModal()" title="Вывести">-</button>
-                        <div class="refresh-balance-button" onclick="refreshBalance()" title="Обновить баланс">
-                            🔄
-                        </div>
-                        <div style="position: relative;">
-                            <div class="dropdown-menu" id="dropdownMenu">
-                                <button class="dropdown-item" onclick="switchToSlide(3); toggleMenu()">Кошелек</button>
-                                <button class="dropdown-item" onclick="showAccountModal(); toggleMenu()">Профиль</button>
-                            </div>
+                    <div class="balance-secondary balance-blurred" id="balanceSecondary">
+                        <span id="balanceSecondaryText" style="display: none;">1.00 TON</span>
+                        <span class="currency-switch" id="currencySwitch" style="display: none;">TON</span>
+                    </div>
+                </div>
+                <div class="balance-buttons" id="balanceButtons" style="display: none;">
+                    <button class="balance-button deposit" onclick="showDepositModal()" title="Пополнить">+</button>
+                    <button class="balance-button" onclick="showWithdrawModal()" title="Вывести">-</button>
+                    <div class="refresh-balance-button" onclick="refreshBalance()" title="Обновить баланс">
+                        🔄
+                    </div>
+                    <div style="position: relative;">
+                        <div class="dropdown-menu" id="dropdownMenu">
+                            <button class="dropdown-item" onclick="switchToSlide(3); toggleMenu()">Кошелек</button>
+                            <button class="dropdown-item" onclick="showAccountModal(); toggleMenu()">Профиль</button>
                         </div>
                     </div>
                 </div>
@@ -3063,8 +3062,8 @@
                                 <svg class="trading-chart" id="tradingChart" viewBox="0 0 800 500">
                                     <defs>
                                         <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                                            <stop offset="0%" style="stop-color:#8b45ff;stop-opacity:0.8" />
-                                            <stop offset="100%" style="stop-color:#8b45ff;stop-opacity:0" />
+                                            <stop offset="0%" style="stop-color:#96ff54;stop-opacity:0.8" />
+                                            <stop offset="100%" style="stop-color:#96ff54;stop-opacity:0" />
                                         </linearGradient>
                                     </defs>
                                     <path class="chart-area" id="chartArea" d=""></path>
@@ -3493,7 +3492,7 @@
                     TON
                 </button>
                 <button class="deposit-btn" onclick="depositCurrency('SBP')" id="sbpDepositBtn">
-                    <img src="https://png.klev.club/uploads/posts/2024-05/png-klev-club-92ub-p-sbp-logotip-png-18.png" alt="СБП" style="width: 30px; height: 30px; object-fit: contain;">
+                    <img src="https://png.klev.club/uploads/posts/2024-05/png-klev.club-92ub-p-sbp-logotip-png-18.png" alt="СБП" style="width: 30px; height: 30px; object-fit: contain;">
                     СБП
                 </button>
             </div>
@@ -5365,7 +5364,11 @@
                 
                 const multiplierProgress = Math.min((this.currentMultiplier - 1.00) / 19.0, 1.0);
                 const smoothProgress = Math.pow(multiplierProgress, 0.4);
-                const y = Math.max(height - 50 - (smoothProgress * (height - 150)), 50);
+                
+                // ДОБАВЛЯЕМ НЕРОВНОСТЬ К ЛИНИИ
+                const randomOffset = (Math.random() - 0.5) * 15; // Случайное отклонение ±15px
+                const baseY = Math.max(height - 50 - (smoothProgress * (height - 150)), 50);
+                const y = baseY + randomOffset;
                 
                 this.chartPoints.push({ x: x, y: y });
 
@@ -5598,7 +5601,7 @@
                     balanceSecondaryText.textContent = `${this.balance.toFixed(2)} TON`;
                     currencySwitch.textContent = 'TON';
                 } else {
-                    balanceMainText.textContent = `${this.balance.toFixed(2)} TON`;
+                    balanceMainText.textContent = `${this.balance.toFixed(2)}`;
                     const usdValue = (this.balance * exchangeRates.TON);
                     balanceSecondaryText.textContent = `$${usdValue.toFixed(2)}`;
                     currencySwitch.textContent = 'USD';
