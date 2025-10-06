@@ -83,7 +83,7 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 30px;
-            background: #1a1a2e;
+            background: rgba(26, 26, 46, 0.75); /* Прозрачность 25% */
             padding: 20px;
             border-radius: 20px;
             border: 1px solid rgba(139, 69, 255, 0.3);
@@ -100,41 +100,36 @@
             width: auto;
         }
 
-        .header-center {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            position: absolute;
+        /* Навигационные кнопки перенесены вниз и заменены на иконки */
+        .bottom-navigation {
+            position: fixed;
+            bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            background: #1a1a2e;
+            padding: 15px 25px;
+            border-radius: 25px;
+            border: 1px solid rgba(139, 69, 255, 0.3);
+            z-index: 1000;
         }
 
         .nav-button {
-            padding: 12px 24px;
+            width: 50px;
+            height: 50px;
             background: rgba(139, 69, 255, 0.2);
             border: 1px solid rgba(139, 69, 255, 0.3);
-            border-radius: 12px;
+            border-radius: 15px;
             color: white;
             font-family: 'Orbitron', monospace;
-            font-weight: 600;
-            font-size: 0.9rem;
             cursor: pointer;
             transition: all 0.3s ease;
-            text-transform: none;
-            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
             opacity: 0.7;
-        }
-
-        .nav-button::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(transparent 70%, rgba(0, 0, 0, 0.4) 100%);
-            border-radius: 12px;
-            pointer-events: none;
         }
 
         .nav-button.active {
@@ -154,7 +149,7 @@
             display: flex;
             align-items: center;
             gap: 15px;
-            background: #1a1a2e;
+            background: rgba(26, 26, 46, 0.75); /* Прозрачность 25% */
             padding: 15px 20px;
             border-radius: 12px;
             border: 1px solid rgba(139, 69, 255, 0.3);
@@ -256,8 +251,8 @@
             background: #8b45ff;
             color: white;
             border: none;
-            padding: 12px 25px;
             border-radius: 12px;
+            padding: 10px 20px;
             font-family: 'Orbitron', monospace;
             font-weight: 700;
             font-size: 1rem;
@@ -290,6 +285,11 @@
             cursor: pointer;
             transition: all 0.3s ease;
             text-transform: none;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .balance-button:hover {
@@ -727,14 +727,14 @@
         }
 
         .action-button.deposit::before {
-            content: '↓';
+            content: '+';
             color: white;
             font-size: 16px;
             font-weight: bold;
         }
 
         .action-button.withdraw::before {
-            content: '↑';
+            content: '−';
             color: white;
             font-size: 16px;
             font-weight: bold;
@@ -1610,10 +1610,10 @@
         }
 
         .chart-line {
-            stroke: #8b45ff;
+            stroke: #00ff00; /* Зеленый цвет для линии */
             stroke-width: 4;
             fill: none;
-            filter: drop-shadow(0 0 10px #8b45ff);
+            filter: drop-shadow(0 0 10px #00ff00);
             transition: stroke 0.3s ease;
         }
 
@@ -1722,60 +1722,6 @@
             color: white;
             opacity: 0.8;
             text-transform: none;
-        }
-
-        .history-panel {
-            background: #444444;
-            border-radius: 12px;
-            border: 1px solid rgba(150, 150, 150, 0.3);
-            padding: 20px;
-        }
-
-        .history-title {
-            font-weight: 700;
-            margin-bottom: 15px;
-            color: white;
-            text-transform: none;
-        }
-
-        .history-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .history-item {
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-weight: 700;
-            font-size: 0.9rem;
-            opacity: 0.6;
-            filter: brightness(0.7);
-        }
-
-        .history-item.win {
-            background: rgba(139, 69, 255, 0.2);
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .history-item.lose.red-multiplier {
-            background: rgba(255, 68, 68, 0.4);
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .history-item.lose.yellow-multiplier {
-            background: rgba(255, 215, 0, 0.4);
-            color: rgba(0, 0, 0, 0.7);
-        }
-
-        .history-item.lose.orange-multiplier {
-            background: rgba(255, 165, 0, 0.4);
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .history-item.lose.green-multiplier {
-            background: rgba(0, 212, 170, 0.4);
-            color: rgba(255, 255, 255, 0.7);
         }
 
         .game-history-mini {
@@ -2787,6 +2733,7 @@
         @media (max-width: 768px) {
             body {
                 padding: 10px;
+                margin-bottom: 100px; /* Добавлен отступ для нижней навигации */
             }
 
             .header {
@@ -2794,20 +2741,6 @@
                 gap: 20px;
                 text-align: center;
                 padding: 15px;
-            }
-
-            .header-center {
-                position: static;
-                transform: none;
-                width: 100%;
-                justify-content: center;
-                flex-wrap: wrap;
-            }
-
-            .nav-button {
-                padding: 10px 18px;
-                font-size: 0.8rem;
-                min-width: 80px;
             }
 
             .balance-container {
@@ -2826,6 +2759,17 @@
             .balance-button, .menu-button {
                 padding: 6px 12px;
                 font-size: 0.8rem;
+            }
+
+            .bottom-navigation {
+                padding: 10px 15px;
+                gap: 15px;
+            }
+
+            .nav-button {
+                width: 45px;
+                height: 45px;
+                font-size: 20px;
             }
 
             .game-canvas {
@@ -3037,6 +2981,17 @@
         #depositButtons .modal-btn.confirm {
             display: none;
         }
+
+        /* Делаем линию КРАШ немного неровной */
+        .chart-line {
+            stroke: #00ff00;
+            stroke-width: 4;
+            fill: none;
+            filter: drop-shadow(0 0 10px #00ff00);
+            transition: stroke 0.3s ease;
+            /* Добавляем небольшую неровность */
+            stroke-dasharray: 2 0.5;
+        }
     </style>
 </head>
 <body>
@@ -3051,13 +3006,6 @@
                 <img src="https://i.postimg.cc/MTF4gsV0/tyuj.png" alt="TON CRASH">
             </div>
             
-            <div class="header-center">
-                <button class="nav-button active" id="crashBtn" onclick="switchToSlide(0)" data-lang="crash-game">Crash</button>
-                <button class="nav-button" id="bonusBtn" onclick="switchToSlide(1)" data-lang="bonus">Бонусы</button>
-                <button class="nav-button" id="casesBtn" onclick="switchToSlide(2)" data-lang="cases">Кейсы</button>
-                <button class="nav-button" id="walletBtn" onclick="switchToSlide(3)" data-lang="wallet">Кошелек</button>
-            </div>
-            
             <div class="balance-container">
                 <div class="balance-logo">
                     <img src="https://files.svgcdn.io/token-branded/ton.png" alt="TON" class="ton-icon">
@@ -3066,16 +3014,13 @@
                     <div style="font-size: 0.9rem; opacity: 0.8;" data-lang="balance">Баланс</div>
                     <div class="balance-amount" id="balance" onclick="toggleCurrency()">
                         <div class="balance-main balance-blurred" id="balanceMain">
-                            <span id="balanceMainText">$2.50</span>
-                        </div>
-                        <div class="balance-secondary balance-blurred" id="balanceSecondary">
-                            <span id="balanceSecondaryText">1.00 TON</span>
-                            <span class="currency-switch" id="currencySwitch">TON</span>
+                            <span id="balanceMainText">1.00</span>
+                            <img src="https://files.svgcdn.io/token-branded/ton.png" alt="TON" style="width: 20px; height: 20px; margin-left: 5px;">
                         </div>
                     </div>
                     <div class="balance-buttons" id="balanceButtons" style="display: none;">
-                        <button class="balance-button deposit" onclick="showDepositModal()" data-lang="deposit">Пополнить</button>
-                        <button class="balance-button" onclick="showWithdrawModal()" data-lang="withdraw">Вывести</button>
+                        <button class="balance-button deposit" onclick="showDepositModal()" data-lang="deposit">+</button>
+                        <button class="balance-button" onclick="showWithdrawModal()" data-lang="withdraw">−</button>
                         <div class="refresh-balance-button" onclick="refreshBalance()" title="Поддержать изменения">
                             🔄
                         </div>
@@ -3091,6 +3036,14 @@
                     <button class="login-btn" onclick="showLoginModal()" data-lang="login">Войти</button>
                 </div>
             </div>
+        </div>
+
+        <!-- Перемещенная навигация вниз с иконками -->
+        <div class="bottom-navigation">
+            <button class="nav-button active" id="crashBtn" onclick="switchToSlide(0)" data-lang="crash-game">💥</button>
+            <button class="nav-button" id="bonusBtn" onclick="switchToSlide(1)" data-lang="bonus">🎁</button>
+            <button class="nav-button" id="casesBtn" onclick="switchToSlide(2)" data-lang="cases">📦</button>
+            <button class="nav-button" id="walletBtn" onclick="switchToSlide(3)" data-lang="wallet">💰</button>
         </div>
 
         <button class="support-button" onclick="showSupportModal()">💬</button>
@@ -3125,8 +3078,8 @@
                                 <svg class="trading-chart" id="tradingChart" viewBox="0 0 800 500">
                                     <defs>
                                         <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                                            <stop offset="0%" style="stop-color:#8b45ff;stop-opacity:0.8" />
-                                            <stop offset="100%" style="stop-color:#8b45ff;stop-opacity:0" />
+                                            <stop offset="0%" style="stop-color:#00ff00;stop-opacity:0.8" />
+                                            <stop offset="100%" style="stop-color:#00ff00;stop-opacity:0" />
                                         </linearGradient>
                                     </defs>
                                     <path class="chart-area" id="chartArea" d=""></path>
@@ -3161,11 +3114,6 @@
                                     <div class="stat-value" id="winRate">0%</div>
                                     <div class="stat-label" data-lang="win-rate">Процент побед</div>
                                 </div>
-                            </div>
-
-                            <div class="history-panel">
-                                <div class="history-title" data-lang="game-history">История последних игр</div>
-                                <div class="history-list" id="historyList"></div>
                             </div>
                         </div>
                     </div>
@@ -4220,18 +4168,10 @@
                     }, 200);
                 }
                 
-                if (currentDisplayCurrency === 'USD') {
+                balanceElement.textContent = `${currentValue.toFixed(2)}`;
+                if (totalBalanceElement) {
                     const usdValue = (currentValue * exchangeRates.TON);
-                    balanceElement.textContent = `$${usdValue.toFixed(2)}`;
-                    if (totalBalanceElement) {
-                        totalBalanceElement.textContent = `$${usdValue.toFixed(2)}`;
-                    }
-                } else {
-                    balanceElement.textContent = `${currentValue.toFixed(2)} TON`;
-                    if (totalBalanceElement) {
-                        const usdValue = (currentValue * exchangeRates.TON);
-                        totalBalanceElement.textContent = `$${usdValue.toFixed(2)}`;
-                    }
+                    totalBalanceElement.textContent = `$${usdValue.toFixed(2)}`;
                 }
             }, intervalTime);
         }
@@ -4966,7 +4906,6 @@
             updateLoginState() {
                 const loginOverlay = document.getElementById('loginOverlay');
                 const balanceMain = document.getElementById('balanceMain');
-                const balanceSecondary = document.getElementById('balanceSecondary');
                 const balanceButtons = document.getElementById('balanceButtons');
                 
                 const gameControlCancel = document.getElementById('gameControlCancel');
@@ -4976,13 +4915,11 @@
                 if (this.isLoggedIn) {
                     loginOverlay.style.display = 'none';
                     balanceMain.classList.remove('balance-blurred');
-                    balanceSecondary.classList.remove('balance-blurred');
                     balanceButtons.style.display = 'flex';
                     this.updatePlayerActionButtons();
                 } else {
                     loginOverlay.style.display = 'block';
                     balanceMain.classList.add('balance-blurred');
-                    balanceSecondary.classList.add('balance-blurred');
                     balanceButtons.style.display = 'none';
                     
                     gameControlCancel.classList.remove('show');
@@ -5407,11 +5344,14 @@
 
                 const elapsed = Date.now() - this.gameStartTime;
                 
-                const x = Math.min((elapsed / 15000) * (width - 100), width - 100) + 50;
+                // Добавляем небольшие случайные отклонения для неровности
+                const noise = (Math.random() - 0.5) * 10; // Случайное отклонение ±5 пикселей
+                
+                const x = Math.min((elapsed / 15000) * (width - 100), width - 100) + 50 + noise * 0.5;
                 
                 const multiplierProgress = Math.min((this.currentMultiplier - 1.00) / 19.0, 1.0);
                 const smoothProgress = Math.pow(multiplierProgress, 0.4);
-                const y = Math.max(height - 50 - (smoothProgress * (height - 150)), 50);
+                const y = Math.max(height - 50 - (smoothProgress * (height - 150)), 50) + noise;
                 
                 this.chartPoints.push({ x: x, y: y });
 
@@ -5635,26 +5575,14 @@
                 if (isBalanceHidden) return;
                 
                 const balanceMainText = document.getElementById('balanceMainText');
-                const balanceSecondaryText = document.getElementById('balanceSecondaryText');
-                const currencySwitch = document.getElementById('currencySwitch');
                 
-                if (currentDisplayCurrency === 'USD') {
-                    const usdValue = (this.balance * exchangeRates.TON);
-                    balanceMainText.textContent = `$${usdValue.toFixed(2)}`;
-                    balanceSecondaryText.textContent = `${this.balance.toFixed(2)} TON`;
-                    currencySwitch.textContent = 'TON';
-                } else {
-                    balanceMainText.textContent = `${this.balance.toFixed(2)} TON`;
-                    const usdValue = (this.balance * exchangeRates.TON);
-                    balanceSecondaryText.textContent = `$${usdValue.toFixed(2)}`;
-                    currencySwitch.textContent = 'USD';
-                }
+                // Показываем только в тонах
+                balanceMainText.textContent = this.balance.toFixed(2);
                 
                 document.getElementById('totalGames').textContent = this.totalGames;
                 document.getElementById('winRate').textContent = this.totalGames > 0 ? 
                     Math.round((this.wins / this.totalGames) * 100) + '%' : '0%';
                 
-                this.updateHistory();
                 this.updateWalletDisplay();
                 updateBetInfoDisplay();
                 
@@ -5662,43 +5590,6 @@
                 if (accountBalance) {
                     accountBalance.textContent = `${this.balance.toFixed(2)} TON`;
                 }
-            }
-
-            updateHistory() {
-                const historyList = document.getElementById('historyList');
-                historyList.innerHTML = '';
-                
-                this.gameHistory.slice().reverse().forEach(game => {
-                    const item = document.createElement('div');
-                    let className = 'history-item';
-                    
-                    if (game.win === true) {
-                        className += ' win';
-                        item.textContent = `${game.multiplier.toFixed(2)}x ✓`;
-                    } else if (game.win === false) {
-                        className += ' lose';
-                        
-                        // Определяем цвет множителя
-                        if (game.multiplier < 2.00) {
-                            className += ' red-multiplier';
-                        } else if (game.multiplier >= 2.01 && game.multiplier <= 5.00) {
-                            className += ' yellow-multiplier';
-                        } else if (game.multiplier > 5.00 && game.multiplier <= 10.00) {
-                            className += ' orange-multiplier';
-                        } else {
-                            className += ' green-multiplier';
-                        }
-                        
-                        item.textContent = `${game.multiplier.toFixed(2)}x ✗`;
-                    } else {
-                        item.textContent = `${game.multiplier.toFixed(2)}x`;
-                        item.style.background = 'rgba(139, 69, 255, 0.2)';
-                        item.style.color = '#8b45ff';
-                    }
-                    
-                    item.className = className;
-                    historyList.appendChild(item);
-                });
             }
 
             updateLastBets() {
