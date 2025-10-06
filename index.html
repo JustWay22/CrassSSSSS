@@ -70,6 +70,7 @@
             overflow-x: hidden;
             min-height: 100vh;
             padding: 20px;
+            padding-bottom: 120px; /* Увеличиваем отступ снизу для фиксированной навигации */
         }
 
         .container {
@@ -83,10 +84,22 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 30px;
-            background: rgba(26, 26, 46, 0.75); /* Прозрачность 25% */
+            background: rgba(26, 26, 46, 0.2); /* Прозрачность 20% */
             padding: 20px;
             border-radius: 20px;
             border: 1px solid rgba(139, 69, 255, 0.3);
+            position: fixed; /* Фиксированное позиционирование */
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 40px);
+            max-width: 1600px;
+            z-index: 999;
+        }
+
+        /* Скрываем на слайде Wallet */
+        .slide:nth-child(4) ~ .header {
+            display: none;
         }
 
         .logo {
@@ -149,33 +162,33 @@
             display: flex;
             align-items: center;
             gap: 15px;
-            background: rgba(26, 26, 46, 0.75); /* Прозрачность 25% */
-            padding: 15px 20px;
+            background: rgba(26, 26, 46, 0.2); /* Прозрачность 20% */
+            padding: 10px 15px;
             border-radius: 12px;
             border: 1px solid rgba(139, 69, 255, 0.3);
             position: relative;
         }
 
         .balance-logo {
-            width: 40px;
-            height: 40px;
+            width: 30px;
+            height: 30px;
             background: #8b45ff;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 900;
-            font-size: 1.2rem;
+            font-size: 1rem;
             color: white;
         }
 
         .ton-icon {
-            width: 24px;
-            height: 24px;
+            width: 20px;
+            height: 20px;
         }
 
         .balance-amount {
-            font-size: 1rem;
+            font-size: 0.9rem;
             font-weight: 400;
             display: flex;
             flex-direction: column;
@@ -186,7 +199,7 @@
         }
 
         .balance-main {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 700;
             display: flex;
             align-items: center;
@@ -194,7 +207,7 @@
         }
 
         .balance-secondary {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             font-weight: 400;
             opacity: 0.7;
             display: flex;
@@ -252,10 +265,10 @@
             color: white;
             border: none;
             border-radius: 12px;
-            padding: 10px 20px;
+            padding: 8px 16px;
             font-family: 'Orbitron', monospace;
             font-weight: 700;
-            font-size: 1rem;
+            font-size: 0.9rem;
             cursor: pointer;
             transition: all 0.3s ease;
             text-transform: none;
@@ -268,8 +281,8 @@
 
         .balance-buttons {
             display: flex;
-            gap: 10px;
-            margin-top: 10px;
+            gap: 8px;
+            margin-left: 10px;
             align-items: center;
         }
 
@@ -277,16 +290,16 @@
             background: #8b45ff;
             color: white;
             border: none;
-            padding: 8px 16px;
+            padding: 6px 12px;
             border-radius: 8px;
             font-family: 'Orbitron', monospace;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 1.2rem;
             cursor: pointer;
             transition: all 0.3s ease;
             text-transform: none;
-            width: 40px;
-            height: 40px;
+            width: 35px;
+            height: 35px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -301,15 +314,14 @@
             background: #8b45ff;
             border: 1px solid #8b45ff;
             border-radius: 50%;
-            width: 35px;
-            height: 35px;
+            width: 30px;
+            height: 30px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-size: 1.2rem;
-            margin-left: 10px;
+            font-size: 1rem;
             color: white;
         }
 
@@ -365,6 +377,7 @@
             position: relative;
             overflow: hidden;
             width: 100%;
+            margin-top: 120px; /* Отступ для фиксированного хедера */
         }
 
         .slider-container {
@@ -2741,6 +2754,7 @@
                 gap: 20px;
                 text-align: center;
                 padding: 15px;
+                width: calc(100% - 20px);
             }
 
             .balance-container {
@@ -2976,6 +2990,10 @@
                 width: 100%;
                 padding: 15px;
             }
+
+            .content-slider {
+                margin-top: 140px; /* Увеличиваем отступ для мобильных */
+            }
         }
 
         #depositButtons .modal-btn.confirm {
@@ -2992,6 +3010,16 @@
             /* Добавляем небольшую неровность */
             stroke-dasharray: 2 0.5;
         }
+
+        /* Скрываем хедер на слайде Wallet */
+        .slide:nth-child(4) .header {
+            display: none !important;
+        }
+
+        /* Для слайда с кошельком убираем отступ сверху */
+        .slide:nth-child(4) .content-slider {
+            margin-top: 0 !important;
+        }
     </style>
 </head>
 <body>
@@ -3001,7 +3029,7 @@
     </div>
 
     <div class="container">
-        <div class="header">
+        <div class="header" id="mainHeader">
             <div class="logo">
                 <img src="https://i.postimg.cc/MTF4gsV0/tyuj.png" alt="TON CRASH">
             </div>
@@ -3011,24 +3039,17 @@
                     <img src="https://files.svgcdn.io/token-branded/ton.png" alt="TON" class="ton-icon">
                 </div>
                 <div>
-                    <div style="font-size: 0.9rem; opacity: 0.8;" data-lang="balance">Баланс</div>
                     <div class="balance-amount" id="balance" onclick="toggleCurrency()">
                         <div class="balance-main balance-blurred" id="balanceMain">
                             <span id="balanceMainText">1.00</span>
-                            <img src="https://files.svgcdn.io/token-branded/ton.png" alt="TON" style="width: 20px; height: 20px; margin-left: 5px;">
+                            <img src="https://files.svgcdn.io/token-branded/ton.png" alt="TON" style="width: 18px; height: 18px; margin-left: 5px;">
                         </div>
                     </div>
                     <div class="balance-buttons" id="balanceButtons" style="display: none;">
                         <button class="balance-button deposit" onclick="showDepositModal()" data-lang="deposit">+</button>
                         <button class="balance-button" onclick="showWithdrawModal()" data-lang="withdraw">−</button>
-                        <div class="refresh-balance-button" onclick="refreshBalance()" title="Поддержать изменения">
+                        <div class="refresh-balance-button" onclick="refreshBalance()" title="Обновить баланс">
                             🔄
-                        </div>
-                        <div style="position: relative;">
-                            <div class="dropdown-menu" id="dropdownMenu">
-                                <button class="dropdown-item" onclick="switchToSlide(3); toggleMenu()">Кошелек</button>
-                                <button class="dropdown-item" onclick="showAccountModal(); toggleMenu()">Профиль</button>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -3040,7 +3061,7 @@
 
         <!-- Перемещенная навигация вниз с иконками -->
         <div class="bottom-navigation">
-            <button class="nav-button active" id="crashBtn" onclick="switchToSlide(0)" data-lang="crash-game">💥</button>
+            <button class="nav-button active" id="crashBtn" onclick="switchToSlide(0)" data-lang="crash-game">🚀</button>
             <button class="nav-button" id="bonusBtn" onclick="switchToSlide(1)" data-lang="bonus">🎁</button>
             <button class="nav-button" id="casesBtn" onclick="switchToSlide(2)" data-lang="cases">📦</button>
             <button class="nav-button" id="walletBtn" onclick="switchToSlide(3)" data-lang="wallet">💰</button>
@@ -3708,6 +3729,20 @@
 
         // Fallback через 5 секунд на случай проблем
         setTimeout(fallbackLoadingRemoval, 5000);
+
+        // Показать/скрыть хедер в зависимости от слайда
+        function updateHeaderVisibility() {
+            const header = document.getElementById('mainHeader');
+            const contentSlider = document.querySelector('.content-slider');
+            
+            if (currentSlide === 3) { // Слайд Wallet
+                header.style.display = 'none';
+                contentSlider.style.marginTop = '20px';
+            } else {
+                header.style.display = 'flex';
+                contentSlider.style.marginTop = '120px';
+            }
+        }
 
         const playerNames = [
             "Smexoed", "sophiexeonfan", "Love11Ak", "rizzaaak", "malisss", "ggyohj", "Bellysimo5", 
@@ -5722,6 +5757,9 @@
             } else if (slideIndex === 3) {
                 walletBtn.classList.add('active');
             }
+            
+            // Обновляем видимость хедера
+            updateHeaderVisibility();
         }
 
         function saveUserData(nickname) {
