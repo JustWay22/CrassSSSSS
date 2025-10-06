@@ -102,15 +102,17 @@
             display: none;
         }
 
-        .logo {
+        .header-content {
             display: flex;
             align-items: center;
-            gap: 15px;
+            justify-content: space-between;
+            width: 100%;
         }
 
-        .logo img {
-            height: 50px;
-            width: auto;
+        .balance-and-online {
+            display: flex;
+            align-items: center;
+            gap: 20px;
         }
 
         /* Навигационные кнопки перенесены вниз и заменены на иконки */
@@ -143,6 +145,12 @@
             justify-content: center;
             font-size: 24px;
             opacity: 0.7;
+        }
+
+        .nav-button img {
+            width: 28px;
+            height: 28px;
+            object-fit: contain;
         }
 
         .nav-button.active {
@@ -1197,10 +1205,6 @@
             padding: 15px;
             width: 150px;
             height: 80px;
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -2757,6 +2761,13 @@
                 width: calc(100% - 20px);
             }
 
+            .balance-and-online {
+                flex-direction: column;
+                gap: 15px;
+                width: 100%;
+                align-items: center;
+            }
+
             .balance-container {
                 flex-direction: column;
                 text-align: center;
@@ -2784,6 +2795,11 @@
                 width: 45px;
                 height: 45px;
                 font-size: 20px;
+            }
+
+            .nav-button img {
+                width: 24px;
+                height: 24px;
             }
 
             .game-canvas {
@@ -3030,41 +3046,57 @@
 
     <div class="container">
         <div class="header" id="mainHeader">
-            <div class="logo">
-                <img src="https://i.postimg.cc/MTF4gsV0/tyuj.png" alt="TON CRASH">
-            </div>
-            
-            <div class="balance-container">
-                <div class="balance-logo">
-                    <img src="https://files.svgcdn.io/token-branded/ton.png" alt="TON" class="ton-icon">
-                </div>
-                <div>
-                    <div class="balance-amount" id="balance" onclick="toggleCurrency()">
-                        <div class="balance-main balance-blurred" id="balanceMain">
-                            <span id="balanceMainText">1.00</span>
-                            <img src="https://files.svgcdn.io/token-branded/ton.png" alt="TON" style="width: 18px; height: 18px; margin-left: 5px;">
+            <div class="header-content">
+                <div class="balance-and-online">
+                    <div class="balance-container">
+                        <div class="balance-logo">
+                            <img src="https://files.svgcdn.io/token-branded/ton.png" alt="TON" class="ton-icon">
+                        </div>
+                        <div>
+                            <div class="balance-amount" id="balance" onclick="toggleCurrency()">
+                                <div class="balance-main balance-blurred" id="balanceMain">
+                                    <span id="balanceMainText">1.00</span>
+                                    <img src="https://files.svgcdn.io/token-branded/ton.png" alt="TON" style="width: 18px; height: 18px; margin-left: 5px;">
+                                </div>
+                            </div>
+                            <div class="balance-buttons" id="balanceButtons" style="display: none;">
+                                <button class="balance-button deposit" onclick="showDepositModal()" data-lang="deposit">+</button>
+                                <button class="balance-button" onclick="showWithdrawModal()" data-lang="withdraw">-</button>
+                                <div class="refresh-balance-button" onclick="refreshBalance()" title="Обновить баланс">
+                                    🔄
+                                </div>
+                            </div>
+                        </div>
+                        <div class="login-overlay" id="loginOverlay">
+                            <button class="login-btn" onclick="showLoginModal()" data-lang="login">Войти</button>
                         </div>
                     </div>
-                    <div class="balance-buttons" id="balanceButtons" style="display: none;">
-                        <button class="balance-button deposit" onclick="showDepositModal()" data-lang="deposit">+</button>
-                        <button class="balance-button" onclick="showWithdrawModal()" data-lang="withdraw">−</button>
-                        <div class="refresh-balance-button" onclick="refreshBalance()" title="Обновить баланс">
-                            🔄
+
+                    <div class="online-panel">
+                        <div class="online-indicator">
+                            <div class="online-dot"></div>
+                            <span class="online-text" data-lang="online">Онлайн</span>
                         </div>
+                        <div class="online-count" id="onlineCount">127</div>
                     </div>
-                </div>
-                <div class="login-overlay" id="loginOverlay">
-                    <button class="login-btn" onclick="showLoginModal()" data-lang="login">Войти</button>
                 </div>
             </div>
         </div>
 
         <!-- Перемещенная навигация вниз с иконками -->
         <div class="bottom-navigation">
-            <button class="nav-button active" id="crashBtn" onclick="switchToSlide(0)" data-lang="crash-game">🚀</button>
-            <button class="nav-button" id="bonusBtn" onclick="switchToSlide(1)" data-lang="bonus">🎁</button>
-            <button class="nav-button" id="casesBtn" onclick="switchToSlide(2)" data-lang="cases">📦</button>
-            <button class="nav-button" id="walletBtn" onclick="switchToSlide(3)" data-lang="wallet">💰</button>
+            <button class="nav-button active" id="crashBtn" onclick="switchToSlide(0)" data-lang="crash-game">
+                <img src="https://cdn-icons-png.flaticon.com/512/1688/1688376.png" alt="Crash">
+            </button>
+            <button class="nav-button" id="bonusBtn" onclick="switchToSlide(1)" data-lang="bonus">
+                <img src="https://cdn-icons-png.flaticon.com/512/3143/3143203.png" alt="Bonus">
+            </button>
+            <button class="nav-button" id="casesBtn" onclick="switchToSlide(2)" data-lang="cases">
+                <img src="https://cdn-icons-png.flaticon.com/512/3659/3659899.png" alt="Cases">
+            </button>
+            <button class="nav-button" id="walletBtn" onclick="switchToSlide(3)" data-lang="wallet">
+                <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Wallet">
+            </button>
         </div>
 
         <button class="support-button" onclick="showSupportModal()">💬</button>
@@ -3073,14 +3105,6 @@
             <div class="slider-container" id="sliderContainer">
                 <div class="slide">
                     <div class="main-content">
-                        <div class="online-panel">
-                            <div class="online-indicator">
-                                <div class="online-dot"></div>
-                                <span class="online-text" data-lang="online">Онлайн</span>
-                            </div>
-                            <div class="online-count" id="onlineCount">127</div>
-                        </div>
-
                         <div class="players-panel">
                             <div class="players-controls">
                                 <button class="cancel-bet-button" id="cancelBetButton" onclick="cancelBet()" data-lang="cancel-bet">Отменить ставку</button>
@@ -5990,7 +6014,7 @@
         }
 
         document.addEventListener('keypress', function(e) {
-            if (e.target.id === 'supportInput' && e.key === 'Enter') {
+            if (e.target.i === 'supportInput' && e.key === 'Enter') {
                 sendSupportMessage();
             }
         });
