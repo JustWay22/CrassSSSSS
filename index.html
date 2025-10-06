@@ -70,7 +70,7 @@
             overflow-x: hidden;
             min-height: 100vh;
             padding: 20px;
-            padding-bottom: 120px; /* Увеличиваем отступ снизу для фиксированной навигации */
+            padding-bottom: 100px; /* Место для нижней навигации */
         }
 
         .container {
@@ -84,119 +84,54 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 30px;
-            background: rgba(26, 26, 46, 0.2); /* Прозрачность 20% */
+            background: rgba(26, 26, 46, 0.5); /* Менее прозрачный фон */
             padding: 20px;
             border-radius: 20px;
             border: 1px solid rgba(139, 69, 255, 0.3);
-            position: fixed; /* Фиксированное позиционирование */
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: calc(100% - 40px);
-            max-width: 1600px;
-            z-index: 999;
         }
 
-        /* Скрываем на слайде Wallet */
-        .slide:nth-child(4) ~ .header {
-            display: none;
-        }
-
-        .header-content {
+        .logo {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            width: 100%;
+            gap: 15px;
         }
 
-        .balance-and-online {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        /* Навигационные кнопки перенесены вниз и заменены на иконки */
-        .bottom-navigation {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 20px;
-            background: #1a1a2e;
-            padding: 15px 25px;
-            border-radius: 25px;
-            border: 1px solid rgba(139, 69, 255, 0.3);
-            z-index: 1000;
-        }
-
-        .nav-button {
-            width: 50px;
+        .logo img {
             height: 50px;
-            background: rgba(139, 69, 255, 0.2);
-            border: 1px solid rgba(139, 69, 255, 0.3);
-            border-radius: 15px;
-            color: white;
-            font-family: 'Orbitron', monospace;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            opacity: 0.7;
-        }
-
-        .nav-button img {
-            width: 28px;
-            height: 28px;
-            object-fit: contain;
-        }
-
-        .nav-button.active {
-            background: #8b45ff;
-            color: white;
-            border-color: #8b45ff;
-            opacity: 1;
-        }
-
-        .nav-button:hover {
-            background: rgba(139, 69, 255, 0.3);
-            transform: translateY(-2px);
-            opacity: 1;
+            width: auto;
         }
 
         .balance-container {
             display: flex;
             align-items: center;
             gap: 15px;
-            background: rgba(26, 26, 46, 0.2); /* Прозрачность 20% */
-            padding: 10px 15px;
+            background: rgba(26, 26, 46, 0.8); /* Более непрозрачный на 50% */
+            padding: 15px 20px;
             border-radius: 12px;
             border: 1px solid rgba(139, 69, 255, 0.3);
             position: relative;
         }
 
         .balance-logo {
-            width: 30px;
-            height: 30px;
+            width: 40px;
+            height: 40px;
             background: #8b45ff;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 900;
-            font-size: 1rem;
+            font-size: 1.2rem;
             color: white;
         }
 
         .ton-icon {
-            width: 20px;
-            height: 20px;
+            width: 24px;
+            height: 24px;
         }
 
         .balance-amount {
-            font-size: 0.9rem;
+            font-size: 1rem;
             font-weight: 400;
             display: flex;
             flex-direction: column;
@@ -207,7 +142,7 @@
         }
 
         .balance-main {
-            font-size: 1rem;
+            font-size: 1.1rem;
             font-weight: 700;
             display: flex;
             align-items: center;
@@ -215,7 +150,7 @@
         }
 
         .balance-secondary {
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             font-weight: 400;
             opacity: 0.7;
             display: flex;
@@ -272,11 +207,11 @@
             background: #8b45ff;
             color: white;
             border: none;
+            padding: 12px 25px;
             border-radius: 12px;
-            padding: 8px 16px;
             font-family: 'Orbitron', monospace;
             font-weight: 700;
-            font-size: 0.9rem;
+            font-size: 1rem;
             cursor: pointer;
             transition: all 0.3s ease;
             text-transform: none;
@@ -289,8 +224,8 @@
 
         .balance-buttons {
             display: flex;
-            gap: 8px;
-            margin-left: 10px;
+            gap: 10px;
+            margin-top: 10px;
             align-items: center;
         }
 
@@ -298,16 +233,16 @@
             background: #8b45ff;
             color: white;
             border: none;
-            padding: 6px 12px;
-            border-radius: 8px;
+            padding: 12px 16px;
+            border-radius: 50%;
             font-family: 'Orbitron', monospace;
             font-weight: 600;
             font-size: 1.2rem;
             cursor: pointer;
             transition: all 0.3s ease;
             text-transform: none;
-            width: 35px;
-            height: 35px;
+            width: 40px;
+            height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -322,14 +257,15 @@
             background: #8b45ff;
             border: 1px solid #8b45ff;
             border-radius: 50%;
-            width: 30px;
-            height: 30px;
+            width: 35px;
+            height: 35px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-size: 1rem;
+            font-size: 1.2rem;
+            margin-left: 10px;
             color: white;
         }
 
@@ -381,11 +317,58 @@
             transform: translateY(-1px);
         }
 
+        /* Нижняя навигационная панель */
+        .bottom-navigation {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #2a2a2a;
+            padding: 15px 0;
+            border-top: 1px solid rgba(139, 69, 255, 0.3);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .nav-btn {
+            background: rgba(139, 69, 255, 0.2);
+            border: 1px solid rgba(139, 69, 255, 0.3);
+            border-radius: 15px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            opacity: 0.7;
+        }
+
+        .nav-btn:hover {
+            background: rgba(139, 69, 255, 0.3);
+            transform: translateY(-2px);
+            opacity: 1;
+        }
+
+        .nav-btn.active {
+            background: #8b45ff;
+            border-color: #8b45ff;
+            opacity: 1;
+        }
+
+        .nav-btn img {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+        }
+
         .content-slider {
             position: relative;
             overflow: hidden;
             width: 100%;
-            margin-top: 120px; /* Отступ для фиксированного хедера */
         }
 
         .slider-container {
@@ -748,14 +731,14 @@
         }
 
         .action-button.deposit::before {
-            content: '+';
+            content: '↓';
             color: white;
             font-size: 16px;
             font-weight: bold;
         }
 
         .action-button.withdraw::before {
-            content: '−';
+            content: '↑';
             color: white;
             font-size: 16px;
             font-weight: bold;
@@ -1198,52 +1181,6 @@
             transform: translateY(-2px);
         }
 
-        .online-panel {
-            background: #1a1a2e;
-            border-radius: 15px;
-            border: 1px solid rgba(139, 69, 255, 0.3);
-            padding: 15px;
-            width: 150px;
-            height: 80px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .online-indicator {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .online-dot {
-            width: 12px;
-            height: 12px;
-            background: #00ff00;
-            border-radius: 50%;
-            animation: blink 1.5s infinite;
-        }
-
-        @keyframes blink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0.3; }
-        }
-
-        .online-text {
-            font-size: 0.8rem;
-            color: white;
-            font-weight: 700;
-            text-transform: none;
-        }
-
-        .online-count {
-            font-size: 1.2rem;
-            color: white;
-            font-weight: 900;
-        }
-
         .players-panel {
             background: #1a1a2e;
             border-radius: 15px;
@@ -1627,10 +1564,10 @@
         }
 
         .chart-line {
-            stroke: #00ff00; /* Зеленый цвет для линии */
+            stroke: #8b45ff;
             stroke-width: 4;
             fill: none;
-            filter: drop-shadow(0 0 10px #00ff00);
+            filter: drop-shadow(0 0 10px #8b45ff);
             transition: stroke 0.3s ease;
         }
 
@@ -1739,6 +1676,60 @@
             color: white;
             opacity: 0.8;
             text-transform: none;
+        }
+
+        .history-panel {
+            background: #444444;
+            border-radius: 12px;
+            border: 1px solid rgba(150, 150, 150, 0.3);
+            padding: 20px;
+        }
+
+        .history-title {
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: white;
+            text-transform: none;
+        }
+
+        .history-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .history-item {
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            opacity: 0.6;
+            filter: brightness(0.7);
+        }
+
+        .history-item.win {
+            background: rgba(139, 69, 255, 0.2);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .history-item.lose.red-multiplier {
+            background: rgba(255, 68, 68, 0.4);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .history-item.lose.yellow-multiplier {
+            background: rgba(255, 215, 0, 0.4);
+            color: rgba(0, 0, 0, 0.7);
+        }
+
+        .history-item.lose.orange-multiplier {
+            background: rgba(255, 165, 0, 0.4);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .history-item.lose.green-multiplier {
+            background: rgba(0, 212, 170, 0.4);
+            color: rgba(255, 255, 255, 0.7);
         }
 
         .game-history-mini {
@@ -2733,24 +2724,20 @@
                 order: 3;
             }
 
-            .online-panel {
-                position: relative;
-                width: 100%;
-                height: auto;
-                transform: none;
-                margin-bottom: 20px;
-            }
-
             .header-center {
                 position: static;
                 transform: none;
+            }
+
+            body {
+                padding-bottom: 120px;
             }
         }
 
         @media (max-width: 768px) {
             body {
                 padding: 10px;
-                margin-bottom: 100px; /* Добавлен отступ для нижней навигации */
+                padding-bottom: 120px;
             }
 
             .header {
@@ -2758,14 +2745,6 @@
                 gap: 20px;
                 text-align: center;
                 padding: 15px;
-                width: calc(100% - 20px);
-            }
-
-            .balance-and-online {
-                flex-direction: column;
-                gap: 15px;
-                width: 100%;
-                align-items: center;
             }
 
             .balance-container {
@@ -2784,22 +2763,6 @@
             .balance-button, .menu-button {
                 padding: 6px 12px;
                 font-size: 0.8rem;
-            }
-
-            .bottom-navigation {
-                padding: 10px 15px;
-                gap: 15px;
-            }
-
-            .nav-button {
-                width: 45px;
-                height: 45px;
-                font-size: 20px;
-            }
-
-            .nav-button img {
-                width: 24px;
-                height: 24px;
             }
 
             .game-canvas {
@@ -3007,34 +2970,25 @@
                 padding: 15px;
             }
 
-            .content-slider {
-                margin-top: 140px; /* Увеличиваем отступ для мобильных */
+            .bottom-navigation {
+                padding: 10px 0;
+                gap: 15px;
+            }
+
+            .nav-btn {
+                width: 50px;
+                height: 50px;
+                padding: 12px;
+            }
+
+            .nav-btn img {
+                width: 28px;
+                height: 28px;
             }
         }
 
         #depositButtons .modal-btn.confirm {
             display: none;
-        }
-
-        /* Делаем линию КРАШ немного неровной */
-        .chart-line {
-            stroke: #00ff00;
-            stroke-width: 4;
-            fill: none;
-            filter: drop-shadow(0 0 10px #00ff00);
-            transition: stroke 0.3s ease;
-            /* Добавляем небольшую неровность */
-            stroke-dasharray: 2 0.5;
-        }
-
-        /* Скрываем хедер на слайде Wallet */
-        .slide:nth-child(4) .header {
-            display: none !important;
-        }
-
-        /* Для слайда с кошельком убираем отступ сверху */
-        .slide:nth-child(4) .content-slider {
-            margin-top: 0 !important;
         }
     </style>
 </head>
@@ -3045,58 +2999,44 @@
     </div>
 
     <div class="container">
-        <div class="header" id="mainHeader">
-            <div class="header-content">
-                <div class="balance-and-online">
-                    <div class="balance-container">
-                        <div class="balance-logo">
-                            <img src="https://files.svgcdn.io/token-branded/ton.png" alt="TON" class="ton-icon">
+        <div class="header">
+            <div class="logo">
+                <img src="https://i.postimg.cc/MTF4gsV0/tyuj.png" alt="TON CRASH">
+            </div>
+            
+            <div class="balance-container">
+                <div class="balance-logo">
+                    <img src="https://files.svgcdn.io/token-branded/ton.png" alt="TON" class="ton-icon">
+                </div>
+                <div>
+                    <div style="font-size: 0.9rem; opacity: 0.8;" data-lang="balance">Баланс</div>
+                    <div class="balance-amount" id="balance" onclick="toggleCurrency()">
+                        <div class="balance-main balance-blurred" id="balanceMain">
+                            <span id="balanceMainText">$2.50</span>
                         </div>
-                        <div>
-                            <div class="balance-amount" id="balance" onclick="toggleCurrency()">
-                                <div class="balance-main balance-blurred" id="balanceMain">
-                                    <span id="balanceMainText">1.00</span>
-                                    <img src="https://files.svgcdn.io/token-branded/ton.png" alt="TON" style="width: 18px; height: 18px; margin-left: 5px;">
-                                </div>
-                            </div>
-                            <div class="balance-buttons" id="balanceButtons" style="display: none;">
-                                <button class="balance-button deposit" onclick="showDepositModal()" data-lang="deposit">+</button>
-                                <button class="balance-button" onclick="showWithdrawModal()" data-lang="withdraw">-</button>
-                                <div class="refresh-balance-button" onclick="refreshBalance()" title="Обновить баланс">
-                                    🔄
-                                </div>
-                            </div>
-                        </div>
-                        <div class="login-overlay" id="loginOverlay">
-                            <button class="login-btn" onclick="showLoginModal()" data-lang="login">Войти</button>
+                        <div class="balance-secondary balance-blurred" id="balanceSecondary">
+                            <span id="balanceSecondaryText">1.00 TON</span>
+                            <span class="currency-switch" id="currencySwitch">TON</span>
                         </div>
                     </div>
-
-                    <div class="online-panel">
-                        <div class="online-indicator">
-                            <div class="online-dot"></div>
-                            <span class="online-text" data-lang="online">Онлайн</span>
+                    <div class="balance-buttons" id="balanceButtons" style="display: none;">
+                        <button class="balance-button deposit" onclick="showDepositModal()" title="Пополнить">+</button>
+                        <button class="balance-button" onclick="showWithdrawModal()" title="Вывести">-</button>
+                        <div class="refresh-balance-button" onclick="refreshBalance()" title="Обновить баланс">
+                            🔄
                         </div>
-                        <div class="online-count" id="onlineCount">127</div>
+                        <div style="position: relative;">
+                            <div class="dropdown-menu" id="dropdownMenu">
+                                <button class="dropdown-item" onclick="switchToSlide(3); toggleMenu()">Кошелек</button>
+                                <button class="dropdown-item" onclick="showAccountModal(); toggleMenu()">Профиль</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <div class="login-overlay" id="loginOverlay">
+                    <button class="login-btn" onclick="showLoginModal()" data-lang="login">Войти</button>
+                </div>
             </div>
-        </div>
-
-        <!-- Перемещенная навигация вниз с иконками -->
-        <div class="bottom-navigation">
-            <button class="nav-button active" id="crashBtn" onclick="switchToSlide(0)" data-lang="crash-game">
-                <img src="https://cdn-icons-png.flaticon.com/512/1688/1688376.png" alt="Crash">
-            </button>
-            <button class="nav-button" id="bonusBtn" onclick="switchToSlide(1)" data-lang="bonus">
-                <img src="https://cdn-icons-png.flaticon.com/512/3143/3143203.png" alt="Bonus">
-            </button>
-            <button class="nav-button" id="casesBtn" onclick="switchToSlide(2)" data-lang="cases">
-                <img src="https://cdn-icons-png.flaticon.com/512/3659/3659899.png" alt="Cases">
-            </button>
-            <button class="nav-button" id="walletBtn" onclick="switchToSlide(3)" data-lang="wallet">
-                <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Wallet">
-            </button>
         </div>
 
         <button class="support-button" onclick="showSupportModal()">💬</button>
@@ -3123,8 +3063,8 @@
                                 <svg class="trading-chart" id="tradingChart" viewBox="0 0 800 500">
                                     <defs>
                                         <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                                            <stop offset="0%" style="stop-color:#00ff00;stop-opacity:0.8" />
-                                            <stop offset="100%" style="stop-color:#00ff00;stop-opacity:0" />
+                                            <stop offset="0%" style="stop-color:#8b45ff;stop-opacity:0.8" />
+                                            <stop offset="100%" style="stop-color:#8b45ff;stop-opacity:0" />
                                         </linearGradient>
                                     </defs>
                                     <path class="chart-area" id="chartArea" d=""></path>
@@ -3159,6 +3099,11 @@
                                     <div class="stat-value" id="winRate">0%</div>
                                     <div class="stat-label" data-lang="win-rate">Процент побед</div>
                                 </div>
+                            </div>
+
+                            <div class="history-panel">
+                                <div class="history-title" data-lang="game-history">История последних игр</div>
+                                <div class="history-list" id="historyList"></div>
                             </div>
                         </div>
                     </div>
@@ -3438,6 +3383,22 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- Нижняя навигационная панель -->
+    <div class="bottom-navigation">
+        <button class="nav-btn active" id="crashNavBtn" onclick="switchToSlide(0)">
+            <img src="https://ikonki.svgpng.ru/wp-content/uploads/2021/06/Raketa.png" alt="Crash">
+        </button>
+        <button class="nav-btn" id="bonusNavBtn" onclick="switchToSlide(1)">
+            <img src="https://img.icons8.com/?size=1200&id=y9REUjKQp0LT&format=png" alt="Бонусы">
+        </button>
+        <button class="nav-btn" id="casesNavBtn" onclick="switchToSlide(2)">
+            <img src="https://png.klev.club/uploads/posts/2024-03/png-klev-club-p-keis-png-6.png" alt="Кейсы">
+        </button>
+        <button class="nav-btn" id="walletNavBtn" onclick="switchToSlide(3)">
+            <img src="https://img-fotki.yandex.ru/get/5106/200418627.15/0_10ac3e_2e42a6c4_orig.png" alt="Кошелек">
+        </button>
     </div>
 
     <button class="language-switcher" onclick="toggleLanguage()" id="languageSwitcher">RU</button>
@@ -3753,20 +3714,6 @@
 
         // Fallback через 5 секунд на случай проблем
         setTimeout(fallbackLoadingRemoval, 5000);
-
-        // Показать/скрыть хедер в зависимости от слайда
-        function updateHeaderVisibility() {
-            const header = document.getElementById('mainHeader');
-            const contentSlider = document.querySelector('.content-slider');
-            
-            if (currentSlide === 3) { // Слайд Wallet
-                header.style.display = 'none';
-                contentSlider.style.marginTop = '20px';
-            } else {
-                header.style.display = 'flex';
-                contentSlider.style.marginTop = '120px';
-            }
-        }
 
         const playerNames = [
             "Smexoed", "sophiexeonfan", "Love11Ak", "rizzaaak", "malisss", "ggyohj", "Bellysimo5", 
@@ -4227,10 +4174,18 @@
                     }, 200);
                 }
                 
-                balanceElement.textContent = `${currentValue.toFixed(2)}`;
-                if (totalBalanceElement) {
+                if (currentDisplayCurrency === 'USD') {
                     const usdValue = (currentValue * exchangeRates.TON);
-                    totalBalanceElement.textContent = `$${usdValue.toFixed(2)}`;
+                    balanceElement.textContent = `$${usdValue.toFixed(2)}`;
+                    if (totalBalanceElement) {
+                        totalBalanceElement.textContent = `$${usdValue.toFixed(2)}`;
+                    }
+                } else {
+                    balanceElement.textContent = `${currentValue.toFixed(2)} TON`;
+                    if (totalBalanceElement) {
+                        const usdValue = (currentValue * exchangeRates.TON);
+                        totalBalanceElement.textContent = `$${usdValue.toFixed(2)}`;
+                    }
                 }
             }, intervalTime);
         }
@@ -4965,6 +4920,7 @@
             updateLoginState() {
                 const loginOverlay = document.getElementById('loginOverlay');
                 const balanceMain = document.getElementById('balanceMain');
+                const balanceSecondary = document.getElementById('balanceSecondary');
                 const balanceButtons = document.getElementById('balanceButtons');
                 
                 const gameControlCancel = document.getElementById('gameControlCancel');
@@ -4974,11 +4930,13 @@
                 if (this.isLoggedIn) {
                     loginOverlay.style.display = 'none';
                     balanceMain.classList.remove('balance-blurred');
+                    balanceSecondary.classList.remove('balance-blurred');
                     balanceButtons.style.display = 'flex';
                     this.updatePlayerActionButtons();
                 } else {
                     loginOverlay.style.display = 'block';
                     balanceMain.classList.add('balance-blurred');
+                    balanceSecondary.classList.add('balance-blurred');
                     balanceButtons.style.display = 'none';
                     
                     gameControlCancel.classList.remove('show');
@@ -5038,7 +4996,7 @@
             startOnlineCounter() {
                 setInterval(() => {
                     this.onlineCount = Math.floor(Math.random() * 51) + 110;
-                    document.getElementById('onlineCount').textContent = this.onlineCount;
+                    // Онлайн счетчик убран
                 }, 3000);
             }
 
@@ -5403,14 +5361,11 @@
 
                 const elapsed = Date.now() - this.gameStartTime;
                 
-                // Добавляем небольшие случайные отклонения для неровности
-                const noise = (Math.random() - 0.5) * 10; // Случайное отклонение ±5 пикселей
-                
-                const x = Math.min((elapsed / 15000) * (width - 100), width - 100) + 50 + noise * 0.5;
+                const x = Math.min((elapsed / 15000) * (width - 100), width - 100) + 50;
                 
                 const multiplierProgress = Math.min((this.currentMultiplier - 1.00) / 19.0, 1.0);
                 const smoothProgress = Math.pow(multiplierProgress, 0.4);
-                const y = Math.max(height - 50 - (smoothProgress * (height - 150)), 50) + noise;
+                const y = Math.max(height - 50 - (smoothProgress * (height - 150)), 50);
                 
                 this.chartPoints.push({ x: x, y: y });
 
@@ -5634,14 +5589,26 @@
                 if (isBalanceHidden) return;
                 
                 const balanceMainText = document.getElementById('balanceMainText');
+                const balanceSecondaryText = document.getElementById('balanceSecondaryText');
+                const currencySwitch = document.getElementById('currencySwitch');
                 
-                // Показываем только в тонах
-                balanceMainText.textContent = this.balance.toFixed(2);
+                if (currentDisplayCurrency === 'USD') {
+                    const usdValue = (this.balance * exchangeRates.TON);
+                    balanceMainText.textContent = `$${usdValue.toFixed(2)}`;
+                    balanceSecondaryText.textContent = `${this.balance.toFixed(2)} TON`;
+                    currencySwitch.textContent = 'TON';
+                } else {
+                    balanceMainText.textContent = `${this.balance.toFixed(2)} TON`;
+                    const usdValue = (this.balance * exchangeRates.TON);
+                    balanceSecondaryText.textContent = `$${usdValue.toFixed(2)}`;
+                    currencySwitch.textContent = 'USD';
+                }
                 
                 document.getElementById('totalGames').textContent = this.totalGames;
                 document.getElementById('winRate').textContent = this.totalGames > 0 ? 
                     Math.round((this.wins / this.totalGames) * 100) + '%' : '0%';
                 
+                this.updateHistory();
                 this.updateWalletDisplay();
                 updateBetInfoDisplay();
                 
@@ -5649,6 +5616,43 @@
                 if (accountBalance) {
                     accountBalance.textContent = `${this.balance.toFixed(2)} TON`;
                 }
+            }
+
+            updateHistory() {
+                const historyList = document.getElementById('historyList');
+                historyList.innerHTML = '';
+                
+                this.gameHistory.slice().reverse().forEach(game => {
+                    const item = document.createElement('div');
+                    let className = 'history-item';
+                    
+                    if (game.win === true) {
+                        className += ' win';
+                        item.textContent = `${game.multiplier.toFixed(2)}x ✓`;
+                    } else if (game.win === false) {
+                        className += ' lose';
+                        
+                        // Определяем цвет множителя
+                        if (game.multiplier < 2.00) {
+                            className += ' red-multiplier';
+                        } else if (game.multiplier >= 2.01 && game.multiplier <= 5.00) {
+                            className += ' yellow-multiplier';
+                        } else if (game.multiplier > 5.00 && game.multiplier <= 10.00) {
+                            className += ' orange-multiplier';
+                        } else {
+                            className += ' green-multiplier';
+                        }
+                        
+                        item.textContent = `${game.multiplier.toFixed(2)}x ✗`;
+                    } else {
+                        item.textContent = `${game.multiplier.toFixed(2)}x`;
+                        item.style.background = 'rgba(139, 69, 255, 0.2)';
+                        item.style.color = '#8b45ff';
+                    }
+                    
+                    item.className = className;
+                    historyList.appendChild(item);
+                });
             }
 
             updateLastBets() {
@@ -5759,31 +5763,30 @@
 
         function switchToSlide(slideIndex) {
             const sliderContainer = document.getElementById('sliderContainer');
-            const crashBtn = document.getElementById('crashBtn');
-            const bonusBtn = document.getElementById('bonusBtn');
-            const casesBtn = document.getElementById('casesBtn');
-            const walletBtn = document.getElementById('walletBtn');
+            const crashNavBtn = document.getElementById('crashNavBtn');
+            const bonusNavBtn = document.getElementById('bonusNavBtn');
+            const casesNavBtn = document.getElementById('casesNavBtn');
+            const walletNavBtn = document.getElementById('walletNavBtn');
             
             currentSlide = slideIndex;
             sliderContainer.style.transform = `translateX(-${slideIndex * 25}%)`;
             
-            crashBtn.classList.remove('active');
-            bonusBtn.classList.remove('active');
-            casesBtn.classList.remove('active');
-            walletBtn.classList.remove('active');
+            // Убираем активный класс со всех кнопок
+            crashNavBtn.classList.remove('active');
+            bonusNavBtn.classList.remove('active');
+            casesNavBtn.classList.remove('active');
+            walletNavBtn.classList.remove('active');
             
+            // Добавляем активный класс к соответствующей кнопке
             if (slideIndex === 0) {
-                crashBtn.classList.add('active');
+                crashNavBtn.classList.add('active');
             } else if (slideIndex === 1) {
-                bonusBtn.classList.add('active');
+                bonusNavBtn.classList.add('active');
             } else if (slideIndex === 2) {
-                casesBtn.classList.add('active');
+                casesNavBtn.classList.add('active');
             } else if (slideIndex === 3) {
-                walletBtn.classList.add('active');
+                walletNavBtn.classList.add('active');
             }
-            
-            // Обновляем видимость хедера
-            updateHeaderVisibility();
         }
 
         function saveUserData(nickname) {
@@ -6014,7 +6017,7 @@
         }
 
         document.addEventListener('keypress', function(e) {
-            if (e.target.i === 'supportInput' && e.key === 'Enter') {
+            if (e.target.id === 'supportInput' && e.key === 'Enter') {
                 sendSupportMessage();
             }
         });
