@@ -70,7 +70,7 @@
             overflow-x: hidden;
             min-height: 100vh;
             padding: 20px;
-            padding-bottom: 100px; /* Место для нижней навигации */
+            padding-bottom: 150px; /* Увеличено место для кнопок внизу */
         }
 
         .container {
@@ -110,19 +110,6 @@
             border-radius: 12px;
             border: 1px solid rgba(139, 69, 255, 0.3);
             position: relative;
-        }
-
-        .balance-logo {
-            width: 40px;
-            height: 40px;
-            background: #8b45ff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 900;
-            font-size: 1.2rem;
-            color: white;
         }
 
         .ton-icon {
@@ -230,7 +217,7 @@
         }
 
         .balance-button {
-            background: #8b45ff;
+            background: #185fc9; /* ИЗМЕНЕН ЦВЕТ + НА #185fc9 */
             color: white;
             border: none;
             padding: 12px 16px;
@@ -249,13 +236,18 @@
         }
 
         .balance-button:hover {
-            background: #7a3de6;
+            background: #1450a8;
             transform: translateY(-1px);
         }
 
+        /* УБИРАЕМ КНОПКУ МИНУСА */
+        .balance-button.withdraw {
+            display: none;
+        }
+
         .refresh-balance-button {
-            background: #8b45ff;
-            border: 1px solid #8b45ff;
+            background: #185fc9; /* ИЗМЕНЕН ЦВЕТ НА #185fc9 */
+            border: 1px solid #185fc9;
             border-radius: 50%;
             width: 35px;
             height: 35px;
@@ -270,7 +262,7 @@
         }
 
         .refresh-balance-button:hover {
-            background: #7a3de6;
+            background: #1450a8;
             transform: scale(1.1);
         }
 
@@ -317,21 +309,20 @@
             transform: translateY(-1px);
         }
 
-        /* Нижняя навигационная панель */
+        /* Нижняя навигационная панель - СДЕЛАНА НОРМАЛЬНО ВИДИМОЙ */
         .bottom-navigation {
             position: fixed;
             bottom: 0;
             left: 0;
             right: 0;
             background: #2a2a2a;
-            opacity: 0.05; /* Изменено с 0.8 на 0.05 для 95% прозрачности */
+            opacity: 0.95; /* Изменено с 0.05 на 0.95 для нормальной видимости */
             padding: 15px 0;
             border-top: 1px solid rgba(139, 69, 255, 0.3);
             z-index: 1000;
             display: flex;
             justify-content: center;
             gap: 20px;
-            transform: scaleX(1.2); /* Увеличиваем ширину в 1.2 раза */
         }
 
         .nav-btn {
@@ -365,6 +356,37 @@
             width: 32px;
             height: 32px;
             object-fit: contain;
+        }
+
+        /* КНОПКИ ВНИЗУ САЙТА */
+        .bottom-buttons {
+            position: fixed;
+            bottom: 80px; /* Над нижней панелью */
+            left: 20px;
+            right: 20px;
+            display: flex;
+            justify-content: space-between;
+            z-index: 1001;
+            pointer-events: none;
+        }
+
+        .bottom-btn {
+            background: #1a1a2e;
+            border: 1px solid rgba(139, 69, 255, 0.3);
+            border-radius: 12px;
+            color: white;
+            font-family: 'Orbitron', monospace;
+            font-weight: 700;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1001;
+            pointer-events: auto;
+        }
+
+        .bottom-btn:hover {
+            background: rgba(139, 69, 255, 0.2);
+            transform: translateY(-2px);
         }
 
         .content-slider {
@@ -1359,7 +1381,7 @@
             background-image: 
                 linear-gradient(rgba(139, 69, 255, 0.1) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(139, 69, 255, 0.1) 1px, transparent 1px);
-            background-size: 50px 50px; /* Начальный большой размер клеток */
+            background-size: 50px 50px; /* Начальный размер клеток */
         }
 
         .game-control-buttons {
@@ -1566,7 +1588,7 @@
         }
 
         .chart-line {
-            stroke: #96ff54; /* ИЗМЕНЕН ЦВЕТ С ФИОЛЕТОВОГО НА ЗЕЛЕНЫЙ */
+            stroke: #96ff54; /* ЗЕЛЕНАЯ ЛИНИЯ */
             stroke-width: 4;
             fill: none;
             filter: drop-shadow(0 0 10px #96ff54);
@@ -1615,7 +1637,7 @@
         .countdown-number {
             font-size: 8rem;
             font-weight: 900;
-            color: white; /* ИЗМЕНЕН ЦВЕТ ОБРАТНОГО ОТСЧЕТА НА БЕЛЫЙ */
+            color: white; /* БЕЛЫЙ ЦВЕТ ОБРАТНОГО ОТСЧЕТА */
             animation: heartbeat 1s ease-in-out;
         }
 
@@ -1798,29 +1820,6 @@
             0% { opacity: 0.5; }
             50% { opacity: 1; }
             100% { opacity: 0.5; }
-        }
-
-        .support-button {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #8b45ff;
-            color: white;
-            border: none;
-            border-radius: 12px;
-            padding: 10px 20px;
-            font-family: 'Orbitron', monospace;
-            font-weight: 700;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            z-index: 1000;
-            text-transform: none;
-        }
-
-        .support-button:hover {
-            background: #7a3de6;
-            transform: translateY(-2px);
         }
 
         /* Контент поддержки */
@@ -2366,27 +2365,6 @@
             line-height: 1.5;
         }
 
-        .language-switcher {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            background: #1a1a2e;
-            border: 1px solid rgba(139, 69, 255, 0.3);
-            border-radius: 12px;
-            color: white;
-            font-family: 'Orbitron', monospace;
-            font-weight: 700;
-            padding: 10px 20px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            z-index: 1001;
-        }
-
-        .language-switcher:hover {
-            background: rgba(139, 69, 255, 0.2);
-            transform: translateY(-2px);
-        }
-
         .color-picker-modal {
             background: #2a2a2a;
             border: 2px solid rgba(150, 150, 150, 0.5);
@@ -2821,14 +2799,14 @@
             }
 
             body {
-                padding-bottom: 120px;
+                padding-bottom: 150px;
             }
         }
 
         @media (max-width: 768px) {
             body {
                 padding: 10px;
-                padding-bottom: 120px;
+                padding-bottom: 150px;
             }
 
             .header {
@@ -3085,6 +3063,17 @@
             .support-channel {
                 padding: 20px;
             }
+
+            .bottom-buttons {
+                flex-direction: column;
+                gap: 10px;
+                left: 20px;
+                bottom: 80px;
+            }
+
+            .bottom-btn {
+                align-self: flex-start;
+            }
         }
 
         #depositButtons .modal-btn.confirm {
@@ -3105,9 +3094,7 @@
             </div>
             
             <div class="balance-container">
-                <div class="ton-icon">
-                    <img src="https://files.svgcdn.io/token-branded/ton.png" alt="TON" style="width: 24px; height: 24px;">
-                </div>
+                <!-- УБРАН ЛОГОТИП ИЗ БАЛАНСА -->
                 <div class="balance-amount" id="balance" onclick="toggleCurrency()">
                     <div class="balance-main balance-blurred" id="balanceMain">
                         <span id="balanceMainText">100</span>
@@ -3120,7 +3107,7 @@
                 </div>
                 <div class="balance-buttons" id="balanceButtons" style="display: none;">
                     <button class="balance-button deposit" onclick="showDepositModal()" title="Пополнить">+</button>
-                    <button class="balance-button" onclick="showWithdrawModal()" title="Вывести">-</button>
+                    <!-- УБРАНА КНОПКА МИНУСА -->
                     <div class="refresh-balance-button" onclick="refreshBalance()" title="Обновить баланс">
                         🔄
                     </div>
@@ -3136,8 +3123,6 @@
                 </div>
             </div>
         </div>
-
-        <button class="support-button" onclick="showSupportModal()">💬</button>
 
         <div class="content-slider">
             <div class="slider-container" id="sliderContainer">
@@ -3344,6 +3329,7 @@
                 <div class="slide">
                     <div class="wallet-content">
                         <div class="wallet-header">
+                            <!-- УБРАН ТЕКСТ "TonCrashWallet" -->
                             <h1 class="wallet-title" data-lang="wallet-title">🔶</h1>
                             <button class="refresh-button" onclick="refreshWallet()">
                                 ⚙️
@@ -3553,7 +3539,11 @@
         </button>
     </div>
 
-    <button class="language-switcher" onclick="toggleLanguage()" id="languageSwitcher">RU</button>
+    <!-- КНОПКИ ВНИЗУ САЙТА -->
+    <div class="bottom-buttons">
+        <button class="bottom-btn" onclick="toggleLanguage()" id="languageSwitcher">RU</button>
+        <button class="bottom-btn" onclick="showSupportModal()">💬</button>
+    </div>
 
     <div class="bet-info-display" id="betInfoDisplay" style="display: none;"></div>
 
@@ -4061,7 +4051,7 @@
                 'bonus': 'Бонусы',
                 'cases': 'Кейсы',
                 'wallet': 'Кошелек',
-                'wallet-title': 'TonCrash Wallet',
+                'wallet-title': '🔶',
                 'login-title': 'Вход в игру',
                 'enter-nickname': 'Введите ваш ник в Telegram',
                 'remember-me': 'Запомнить меня',
@@ -4111,7 +4101,7 @@
                 'bonus': 'Bonus',
                 'cases': 'Cases',
                 'wallet': 'Wallet',
-                'wallet-title': 'TonCrash Wallet',
+                'wallet-title': '🔶',
                 'login-title': 'Login to Game',
                 'enter-nickname': 'Enter your Telegram nickname',
                 'remember-me': 'Remember me',
@@ -5526,7 +5516,8 @@
                 
                 this.chartPoints.push({ x: x, y: y });
 
-                if (this.chartPoints.length > 300) {
+                // ОБЕСПЕЧИВАЕМ НЕПРЕРЫВНОСТЬ ЛИНИИ
+                if (this.chartPoints.length > 800) { // Увеличено для длинной линии
                     this.chartPoints.shift();
                 }
 
@@ -5550,10 +5541,10 @@
                 document.getElementById('chartLine').setAttribute('d', linePath);
                 document.getElementById('chartArea').setAttribute('d', areaPath);
 
-                // ОБНОВЛЯЕМ РАЗМЕР КЛЕТОК В ЗАВИСИМОСТИ ОТ МНОЖИТЕЛЯ (эффект отдаления)
+                // ИСПРАВЛЕНО: ОБНОВЛЯЕМ РАЗМЕР КЛЕТОК В ЗАВИСИМОСТИ ОТ МНОЖИТЕЛЯ (эффект приближения)
                 const baseGridSize = 50; // Начальный размер 50px
-                const scaleFactor = 1 + (this.currentMultiplier - 1) * 0.5; // Увеличиваем размер по мере роста множителя
-                const newGridSize = baseGridSize * scaleFactor;
+                const scaleFactor = 1 - (this.currentMultiplier - 1) * 0.05; // УМЕНЬШАЕМ размер по мере роста множителя (приближаем)
+                const newGridSize = Math.max(baseGridSize * scaleFactor, 10); // Минимум 10px
                 
                 gameCanvas.style.setProperty('--grid-size', `${newGridSize}px`);
                 gameCanvas.style.backgroundSize = `${newGridSize}px ${newGridSize}px`;
