@@ -65,7 +65,7 @@
 
         body {
             font-family: 'Orbitron', monospace;
-            background: #0d0d0d;
+            background: #121212;
             color: white;
             overflow-x: hidden;
             min-height: 100vh;
@@ -309,14 +309,14 @@
             transform: translateY(-1px);
         }
 
-        /* Нижняя навигационная панель - СДЕЛАНА НОРМАЛЬНО ВИДИМОЙ */
+        /* Нижняя навигационная панель - сделана прозрачнее на 5% */
         .bottom-navigation {
             position: fixed;
             bottom: 0;
             left: 0;
             right: 0;
             background: #2a2a2a;
-            opacity: 0.95; /* Изменено с 0.05 на 0.95 для нормальной видимости */
+            opacity: 0.90; /* Изменено с 0.95 на 0.90 (на 5% прозрачнее) */
             padding: 15px 0;
             border-top: 1px solid rgba(139, 69, 255, 0.3);
             z-index: 1000;
@@ -358,16 +358,9 @@
             object-fit: contain;
         }
 
-        /* КНОПКИ ВНИЗУ САЙТА */
+        /* КНОПКИ ВНИЗУ САЙТА - СКРЫТЫ */
         .bottom-buttons {
-            position: fixed;
-            bottom: 80px; /* Над нижней панелью */
-            left: 20px;
-            right: 20px;
-            display: flex;
-            justify-content: space-between;
-            z-index: 1001;
-            pointer-events: none;
+            display: none; /* ПОЛНОСТЬЮ СКРЫВАЕМ КНОПКИ ЯЗЫКА И ЧАТА */
         }
 
         .bottom-btn {
@@ -1370,7 +1363,7 @@
         .game-canvas {
             background: #1a1a2e;
             border-radius: 25px; /* Увеличен радиус для круглых окон */
-            border: 2px solid rgba(139, 69, 255, 0.3);
+            border: 2px solid rgba(240, 240, 240, 0.3); /* Изменен цвет рамки на #f0f0f0 */
             position: relative;
             overflow: hidden;
             display: flex;
@@ -1378,9 +1371,10 @@
             justify-content: center;
             height: 720px;
             width: 100%;
+            background-color: #121212; /* Изменен фон клеток на #121212 */
             background-image: 
-                linear-gradient(rgba(139, 69, 255, 0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(139, 69, 255, 0.1) 1px, transparent 1px);
+                linear-gradient(rgba(240, 240, 240, 0.3) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(240, 240, 240, 0.3) 1px, transparent 1px); /* Изменен цвет линий клеток на #f0f0f0 */
             background-size: 50px 50px; /* Начальный размер клеток */
         }
 
@@ -1485,8 +1479,8 @@
 
         .game-canvas.grid-shake {
             background-image: 
-                linear-gradient(rgba(139, 69, 255, 0.2) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(139, 69, 255, 0.2) 1px, transparent 1px);
+                linear-gradient(rgba(240, 240, 240, 0.5) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(240, 240, 240, 0.5) 1px, transparent 1px); /* Изменен цвет при шейке */
             animation: gridShake 0.8s ease-in-out;
         }
 
@@ -1589,7 +1583,7 @@
 
         .chart-line {
             stroke: #96ff54; /* ЗЕЛЕНАЯ ЛИНИЯ */
-            stroke-width: 4;
+            stroke-width: 8; /* УВЕЛИЧЕНА ТОЛЩИНА ЛИНИИ В 2 РАЗА (с 4 до 8) */
             fill: none;
             filter: drop-shadow(0 0 10px #96ff54);
             transition: stroke 0.3s ease;
@@ -3539,7 +3533,7 @@
         </button>
     </div>
 
-    <!-- КНОПКИ ВНИЗУ САЙТА -->
+    <!-- КНОПКИ ВНИЗУ САЙТА - СКРЫТЫ -->
     <div class="bottom-buttons">
         <button class="bottom-btn" onclick="toggleLanguage()" id="languageSwitcher">RU</button>
         <button class="bottom-btn" onclick="showSupportModal()">💬</button>
@@ -5541,9 +5535,9 @@
                 document.getElementById('chartLine').setAttribute('d', linePath);
                 document.getElementById('chartArea').setAttribute('d', areaPath);
 
-                // ИСПРАВЛЕНО: ОБНОВЛЯЕМ РАЗМЕР КЛЕТОК В ЗАВИСИМОСТИ ОТ МНОЖИТЕЛЯ (эффект приближения)
+                // ОБНОВЛЯЕМ РАЗМЕР КЛЕТОК В ЗАВИСИМОСТИ ОТ МНОЖИТЕЛЯ (эффект приближения) - УСКОРЕНО В 1.5 РАЗА
                 const baseGridSize = 50; // Начальный размер 50px
-                const scaleFactor = 1 - (this.currentMultiplier - 1) * 0.05; // УМЕНЬШАЕМ размер по мере роста множителя (приближаем)
+                const scaleFactor = 1 - (this.currentMultiplier - 1) * 0.075; // УСКОРЕНО с 0.05 до 0.075 (в 1.5 раза)
                 const newGridSize = Math.max(baseGridSize * scaleFactor, 10); // Минимум 10px
                 
                 gameCanvas.style.setProperty('--grid-size', `${newGridSize}px`);
@@ -5880,6 +5874,7 @@
 
             withdraw(amount, address) {
                 if (!this.isLoggedIn) return false;
+                
                 
                 const minWithdraw = 1;
                 const networkFee = 0.02;
