@@ -63,6 +63,81 @@ opacity: 0;
 pointer-events: none;
 }
 
+/* НОВЫЕ ФИКСИРОВАННЫЕ ПАНЕЛИ СВЕРХУ */
+.fixed-balance-panel {
+position: fixed;
+top: 20px;
+left: 20px;
+background: rgba(0, 0, 0, 0.6);
+backdrop-filter: blur(10px);
+border-radius: 25px;
+padding: 12px 20px;
+display: flex;
+align-items: center;
+gap: 12px;
+z-index: 10000;
+border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.fixed-balance-ton-logo {
+width: 32px;
+height: 32px;
+border-radius: 50%;
+}
+
+.fixed-balance-amount {
+color: white;
+font-family: 'Orbitron', monospace;
+font-weight: 700;
+font-size: 1.1rem;
+}
+
+.fixed-balance-plus {
+width: 28px;
+height: 28px;
+background: white;
+color: black;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+font-weight: 900;
+font-size: 1.2rem;
+cursor: pointer;
+transition: all 0.3s ease;
+}
+
+.fixed-balance-plus:hover {
+transform: scale(1.1);
+}
+
+.fixed-status-panel {
+position: fixed;
+top: 20px;
+right: 20px;
+background: rgba(0, 0, 0, 0.6);
+backdrop-filter: blur(10px);
+border-radius: 25px;
+padding: 12px 20px;
+display: flex;
+align-items: center;
+gap: 12px;
+z-index: 10000;
+border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.fixed-status-icon {
+width: 32px;
+height: 32px;
+}
+
+.fixed-status-number {
+color: white;
+font-family: 'Orbitron', monospace;
+font-weight: 700;
+font-size: 1.1rem;
+}
+
 body {
 font-family: 'Orbitron', monospace;
 background: #121212;
@@ -71,6 +146,7 @@ overflow-x: hidden;
 min-height: 100vh;
 padding: 20px;
 padding-bottom: 150px;
+padding-top: 100px; /* Добавлен отступ сверху для фиксированных панелей */
 }
 
 .container {
@@ -84,7 +160,7 @@ display: flex;
 justify-content: space-between;
 align-items: center;
 margin-bottom: 30px;
-background: #383838; /* ИЗМЕНЕНО С rgba(26, 26, 46, 0.5) НА #383838 */
+background: #383838;
 padding: 20px;
 border-radius: 20px;
 border: 1px solid rgba(139, 69, 255, 0.3);
@@ -388,11 +464,11 @@ width: 100%;
 .slider-container {
 display: flex;
 transition: transform 0.5s ease-in-out;
-width: 500%; /* ИЗМЕНЕНО С 600% НА 500% (убрали слоты) */
+width: 500%;
 }
 
 .slide {
-width: 20%; /* ИЗМЕНЕНО С 16.66% НА 20% (убрали слоты) */
+width: 20%;
 flex-shrink: 0;
 }
 
@@ -1195,7 +1271,7 @@ transform: translateY(-2px);
 }
 
 .players-panel {
-background: #383838; /* ИЗМЕНЕНО С #1a1a2e НА #383838 */
+background: #383838;
 border-radius: 15px;
 border: 1px solid rgba(139, 69, 255, 0.3);
 padding: 20px;
@@ -1215,7 +1291,7 @@ bottom: 0;
 left: 0;
 right: 0;
 height: 60px;
-background: linear-gradient(transparent, #383838); /* ИЗМЕНЕНО С #1a1a2e НА #383838 */
+background: linear-gradient(transparent, #383838);
 pointer-events: none;
 z-index: 10;
 }
@@ -1395,8 +1471,12 @@ justify-content: center;
 height: 720px;
 width: 100%;
 background-color: rgba(18, 18, 18, 0.9);
-background-image: linear-gradient(rgba(240, 240, 240, 0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(240, 240, 240, 0.3) 1px, transparent 1px);
-background-size: 50px 50px;
+/* ИЗМЕНЕННЫЙ ГРАДИЕНТ ДЛЯ СЕТКИ */
+background-image: 
+  linear-gradient(rgba(255, 255, 255, 1) 1px, transparent 1px),
+  linear-gradient(90deg, rgba(255, 255, 255, 1) 1px, transparent 1px),
+  linear-gradient(45deg, rgba(105, 255, 82, 0.3) 0%, rgba(33, 70, 255, 0.3) 100%);
+background-size: 50px 50px, 50px 50px, 100% 100%;
 }
 
 /* НОВЫЕ ВЫИГРЫШИ ДРУГИХ ИГРОКОВ ПОД ИГРОЙ */
@@ -1479,10 +1559,10 @@ pointer-events: none;
 z-index: 10;
 }
 
-/* ИЗМЕНЕНЫ КНОПКИ НА #0c5bf7 */
+/* ОБНОВЛЕННЫЕ КНОПКИ УПРАВЛЕНИЯ */
 .game-control-buttons {
 position: absolute;
-bottom: 20px; /* ИЗМЕНЕНО С 60px НА 20px */
+bottom: 20px;
 left: 20px;
 right: 20px;
 display: flex;
@@ -1502,26 +1582,32 @@ text-transform: none;
 display: none;
 }
 
+/* КНОПКА ОТМЕНИТЬ - ТЕПЕРЬ ТАКАЯ ЖЕ КАК ПОСТАВИТЬ */
 .game-control-button.cancel-bet-button {
-background: #ff4444;
-color: white;
-border: 1px solid #ff4444;
-padding: 12px 24px;
-min-width: 140px;
-}
-
-.game-control-button.cancel-bet-button:hover {
-background: #e63946;
-transform: translateY(-2px);
-}
-
-/* НОВАЯ ШИРОКАЯ КНОПКА ПОСТАВИТЬ */
-.game-control-button.place-bet-button {
-background: #0c5bf7; /* ИЗМЕНЕН ЦВЕТ */
+background: #0c5bf7;
 color: white;
 border: 1px solid #0c5bf7;
 font-weight: 700;
-flex: 1; /* РАСТЯГИВАЕТСЯ НА ВСЮ ШИРИНУ */
+flex: 1;
+padding: 16px;
+font-size: 1.2rem;
+border-radius: 15px;
+box-shadow: 0 4px 15px rgba(12, 91, 247, 0.3);
+}
+
+.game-control-button.cancel-bet-button:hover {
+background: #0a4fd1;
+transform: translateY(-2px);
+box-shadow: 0 6px 20px rgba(12, 91, 247, 0.4);
+}
+
+/* КНОПКА ПОСТАВИТЬ */
+.game-control-button.place-bet-button {
+background: #0c5bf7;
+color: white;
+border: 1px solid #0c5bf7;
+font-weight: 700;
+flex: 1;
 padding: 16px;
 font-size: 1.2rem;
 border-radius: 15px;
@@ -1534,18 +1620,23 @@ transform: translateY(-2px);
 box-shadow: 0 6px 20px rgba(12, 91, 247, 0.4);
 }
 
+/* КНОПКА ЗАБРАТЬ - КРАСНЫЙ ГРАДИЕНТ */
 .game-control-button.cashout-button {
-background: #0c5bf7; /* ИЗМЕНЕН ЦВЕТ */
+background: linear-gradient(135deg, #ff2b2b, #c91616);
 color: white;
-border: 1px solid #0c5bf7;
-padding: 12px 24px;
-flex: 1; /* РАСТЯГИВАЕТСЯ НА ВСЮ ШИРИНУ */
-font-size: 1.1rem;
+border: 1px solid #ff2b2b;
+font-weight: 700;
+flex: 1;
+padding: 16px;
+font-size: 1.2rem;
+border-radius: 15px;
+box-shadow: 0 4px 15px rgba(255, 43, 43, 0.3);
 }
 
 .game-control-button.cashout-button:hover {
-background: #0a4fd1;
+background: linear-gradient(135deg, #e62525, #b31414);
 transform: translateY(-2px);
+box-shadow: 0 6px 20px rgba(255, 43, 43, 0.4);
 }
 
 .game-control-button.show {
@@ -1583,7 +1674,10 @@ animation: heartbeatPulse 0.8s ease-in-out;
 }
 
 .game-canvas.grid-shake {
-background-image: linear-gradient(rgba(240, 240, 240, 0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(240, 240, 240, 0.5) 1px, transparent 1px);
+background-image: 
+  linear-gradient(rgba(255, 255, 255, 0.5) 1px, transparent 1px),
+  linear-gradient(90deg, rgba(255, 255, 255, 0.5) 1px, transparent 1px),
+  linear-gradient(45deg, rgba(105, 255, 82, 0.4) 0%, rgba(33, 70, 255, 0.4) 100%);
 animation: gridShake 0.8s ease-in-out;
 }
 
@@ -1601,10 +1695,10 @@ animation: gridShake 0.8s ease-in-out;
 }
 
 @keyframes gridShake {
-0%, 100% { background-size: var(--grid-size, 50px) var(--grid-size, 50px); background-position: 0 0; }
-25% { background-size: calc(var(--grid-size, 50px) + 1px) calc(var(--grid-size, 50px) + 1px); background-position: 1px 1px; }
-50% { background-size: calc(var(--grid-size, 50px) - 1px) calc(var(--grid-size, 50px) - 1px); background-position: -1px -1px; }
-75% { background-size: var(--grid-size, 50px) var(--grid-size, 50px); background-position: 0.5px 0.5px; }
+0%, 100% { background-size: var(--grid-size, 50px) var(--grid-size, 50px), var(--grid-size, 50px) var(--grid-size, 50px), 100% 100%; background-position: 0 0, 0 0, 0 0; }
+25% { background-size: calc(var(--grid-size, 50px) + 1px) calc(var(--grid-size, 50px) + 1px), calc(var(--grid-size, 50px) + 1px) calc(var(--grid-size, 50px) + 1px), 100% 100%; background-position: 1px 1px, 1px 1px, 0 0; }
+50% { background-size: calc(var(--grid-size, 50px) - 1px) calc(var(--grid-size, 50px) - 1px), calc(var(--grid-size, 50px) - 1px) calc(var(--grid-size, 50px) - 1px), 100% 100%; background-position: -1px -1px, -1px -1px, 0 0; }
+75% { background-size: var(--grid-size, 50px) var(--grid-size, 50px), var(--grid-size, 50px) var(--grid-size, 50px), 100% 100%; background-position: 0.5px 0.5px, 0.5px 0.5px, 0 0; }
 }
 
 .multiplier-display {
@@ -1623,29 +1717,9 @@ transition: all 0.1s ease;
 color: #ff4444;
 }
 
+/* УБРАНО СООБЩЕНИЕ О ВЫИГРЫШЕ ВВЕРХУ */
 .win-display {
-position: absolute;
-top: 120px;
-left: 50%;
-transform: translateX(-50%);
-font-size: 2.5rem;
-font-weight: 900;
-color: #8b45ff;
-z-index: 11;
-opacity: 0;
-transition: all 0.3s ease;
-}
-
-.win-display.show {
-opacity: 1;
-animation: winPulse 2s ease-in-out;
-}
-
-@keyframes winPulse {
-0% { transform: translateX(-50%) scale(0.8); opacity: 0; }
-20% { transform: translateX(-50%) scale(1.2); opacity: 1; }
-80% { transform: translateX(-50%) scale(1); opacity: 1; }
-100% { transform: translateX(-50%) scale(1); opacity: 0; }
+display: none !important;
 }
 
 .trading-chart {
@@ -1737,7 +1811,7 @@ color: #ff4444;
 }
 
 .betting-panel {
-background: #383838; /* ИЗМЕНЕНО С #1a1a2e НА #383838 */
+background: #383838;
 border-radius: 15px;
 border: 1px solid rgba(139, 69, 255, 0.3);
 padding: 30px;
@@ -1773,7 +1847,7 @@ text-transform: none;
 }
 
 .history-panel {
-background: #383838; /* ИЗМЕНЕНО С #444444 НА #383838 */
+background: #383838;
 border-radius: 12px;
 border: 1px solid rgba(150, 150, 150, 0.3);
 padding: 20px;
@@ -1961,115 +2035,19 @@ font-size: 1rem;
 line-height: 1.4;
 }
 
+/* УБИРАЕМ ПАНЕЛЬ С УВЕДОМЛЕНИЯМИ СВЕРХУ */
 .wins-panel {
-position: fixed;
-bottom: 120px;
-left: 20px;
-right: 20px;
-max-width: 1200px;
-margin: 0 auto;
-z-index: 999;
-pointer-events: none;
+display: none !important;
 }
 
-.wins-container {
-display: flex;
-gap: 15px;
-justify-content: center;
-align-items: flex-end;
-flex-wrap: wrap;
-max-height: 200px;
-overflow: hidden;
-}
-
-.win-notification {
-background: linear-gradient(135deg, #1a1a2e, #2d2d5a);
-border: 2px solid rgba(69, 156, 255, 0.5);
-border-radius: 15px;
-padding: 15px 20px;
-min-width: 280px;
-max-width: 350px;
-display: flex;
-align-items: center;
-gap: 15px;
-box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-animation: winSlideIn 0.8s ease-out;
-position: relative;
-overflow: hidden;
-pointer-events: auto;
-}
-
-.win-notification::before {
-content: '';
-position: absolute;
-top: 0;
-left: -100%;
-width: 100%;
-height: 100%;
-background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-animation: winShine 2s ease-in-out infinite;
-}
-
-.win-rocket {
-width: 40px;
-height: 40px;
-flex-shrink: 0;
-}
-
-.win-text {
-flex: 1;
-color: white;
-font-family: 'Orbitron', monospace;
-}
-
-.win-header {
-font-size: 0.9rem;
-font-weight: 600;
-opacity: 0.8;
-margin-bottom: 2px;
-}
-
-.win-amount {
-font-size: 1.2rem;
-font-weight: 900;
-color: #459cff;
-margin-bottom: 2px;
-}
-
-.win-game {
-font-size: 0.8rem;
-opacity: 0.7;
-text-transform: uppercase;
-letter-spacing: 1px;
-}
-
-@keyframes winSlideIn {
-0% { transform: translateX(-100%) scale(0.8); opacity: 0; }
-50% { transform: translateX(10px) scale(1.02); }
-100% { transform: translateX(0) scale(1); opacity: 1; }
-}
-
-@keyframes winShine {
-0% { left: -100%; }
-100% { left: 100%; }
-}
-
-.win-notification.fade-out {
-animation: winSlideOut 0.5s ease-in forwards;
-}
-
-@keyframes winSlideOut {
-to { transform: translateX(-100%) scale(0.8); opacity: 0; }
-}
-
-/* НОВЫЕ BOTTOM SHEET МОДАЛЬНЫЕ ОКНА */
+/* НОВОЕ BOTTOM SHEET МОДАЛЬНЫЕ ОКНА */
 .bottom-sheet-overlay {
 position: fixed;
 top: 0;
 left: 0;
 width: 100%;
 height: 100%;
-background: rgba(0, 0, 0, 0.45); /* 45% затемнение */
+background: rgba(0, 0, 0, 0.45);
 z-index: 10000;
 opacity: 0;
 visibility: hidden;
@@ -2211,7 +2189,7 @@ min-width: 120px;
 }
 
 .modal-btn.confirm {
-background: #0c5bf7; /* ИЗМЕНЕН ЦВЕТ */
+background: #0c5bf7;
 color: white;
 }
 
@@ -2542,15 +2520,16 @@ outline: none;
 border-color: #0c5bf7;
 }
 
+/* НОВАЯ BOTTOM SHEET ДЛЯ ВЫИГРЫШЕЙ ВМЕСТО ВВЕРХУ */
 .win-modal {
 background: #2a2a2a;
 border: 2px solid rgba(150, 150, 150, 0.5);
-border-radius: 20px;
+border-radius: 25px 25px 0 0;
 padding: 40px;
 max-width: 400px;
-width: 90%;
+width: 100%;
 text-align: center;
-transform: scale(0.8);
+transform: translateY(100%);
 transition: transform 0.3s ease;
 position: relative;
 }
@@ -2574,7 +2553,7 @@ border: 2px solid rgba(150, 150, 150, 0.5);
 }
 
 .win-modal-overlay.show .win-modal {
-transform: scale(1);
+transform: translateY(0);
 }
 
 .win-modal h2 {
@@ -3071,6 +3050,37 @@ padding-bottom: 150px;
 body {
 padding: 10px;
 padding-bottom: 150px;
+padding-top: 120px;
+}
+
+.fixed-balance-panel, .fixed-status-panel {
+position: fixed;
+top: 10px;
+padding: 8px 15px;
+border-radius: 20px;
+}
+
+.fixed-balance-panel {
+left: 10px;
+}
+
+.fixed-status-panel {
+right: 10px;
+}
+
+.fixed-balance-ton-logo, .fixed-status-icon {
+width: 24px;
+height: 24px;
+}
+
+.fixed-balance-amount, .fixed-status-number {
+font-size: 0.9rem;
+}
+
+.fixed-balance-plus {
+width: 24px;
+height: 24px;
+font-size: 1rem;
 }
 
 .header {
@@ -3105,10 +3115,6 @@ margin-bottom: 20px;
 
 .multiplier-display {
 font-size: 3rem;
-}
-
-.win-display {
-font-size: 2rem;
 }
 
 .game-control-buttons {
@@ -3323,18 +3329,6 @@ bottom: 80px;
 .bottom-btn {
 align-self: flex-start;
 }
-
-.wins-panel {
-bottom: 140px;
-left: 10px;
-right: 10px;
-}
-
-.win-notification {
-min-width: 250px;
-max-width: 300px;
-padding: 12px 15px;
-}
 }
 
 #depositButtons .modal-btn.confirm {
@@ -3346,6 +3340,18 @@ display: none;
 <!-- Загрузочный экран -->
 <div class="loading-overlay" id="loadingOverlay">
 <div class="loading-spinner"></div>
+</div>
+
+<!-- НОВЫЕ ФИКСИРОВАННЫЕ ПАНЕЛИ СВЕРХУ -->
+<div class="fixed-balance-panel">
+<img src="https://files.svgcdn.io/token-branded/ton.png" alt="TON" class="fixed-balance-ton-logo">
+<span class="fixed-balance-amount" id="fixedBalanceAmount">100 TON</span>
+<div class="fixed-balance-plus" onclick="showDepositModal()">+</div>
+</div>
+
+<div class="fixed-status-panel">
+<img src="https://cdn-icons-png.flaticon.com/512/4122/4122823.png" alt="Status" class="fixed-status-icon">
+<span class="fixed-status-number" id="fixedStatusNumber">79</span>
 </div>
 
 <div class="container">
@@ -3420,9 +3426,9 @@ display: none;
 </div>
 
 <div class="game-control-buttons">
-<button class="game-control-button cancel-bet-button" id="gameControlCancel" onclick="cancelBet()" data-lang="cancel-bet">Отменить ставку</button>
+<button class="game-control-button cancel-bet-button" id="gameControlCancel" onclick="cancelBet()" data-lang="cancel-bet">ОТМЕНИТЬ СТАВКУ</button>
 <button class="game-control-button place-bet-button" id="gameControlPlace" onclick="showBetModal()" data-lang="place-bet">ПОСТАВИТЬ</button>
-<button class="game-control-button cashout-button" id="gameControlCashout" onclick="cashOut()" data-lang="cashout">Забрать</button>
+<button class="game-control-button cashout-button" id="gameControlCashout" onclick="cashOut()" data-lang="cashout">ЗАБРАТЬ</button>
 </div>
 
 <div class="registration-info"></div>
@@ -3592,7 +3598,7 @@ display: none;
 </div>
 </div>
 
-<!-- Слайд 4: Кошелек (СЛОТЫ УБРАНЫ) -->
+<!-- Слайд 4: Кошелек -->
 <div class="slide">
 <div class="wallet-content">
 <div class="wallet-header">
@@ -3732,7 +3738,7 @@ display: none;
 </div>
 </div>
 
-<!-- Слайд 5: Поддержка (ПЕРЕИМЕНОВАН С 6 НА 5) -->
+<!-- Слайд 5: Поддержка -->
 <div class="slide">
 <div class="support-content">
 <div class="support-content-title">💬 Поддержка</div>
@@ -3786,14 +3792,7 @@ display: none;
 </div>
 </div>
 
-<!-- НОВОЕ: Панель уведомлений о выигрышах -->
-<div class="wins-panel" id="winsPanel">
-<div class="wins-container" id="winsContainer">
-<!-- Уведомления о выигрышах будут добавляться здесь динамически -->
-</div>
-</div>
-
-<!-- Нижняя навигационная панель (ОБНОВЛЕНА БЕЗ СЛОТОВ) -->
+<!-- Нижняя навигационная панель -->
 <div class="bottom-navigation">
 <button class="nav-btn active" id="crashNavBtn" onclick="switchToSlide(0)">
 <img src="https://radika1.link/2025/10/06/1111111a5c731ee14345948.png" alt="Crash">
@@ -4103,6 +4102,9 @@ UQCvyMHj2r7Ig73EcbBI3h405uemns12eX49OBW3cVsOEzuW
 let autoCashoutEnabled = false;
 let autoCashoutMultiplier = 2.00;
 
+// Переменная для рандомного числа в статус панели
+let statusNumber = Math.floor(Math.random() * (100 - 15 + 1)) + 15;
+
 // Функция переключения автокешаута
 function toggleAutoCashout() {
 autoCashoutEnabled = !autoCashoutEnabled;
@@ -4110,51 +4112,26 @@ const toggle = document.getElementById('autoCashoutToggle');
 toggle.classList.toggle('active', autoCashoutEnabled);
 }
 
-// НОВАЯ СИСТЕМА УВЕДОМЛЕНИЙ О ВЫИГРЫШАХ
-let winNotifications = [];
-const maxWinNotifications = 3;
+// Обновление фиксированных панелей
+function updateFixedPanels() {
+const fixedBalanceAmount = document.getElementById('fixedBalanceAmount');
+const fixedStatusNumber = document.getElementById('fixedStatusNumber');
 
-function showWinNotification(amount, game = 'CRASH') {
-const winsContainer = document.getElementById('winsContainer');
-
-const notification = document.createElement('div');
-notification.className = 'win-notification';
-notification.innerHTML = `
-<img src="https://radika1.link/2025/10/06/1111111a5c731ee14345948.png" alt="Rocket" class="win-rocket">
-<div class="win-text">
-<div class="win-header">Игрой выиграл</div>
-<div class="win-amount">${amount.toFixed(2)}⚡</div>
-<div class="win-game">${game}</div>
-</div>
-`;
-
-winsContainer.appendChild(notification);
-winNotifications.push(notification);
-
-while (winNotifications.length > maxWinNotifications) {
-const oldNotification = winNotifications.shift();
-oldNotification.classList.add('fade-out');
-setTimeout(() => {
-if (oldNotification.parentNode) {
-oldNotification.parentNode.removeChild(oldNotification);
-}
-}, 500);
+if (game && game.isLoggedIn && fixedBalanceAmount) {
+fixedBalanceAmount.textContent = `${game.balance.toFixed(2)} TON`;
 }
 
-setTimeout(() => {
-if (notification.parentNode) {
-notification.classList.add('fade-out');
-setTimeout(() => {
-if (notification.parentNode) {
-notification.parentNode.removeChild(notification);
-const index = winNotifications.indexOf(notification);
-if (index > -1) {
-winNotifications.splice(index, 1);
+if (fixedStatusNumber) {
+fixedStatusNumber.textContent = statusNumber;
 }
 }
-}, 500);
-}
-}, 8000);
+
+// Обновление статус числа каждые 10 секунд
+function startStatusNumberUpdate() {
+setInterval(() => {
+statusNumber = Math.floor(Math.random() * (100 - 15 + 1)) + 15;
+updateFixedPanels();
+}, 10000);
 }
 
 // НОВАЯ ФУНКЦИЯ ДЛЯ ДОБАВЛЕНИЯ ВЫИГРЫШЕЙ В ПАНЕЛЬ
@@ -4195,23 +4172,6 @@ winItem.style.opacity = '0.6';
 }, 5000);
 }
 
-// Функция генерации случайных выигрышей для демонстрации
-function generateRandomWinNotifications() {
-if (!game || !game.isLoggedIn) return;
-
-const games = ['CRASH', 'STARX', 'METACRASH'];
-const minAmount = 50;
-const maxAmount = 2500;
-
-const interval = Math.random() * 30000 + 15000;
-setTimeout(() => {
-const randomGame = games[Math.floor(Math.random() * games.length)];
-const randomAmount = Math.random() * (maxAmount - minAmount) + minAmount;
-showWinNotification(randomAmount, randomGame);
-generateRandomWinNotifications();
-}, interval);
-}
-
 // Генерация случайных выигрышей для панели под игрой
 function generateRandomRecentWins() {
 if (!game || !game.isLoggedIn) return;
@@ -4235,6 +4195,7 @@ const loadingOverlay = document.getElementById('loadingOverlay');
 game = new CrashGame();
 updateLanguage();
 loadUserData();
+startStatusNumberUpdate();
 
 setTimeout(() => {
 if (loadingOverlay) {
@@ -4614,6 +4575,7 @@ game.balance += 0.05;
 game.saveGameData();
 game.updateDisplay();
 game.updateWalletDisplay();
+updateFixedPanels();
 promoInput.value = '';
 alert(`Промокод активирован! На ваш баланс начислено 0.05 TON!`);
 
@@ -4626,6 +4588,7 @@ game.balance = 0;
 game.saveGameData();
 game.updateDisplay();
 game.updateWalletDisplay();
+updateFixedPanels();
 promoInput.value = '';
 alert('Промокод активирован! Баланс обнулен!');
 
@@ -4658,6 +4621,7 @@ game.balance -= 3.00;
 game.saveGameData();
 game.updateDisplay();
 game.updateWalletDisplay();
+updateFixedPanels();
 
 showStartCaseModal(false);
 }
@@ -4807,6 +4771,7 @@ game.balance += currentWonPrize.price;
 game.saveGameData();
 game.updateDisplay();
 game.updateWalletDisplay();
+updateFixedPanels();
 alert(`Вы продали ${currentWonPrize.name} за ${currentWonPrize.price.toFixed(2)} TON!`);
 closeCaseModal();
 
@@ -5073,10 +5038,6 @@ showPepeWelcomeModal();
 }, 1000);
 
 setTimeout(() => {
-generateRandomWinNotifications();
-}, 5000);
-
-setTimeout(() => {
 generateRandomRecentWins();
 }, 3000);
 }
@@ -5120,6 +5081,7 @@ initializeGame() {
 this.updateDisplay();
 this.updateLoginState();
 this.updateWalletDisplay();
+updateFixedPanels();
 }
 
 regeneratePlayers() {
@@ -5304,6 +5266,7 @@ gameControlCashout.classList.remove('show');
 }
 
 updateBetInfoDisplay();
+updateFixedPanels();
 }
 
 updatePlayerActionButtons() {
@@ -5319,7 +5282,7 @@ if (!this.isLoggedIn) return;
 
 if (this.gameState === 'playing' && this.hasBet) {
 gameControlCashout.classList.add('show');
-gameControlCashout.innerHTML = `Забрать ${this.currentWinAmount.toFixed(2)} <img src="https://ton.org/download/ton_symbol.png" alt="TON" style="width: 16px; height: 16px; margin-left: 5px;">`;
+gameControlCashout.innerHTML = `ЗАБРАТЬ ${this.currentWinAmount.toFixed(2)} <img src="https://ton.org/download/ton_symbol.png" alt="TON" style="width: 16px; height: 16px; margin-left: 5px;">`;
 } else if (this.nextGameBet) {
 gameControlCancel.classList.add('show');
 } else if (!this.hasBet && !this.nextGameBet) {
@@ -5337,6 +5300,7 @@ this.saveGameData();
 this.updateDisplay();
 this.updatePlayerActionButtons();
 this.updatePlayersDisplay();
+updateFixedPanels();
 const message = currentLanguage === 'ru' ? 'Ставка отменена' : 'Bet cancelled';
 alert(message);
 }
@@ -5346,6 +5310,7 @@ login(nickname) {
 this.isLoggedIn = true;
 this.playerNick = nickname;
 this.updateLoginState();
+updateFixedPanels();
 console.log('Пользователь вошел:', nickname);
 }
 
@@ -5658,7 +5623,6 @@ existingCrash.remove();
 }
 
 document.getElementById('multiplier').className = 'multiplier-display';
-document.getElementById('winDisplay').classList.remove('show');
 
 this.gameLoop();
 }
@@ -5782,7 +5746,6 @@ const scaleFactor = 1 - (this.currentMultiplier - 1) * 0.075;
 const newGridSize = Math.max(baseGridSize * scaleFactor, 10);
 
 gameCanvas.style.setProperty('--grid-size', `${newGridSize}px`);
-gameCanvas.style.backgroundSize = `${newGridSize}px ${newGridSize}px`;
 }
 
 crashGame() {
@@ -5839,6 +5802,7 @@ this.saveGameData();
 this.updateDisplay();
 this.updatePlayerActionButtons();
 this.updateExistingPlayers();
+updateFixedPanels();
 
 if (this.gameHistory.length > 10) {
 this.gameHistory = this.gameHistory.slice(-10);
@@ -5919,6 +5883,7 @@ this.saveGameData();
 this.updateDisplay();
 this.updatePlayerActionButtons();
 this.updatePlayersDisplay();
+updateFixedPanels();
 return true;
 }
 
@@ -5937,9 +5902,8 @@ amount: winAmount
 this.userBets.unshift(result);
 if (this.userBets.length > 3) this.userBets.pop();
 
+// ПОКАЗАТЬ ВЫИГРЫШ В BOTTOM SHEET ВМЕСТО ВЕРХНЕГО УВЕДОМЛЕНИЯ
 this.showWinModal(winAmount, this.currentMultiplier);
-
-showWinNotification(winAmount, 'CRASH');
 
 this.gameHistory.push({
 multiplier: this.currentMultiplier,
@@ -5965,6 +5929,7 @@ document.getElementById('balance').classList.remove('pulse-animation');
 this.updateDisplay();
 this.updatePlayerActionButtons();
 this.updatePlayersDisplay();
+updateFixedPanels();
 }
 
 showWinModal(winAmount, multiplier) {
@@ -6008,6 +5973,7 @@ document.getElementById('winRate').textContent = this.totalGames > 0 ? Math.roun
 this.updateHistory();
 this.updateWalletDisplay();
 updateBetInfoDisplay();
+updateFixedPanels();
 
 const accountBalance = document.getElementById('accountBalance');
 if (accountBalance) {
@@ -6109,6 +6075,7 @@ alert(message);
 this.saveGameData();
 this.updateDisplay();
 this.updateBonusDisplay();
+updateFixedPanels();
 }
 
 withdraw(amount, address) {
@@ -6137,6 +6104,7 @@ const message = currentLanguage === 'ru' ? `Заявка на вывод ${amoun
 alert(message);
 
 this.updateDisplay();
+updateFixedPanels();
 return true;
 }
 }
