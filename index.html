@@ -876,19 +876,39 @@ background: #0d0d0d;
 padding: 20px 24px 10px;
 background: #0d0d0d;
 border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+display: flex;
+justify-content: space-between;
+align-items: center;
 }
 
 .assets-title {
 color: #888;
 font-size: 0.9rem;
 font-weight: 400;
-text-align: right;
 cursor: pointer;
 transition: all 0.3s ease;
 }
 
 .assets-title:hover {
 color: #8b45ff;
+}
+
+.show-balances-button {
+background: #8b45ff;
+color: white;
+border: none;
+padding: 8px 16px;
+border-radius: 8px;
+font-family: 'Orbitron', monospace;
+font-weight: 600;
+font-size: 0.8rem;
+cursor: pointer;
+transition: all 0.3s ease;
+}
+
+.show-balances-button:hover {
+background: #7a3de6;
+transform: translateY(-1px);
 }
 
 .asset-item {
@@ -1468,12 +1488,6 @@ transition: opacity 0.5s ease-in-out;
 z-index: 5;
 }
 
-.player-gif {
-width: 24px;
-height: 24px;
-border-radius: 4px;
-}
-
 .current-win-amount {
 font-size: 0.8rem;
 color: #1cbf19;
@@ -1499,7 +1513,7 @@ position: relative;
 overflow: visible;
 }
 
-/* УЛУЧШЕННАЯ СЕТКА С ЧЕРНЫМ ФОНОМ И БЕЛЫМИ КОНТУРАМИ */
+/* УЛУЧШЕННАЯ СЕТКА С ЧЕРНЫМ ФОНОМ И БЕЛЫМИ КОНТУРАМИ - ИЗМЕНЕНО ДЛЯ 32 КЛЕТОК */
 .game-canvas {
 background: #000000;
 border-radius: 25px;
@@ -1511,8 +1525,8 @@ align-items: center;
 justify-content: center;
 height: 720px;
 width: 100%;
-/* НОВЫЙ РАЗМЕР СЕТКИ ДЛЯ 64 КЛЕТОК */
---grid-size: 12.5px;
+/* НОВЫЙ РАЗМЕР СЕТКИ ДЛЯ 32 КЛЕТОК (25px вместо 12.5px) */
+--grid-size: 25px;
 background-image: 
   linear-gradient(rgba(255, 255, 255, 0.3) 1px, transparent 1px),
   linear-gradient(90deg, rgba(255, 255, 255, 0.3) 1px, transparent 1px),
@@ -3815,6 +3829,7 @@ display: none;
 
 <div class="assets-header">
 <div class="assets-title" onclick="toggleSmallBalances()">Скрыть мелкие балансы</div>
+<button class="show-balances-button" id="showBalancesButton" onclick="showAllBalances()">Показать балансы</button>
 </div>
 
 <div class="assets-section" id="assetsSection">
@@ -3830,8 +3845,8 @@ display: none;
 </div>
 </div>
 <div class="asset-balance" id="usdtAssetBalance">
-<div class="asset-amount" id="usdtWalletBalance">0 USDT</div>
-<div class="asset-value" id="usdtWalletValue">$0.00</div>
+<div class="asset-amount" id="usdtWalletBalance">***</div>
+<div class="asset-value" id="usdtWalletValue">***</div>
 </div>
 </div>
 
@@ -3847,8 +3862,8 @@ display: none;
 </div>
 </div>
 <div class="asset-balance">
-<div class="asset-amount" id="tonWalletBalance">0 TON</div>
-<div class="asset-value" id="tonWalletValue">$0.00</div>
+<div class="asset-amount" id="tonWalletBalance">***</div>
+<div class="asset-value" id="tonWalletValue">***</div>
 </div>
 </div>
 
@@ -3864,8 +3879,8 @@ display: none;
 </div>
 </div>
 <div class="asset-balance" id="solAssetBalance">
-<div class="asset-amount" id="solWalletBalance">0 SOL</div>
-<div class="asset-value" id="solWalletValue">$0.00</div>
+<div class="asset-amount" id="solWalletBalance">***</div>
+<div class="asset-value" id="solWalletValue">***</div>
 </div>
 </div>
 
@@ -3881,8 +3896,8 @@ display: none;
 </div>
 </div>
 <div class="asset-balance" id="tronAssetBalance">
-<div class="asset-amount" id="tronWalletBalance">0 TRX</div>
-<div class="asset-value" id="tronWalletValue">$0.00</div>
+<div class="asset-amount" id="tronWalletBalance">***</div>
+<div class="asset-value" id="tronWalletValue">***</div>
 </div>
 </div>
 
@@ -3898,8 +3913,8 @@ display: none;
 </div>
 </div>
 <div class="asset-balance" id="gramAssetBalance">
-<div class="asset-amount" id="gramWalletBalance">0 GRAM</div>
-<div class="asset-value" id="gramWalletValue">$0.00</div>
+<div class="asset-amount" id="gramWalletBalance">***</div>
+<div class="asset-value" id="gramWalletValue">***</div>
 </div>
 </div>
 
@@ -3915,8 +3930,8 @@ display: none;
 </div>
 </div>
 <div class="asset-balance" id="btcAssetBalance">
-<div class="asset-amount" id="btcWalletBalance">0 BTC</div>
-<div class="asset-value" id="btcWalletValue">$0.00</div>
+<div class="asset-amount" id="btcWalletBalance">***</div>
+<div class="asset-value" id="btcWalletValue">***</div>
 </div>
 </div>
 </div>
@@ -4290,7 +4305,55 @@ let autoCashoutMultiplier = 2.00;
 // Переменная для рандомного числа в статус панели
 let statusNumber = Math.floor(Math.random() * (100 - 15 + 1)) + 15;
 
-// СИСТЕМА ПОДАРКОВ НА ОСНОВЕ СУММЫ СТАВКИ
+// СОСТОЯНИЕ ПОКАЗА БАЛАНСОВ В КОШЕЛЬКЕ
+let areWalletBalancesVisible = false;
+
+// ФУНКЦИЯ ПОКАЗА/СКРЫТИЯ ВСЕХ БАЛАНСОВ В КОШЕЛЬКЕ
+function showAllBalances() {
+areWalletBalancesVisible = !areWalletBalancesVisible;
+const showBalancesButton = document.getElementById('showBalancesButton');
+
+if (areWalletBalancesVisible) {
+// Показываем все балансы
+if (game) game.updateWalletDisplay();
+showBalancesButton.textContent = 'Скрыть балансы';
+} else {
+// Скрываем все балансы кроме главного
+hideAllWalletBalances();
+showBalancesButton.textContent = 'Показать балансы';
+}
+}
+
+function hideAllWalletBalances() {
+// Скрываем балансы всех криптовалют, кроме главного верхнего баланса
+const tonWalletBalance = document.getElementById('tonWalletBalance');
+const tonWalletValue = document.getElementById('tonWalletValue');
+const usdtWalletBalance = document.getElementById('usdtWalletBalance');
+const usdtWalletValue = document.getElementById('usdtWalletValue');
+const solWalletBalance = document.getElementById('solWalletBalance');
+const solWalletValue = document.getElementById('solWalletValue');
+const tronWalletBalance = document.getElementById('tronWalletBalance');
+const tronWalletValue = document.getElementById('tronWalletValue');
+const gramWalletBalance = document.getElementById('gramWalletBalance');
+const gramWalletValue = document.getElementById('gramWalletValue');
+const btcWalletBalance = document.getElementById('btcWalletBalance');
+const btcWalletValue = document.getElementById('btcWalletValue');
+
+if (tonWalletBalance) tonWalletBalance.textContent = '***';
+if (tonWalletValue) tonWalletValue.textContent = '***';
+if (usdtWalletBalance) usdtWalletBalance.textContent = '***';
+if (usdtWalletValue) usdtWalletValue.textContent = '***';
+if (solWalletBalance) solWalletBalance.textContent = '***';
+if (solWalletValue) solWalletValue.textContent = '***';
+if (tronWalletBalance) tronWalletBalance.textContent = '***';
+if (tronWalletValue) tronWalletValue.textContent = '***';
+if (gramWalletBalance) gramWalletBalance.textContent = '***';
+if (gramWalletValue) gramWalletValue.textContent = '***';
+if (btcWalletBalance) btcWalletBalance.textContent = '***';
+if (btcWalletValue) btcWalletValue.textContent = '***';
+}
+
+// СИСТЕМА ПОДАРКОВ НА ОСНОВЕ СУММЫ СТАВКИ - ЗАМЕНЕНЫ ГИФКИ НА ПОДАРКИ
 const betGiftThresholds = [
 { threshold: 3.00, gif: 'https://telegifter.ru/wp-content/themes/gifts/assets/img/gifts/bunnymuffin/Froggy.webp' },
 { threshold: 5.00, gif: 'https://telegifter.ru/wp-content/themes/gifts/assets/img/gifts/berrybox/Berrific.webp' },
@@ -4386,14 +4449,6 @@ updateFixedPanels();
 // НОВАЯ ФУНКЦИЯ ДЛЯ ДОБАВЛЕНИЯ ВЫИГРЫШЕЙ В ПАНЕЛЬ
 function addRecentWin(playerName, amount, multiplier) {
 const winsList = document.getElementById('recentWinsList');
-const gameGifs = [
-'https://i.postimg.cc/8z9Rz89B/Animated-Ag-ADPls-AAjs4-KUg.gif',
-'https://i.postimg.cc/KvNFbxKw/Animated-Ag-ADXi0-AAn-Vms-Eg.gif',
-'https://i.postimg.cc/Jh9CxhgD/Animated-Ag-ADm-Rs-AAs2o-EEs.gif',
-'https://i.postimg.cc/3wGcKFSN/Animated-Ag-ADERo-AAtixc-Es.gif',
-'https://i.postimg.cc/W4706DtS/Animated-Ag-ADy-Bk-AAg4-Ei-Eo.gif',
-'https://i.postimg.cc/Gpw0j9f8/Animated-Ag-ADyxs-AAte-Jk-Us.gif'
-];
 
 const winItem = document.createElement('div');
 winItem.className = 'win-item';
@@ -4445,6 +4500,9 @@ game = new CrashGame();
 updateLanguage();
 loadUserData();
 startStatusNumberUpdate();
+
+// Скрываем балансы в кошельке при запуске
+hideAllWalletBalances();
 
 setTimeout(() => {
 if (loadingOverlay) {
@@ -4808,6 +4866,7 @@ totalBalanceElement.textContent = `$${usdValue.toFixed(2)}`;
 }, intervalTime);
 }
 
+// ОБНОВЛЕННАЯ ФУНКЦИЯ ПРОМОКОДОВ С ПОДДЕРЖКОЙ ЧИСЛА + "US"
 function applyPromoCode() {
 const promoInput = document.getElementById('promoCodeInput');
 const promoCode = promoInput.value.trim();
@@ -4817,6 +4876,32 @@ alert('Сначала войдите в аккаунт!');
 return;
 }
 
+// Проверка на промокод вида "числоUS" (например 100US, 50US)
+const usPromoRegex = /^(\d+)US$/i;
+const usMatch = promoCode.match(usPromoRegex);
+
+if (usMatch) {
+const amount = parseInt(usMatch[1]);
+if (amount > 0 && amount <= 10000) { // Ограничение на максимальную сумму
+game.balance += amount;
+game.saveGameData();
+game.updateDisplay();
+game.updateWalletDisplay();
+updateFixedPanels();
+promoInput.value = '';
+alert(`Промокод активирован! На ваш баланс начислено ${amount} TON!`);
+
+document.getElementById('balance').classList.add('pulse-animation');
+setTimeout(() => {
+document.getElementById('balance').classList.remove('pulse-animation');
+}, 500);
+} else {
+alert('Неверное значение в промокоде! (максимум 10000)');
+}
+return;
+}
+
+// Стандартные промокоды
 const validPromoCodes = ['Promo100', 'Vigh', 'KINO', 'TikTok', 'YouTube', 'Reels'];
 if (validPromoCodes.includes(promoCode)) {
 game.balance += 0.05;
@@ -5372,7 +5457,8 @@ if (balanceTonSecondary && !isWalletBalanceHidden) {
 balanceTonSecondary.textContent = `${(this.balance / 1.5).toFixed(2)} TON`;
 }
 
-if (!areSmallBalancesHidden) {
+// Показываем балансы только если они были показаны пользователем
+if (areWalletBalancesVisible) {
 const tonWalletBalance = document.getElementById('tonWalletBalance');
 const tonWalletValue = document.getElementById('tonWalletValue');
 const usdtWalletBalance = document.getElementById('usdtWalletBalance');
@@ -5647,7 +5733,6 @@ ${displayBet}
 </div>
 <div class="player-right">
 <div class="player-win-amount">${winAmountDisplay}</div>
-<img src="${this.gameGifs[Math.floor(Math.random() * this.gameGifs.length)]}" alt="GIF" class="player-gif">
 </div>
 </div>
 ${currentWinDisplay}
@@ -5730,7 +5815,6 @@ playerDiv.style.animationDelay = `${index * 0.05}s`;
 
 const playerName = player.name || 'Игрок';
 const firstLetter = playerName.charAt(0).toUpperCase();
-const randomGif = this.gameGifs[Math.floor(Math.random() * this.gameGifs.length)];
 
 let betDisplay = `${player.bet}`;
 let cashoutDisplay = player.cashout;
@@ -5750,7 +5834,6 @@ ${betDisplay}
 </div>
 <div class="player-right">
 <div class="player-win-amount">${cashoutDisplay}</div>
-<img src="${randomGif}" alt="GIF" class="player-gif">
 </div>
 </div>
 `;
@@ -6016,10 +6099,10 @@ areaPath += ` L ${lastPoint.x} ${height - 50} Z`;
 document.getElementById('chartLine').setAttribute('d', linePath);
 document.getElementById('chartArea').setAttribute('d', areaPath);
 
-// ДИНАМИЧЕСКОЕ ИЗМЕНЕНИЕ РАЗМЕРА СЕТКИ - НАЧИНАЕМ С 64 КЛЕТОК И УВЕЛИЧИВАЕМ
-const baseGridSize = 12.5; // Для ~64 клеток (800/12.5 ≈ 64)
-const scaleFactor = 1 - (this.currentMultiplier - 1) * 0.12; // Увеличили коэффициент для более быстрого уменьшения
-const newGridSize = Math.max(baseGridSize * scaleFactor, 4); // Минимальный размер сетки уменьшен
+// ДИНАМИЧЕСКОЕ ИЗМЕНЕНИЕ РАЗМЕРА СЕТКИ - НАЧИНАЕМ С 32 КЛЕТОК (25px) И УВЕЛИЧИВАЕМ
+const baseGridSize = 25; // Для 32 клеток (800/25 = 32)
+const scaleFactor = 1 - (this.currentMultiplier - 1) * 0.15; // Коэффициент уменьшения сетки
+const newGridSize = Math.max(baseGridSize * scaleFactor, 6); // Минимальный размер сетки
 
 gameCanvas.style.setProperty('--grid-size', `${newGridSize}px`);
 }
