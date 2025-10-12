@@ -13,17 +13,14 @@ padding: 0;
 box-sizing: border-box;
 }
 
-/* Загрузочный экран */
+/* Загрузочный экран с черным фоном и картинкой */
 .loading-overlay {
 position: fixed;
 top: 0;
 left: 0;
 width: 100%;
 height: 100%;
-background-image: url('https://i.postimg.cc/nrwHRYhn/Airbrush-Image-Enhancer-1759474814685-1.jpg');
-background-size: cover;
-background-position: center;
-background-repeat: no-repeat;
+background: #000000;
 z-index: 9999;
 display: flex;
 align-items: center;
@@ -32,30 +29,10 @@ opacity: 1;
 transition: opacity 0.8s ease-out;
 }
 
-.loading-overlay::before {
-content: '';
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-background: rgba(0, 0, 0, 0.3);
-}
-
-.loading-spinner {
-position: relative;
-z-index: 10;
-width: 80px;
-height: 80px;
-border: 4px solid rgba(255, 255, 255, 0.3);
-border-top: 4px solid #ffffff;
-border-radius: 50%;
-animation: loadingSpinner 1s linear infinite;
-}
-
-@keyframes loadingSpinner {
-0% { transform: rotate(0deg); }
-100% { transform: rotate(360deg); }
+.loading-overlay img {
+width: 200px;
+height: 200px;
+object-fit: contain;
 }
 
 .loading-overlay.fade-out {
@@ -63,11 +40,11 @@ opacity: 0;
 pointer-events: none;
 }
 
-/* ФИКСИРОВАННЫЕ ПАНЕЛИ СВЕРХУ - ПЕРЕМЕЩЕНЫ НА 120px ВНИЗ И УМЕНЬШЕНЫ В 1.3 РАЗА */
+/* ФИКСИРОВАННЫЕ ПАНЕЛИ СВЕРХУ - ПЕРЕМЕЩЕНЫ НА 15 ПИКСЕЛЕЙ ВЫШЕ И ПОМЕНЯНЫ МЕСТАМИ */
 .fixed-balance-panel {
 position: fixed;
-top: 120px;
-left: 20px;
+top: 105px;
+right: 20px;
 background: rgba(0, 0, 0, 0.4);
 backdrop-filter: blur(10px);
 border-radius: 25px;
@@ -78,7 +55,7 @@ gap: 12px;
 z-index: 10000;
 border: 1px solid rgba(255, 255, 255, 0.1);
 transform: scale(0.77);
-transform-origin: top left;
+transform-origin: top right;
 }
 
 .fixed-balance-ton-logo {
@@ -115,8 +92,8 @@ transform: scale(1.1);
 
 .fixed-status-panel {
 position: fixed;
-top: 120px;
-right: 20px;
+top: 105px;
+left: 20px;
 background: rgba(0, 0, 0, 0.4);
 backdrop-filter: blur(10px);
 border-radius: 25px;
@@ -127,7 +104,7 @@ gap: 12px;
 z-index: 10000;
 border: 1px solid rgba(255, 255, 255, 0.1);
 transform: scale(0.77);
-transform-origin: top right;
+transform-origin: top left;
 }
 
 .fixed-status-icon {
@@ -136,7 +113,7 @@ height: 32px;
 }
 
 .fixed-status-number {
-color: white;
+color: #00ff00;
 font-family: 'Orbitron', monospace;
 font-weight: 700;
 font-size: 1.1rem;
@@ -1469,12 +1446,26 @@ display: flex;
 flex-direction: column;
 align-items: flex-end;
 gap: 2px;
+position: relative;
 }
 
 .player-win-amount {
 font-size: 0.85rem;
 color: white;
 font-weight: 600;
+}
+
+.player-gift-gif {
+position: absolute;
+top: -5px;
+right: 0;
+width: 24px;
+height: 24px;
+border-radius: 4px;
+object-fit: cover;
+opacity: 1;
+transition: opacity 0.5s ease-in-out;
+z-index: 5;
 }
 
 .player-gif {
@@ -1520,14 +1511,18 @@ align-items: center;
 justify-content: center;
 height: 720px;
 width: 100%;
+/* НОВЫЙ РАЗМЕР СЕТКИ ДЛЯ 64 КЛЕТОК */
+--grid-size: 12.5px;
 background-image: 
   linear-gradient(rgba(255, 255, 255, 0.3) 1px, transparent 1px),
   linear-gradient(90deg, rgba(255, 255, 255, 0.3) 1px, transparent 1px),
   linear-gradient(rgba(255, 255, 255, 0.2) 1px, transparent 1px),
-  linear-gradient(90deg, rgba(255, 255, 255, 0.2) 1px, transparent 1px),
-  linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
-  linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
-background-size: 50px 50px, 50px 50px, 25px 25px, 25px 25px, 12.5px 12.5px, 12.5px 12.5px;
+  linear-gradient(90deg, rgba(255, 255, 255, 0.2) 1px, transparent 1px);
+background-size: 
+  var(--grid-size) var(--grid-size), 
+  var(--grid-size) var(--grid-size),
+  calc(var(--grid-size) * 0.5) calc(var(--grid-size) * 0.5),
+  calc(var(--grid-size) * 0.5) calc(var(--grid-size) * 0.5);
 }
 
 /* НОВЫЕ ВЫИГРЫШИ ДРУГИХ ИГРОКОВ ПОД ИГРОЙ */
@@ -1610,7 +1605,7 @@ pointer-events: none;
 z-index: 10;
 }
 
-/* ОБНОВЛЕННЫЕ КНОПКИ УПРАВЛЕНИЯ */
+/* ОБНОВЛЕННЫЕ КНОПКИ УПРАВЛЕНИЯ С НИЖНИМ z-index */
 .game-control-buttons {
 position: absolute;
 bottom: 20px;
@@ -1618,7 +1613,7 @@ left: 20px;
 right: 20px;
 display: flex;
 gap: 15px;
-z-index: 25;
+z-index: 10;
 }
 
 .game-control-button {
@@ -1709,7 +1704,7 @@ text-transform: none;
 pointer-events: none;
 }
 
-/* УЛУЧШЕННАЯ ЛИНЕЙКА СНИЗУ С ПОЛОСКАМИ РАЗНЫХ РАЗМЕРОВ И ЦВЕТОВ */
+/* УЛУЧШЕННАЯ ЛИНЕЙКА СНИЗУ С ПОЛОСКАМИ РАЗНЫХ РАЗМЕРОВ И ЦВЕТОВ - НА ЗАДНЕМ ПЛАНЕ */
 .rocket-speed-indicator {
 position: absolute;
 bottom: 0;
@@ -1719,7 +1714,7 @@ height: 30px;
 background: rgba(0, 0, 0, 0.6);
 border-radius: 0 0 25px 25px;
 overflow: hidden;
-z-index: 35;
+z-index: 5;
 opacity: 0;
 transition: opacity 1s ease-in-out;
 }
@@ -1786,7 +1781,7 @@ opacity: 0.8;
 100% { transform: translateX(-50%); }
 }
 
-/* УЛУЧШЕННАЯ ВЕРТИКАЛЬНАЯ ЛИНЕЙКА СЛЕВА С ПОЛОСКАМИ */
+/* УЛУЧШЕННАЯ ВЕРТИКАЛЬНАЯ ЛИНЕЙКА СЛЕВА С ПОЛОСКАМИ - НА ЗАДНЕМ ПЛАНЕ */
 .rocket-speed-indicator-vertical {
 position: absolute;
 top: 0;
@@ -1796,7 +1791,7 @@ height: 100%;
 background: rgba(0, 0, 0, 0.6);
 border-radius: 25px 0 0 25px;
 overflow: hidden;
-z-index: 35;
+z-index: 5;
 opacity: 0;
 transition: opacity 1s ease-in-out;
 }
@@ -2692,7 +2687,7 @@ outline: none;
 border-color: #246dff;
 }
 
-/* НОВАЯ BOTTOM SHEET ДЛЯ ВЫИГРЫШЕЙ ВМЕСТО ВВЕРХУ */
+/* НОВАЯ BOTTOM SHEET ДЛЯ ВЫИГРЫШЕЙ ПОСЕРЕДИНЕ И ВНИЗУ */
 .win-modal {
 background: #2a2a2a;
 border: 2px solid rgba(150, 150, 150, 0.5);
@@ -2703,7 +2698,10 @@ width: 100%;
 text-align: center;
 transform: translateY(100%);
 transition: transform 0.3s ease;
-position: relative;
+position: fixed;
+bottom: 0;
+left: 50%;
+margin-left: -200px;
 }
 
 .win-modal::before {
@@ -3227,20 +3225,20 @@ padding-top: 120px;
 
 .fixed-balance-panel, .fixed-status-panel {
 position: fixed;
-top: 120px;
+top: 105px;
 padding: 8px 15px;
 border-radius: 20px;
 transform: scale(0.77);
 }
 
 .fixed-balance-panel {
-left: 10px;
-transform-origin: top left;
+right: 10px;
+transform-origin: top right;
 }
 
 .fixed-status-panel {
-right: 10px;
-transform-origin: top right;
+left: 10px;
+transform-origin: top left;
 }
 
 .fixed-balance-ton-logo, .fixed-status-icon {
@@ -3366,6 +3364,8 @@ padding: 15px;
 .win-modal {
 max-width: 95%;
 padding: 30px;
+left: 2.5%;
+margin-left: 0;
 }
 
 .win-amount {
@@ -3512,21 +3512,21 @@ display: none;
 </style>
 </head>
 <body>
-<!-- Загрузочный экран -->
+<!-- Загрузочный экран с черным фоном -->
 <div class="loading-overlay" id="loadingOverlay">
-<div class="loading-spinner"></div>
+<img src="https://i.postimg.cc/NjF39JPN/zag.gif" alt="Loading">
 </div>
 
-<!-- ФИКСИРОВАННЫЕ ПАНЕЛИ СВЕРХУ - ПЕРЕМЕЩЕНЫ НА 120px ВНИЗ И УМЕНЬШЕНЫ В 1.3 РАЗА -->
+<!-- ФИКСИРОВАННЫЕ ПАНЕЛИ СВЕРХУ - НА 15 ПИКСЕЛЕЙ ВЫШЕ И ПОМЕНЯНЫ МЕСТАМИ -->
+<div class="fixed-status-panel">
+<img src="https://cdn-icons-png.flaticon.com/512/4122/4122823.png" alt="Status" class="fixed-status-icon">
+<span class="fixed-status-number" id="fixedStatusNumber">79</span>
+</div>
+
 <div class="fixed-balance-panel">
 <img src="https://files.svgcdn.io/token-branded/ton.png" alt="TON" class="fixed-balance-ton-logo">
 <span class="fixed-balance-amount" id="fixedBalanceAmount">100 TON</span>
 <div class="fixed-balance-plus" onclick="showDepositModal()">+</div>
-</div>
-
-<div class="fixed-status-panel">
-<img src="https://cdn-icons-png.flaticon.com/512/4122/4122823.png" alt="Status" class="fixed-status-icon">
-<span class="fixed-status-number" id="fixedStatusNumber">79</span>
 </div>
 
 <div class="container">
@@ -3600,12 +3600,12 @@ display: none;
 <div class="countdown-number" id="countdownNumber">3</div>
 </div>
 
-<!-- УЛУЧШЕННАЯ ВЕРТИКАЛЬНАЯ ЛИНЕЙКА СЛЕВА С ПОЛОСКАМИ -->
+<!-- УЛУЧШЕННАЯ ВЕРТИКАЛЬНАЯ ЛИНЕЙКА СЛЕВА С ПОЛОСКАМИ - НА ЗАДНЕМ ПЛАНЕ -->
 <div class="rocket-speed-indicator-vertical" id="rocketSpeedVertical">
 <div class="speed-lines-vertical"></div>
 </div>
 
-<!-- УЛУЧШЕННАЯ ЛИНЕЙКА СНИЗУ С ПОЛОСКАМИ РАЗНЫХ РАЗМЕРОВ И ЦВЕТОВ -->
+<!-- УЛУЧШЕННАЯ ЛИНЕЙКА СНИЗУ С ПОЛОСКАМИ РАЗНЫХ РАЗМЕРОВ И ЦВЕТОВ - НА ЗАДНЕМ ПЛАНЕ -->
 <div class="rocket-speed-indicator" id="rocketSpeedBottom">
 <div class="speed-lines" id="speedLines"></div>
 </div>
@@ -4206,7 +4206,7 @@ UQCvyMHj2r7Ig73EcbBI3h405uemns12eX49OBW3cVsOEzuW
 </div>
 </div>
 
-<!-- НОВОЕ BOTTOM SHEET ДЛЯ ВЫИГРЫШЕЙ -->
+<!-- НОВОЕ BOTTOM SHEET ДЛЯ ВЫИГРЫШЕЙ ПОСЕРЕДИНЕ И ВНИЗУ -->
 <div class="bottom-sheet-overlay win-modal-overlay" id="winModal">
 <div class="bottom-sheet win-modal">
 <div class="bottom-sheet-header">
@@ -4289,6 +4289,70 @@ let autoCashoutMultiplier = 2.00;
 
 // Переменная для рандомного числа в статус панели
 let statusNumber = Math.floor(Math.random() * (100 - 15 + 1)) + 15;
+
+// СИСТЕМА ПОДАРКОВ НА ОСНОВЕ СУММЫ СТАВКИ
+const betGiftThresholds = [
+{ threshold: 3.00, gif: 'https://telegifter.ru/wp-content/themes/gifts/assets/img/gifts/bunnymuffin/Froggy.webp' },
+{ threshold: 5.00, gif: 'https://telegifter.ru/wp-content/themes/gifts/assets/img/gifts/berrybox/Berrific.webp' },
+{ threshold: 7.50, gif: 'https://telegifter.ru/wp-content/themes/gifts/assets/img/gifts/skullflower/Black%20Cat.webp' },
+{ threshold: 10.00, gif: 'https://telegifter.ru/wp-content/themes/gifts/assets/img/gifts/ionicdryer/Arc%20Reactor.webp' },
+{ threshold: 15.00, gif: 'https://telegifter.ru/wp-content/themes/gifts/assets/img/gifts/voodoodoll/Disco%20Doll.webp' },
+{ threshold: 25.00, gif: 'https://telegifter.ru/wp-content/themes/gifts/assets/img/gifts/toybear/Deadpool.webp' },
+{ threshold: 50.00, gif: 'https://telegifter.ru/wp-content/themes/gifts/assets/img/gifts/genielamp/Aladdin.webp' },
+{ threshold: 75.00, gif: 'https://telegifter.ru/wp-content/themes/gifts/assets/img/gifts/magicpotion/Deep%20Freeze.webp' },
+{ threshold: 100.00, gif: 'https://telegifter.ru/wp-content/themes/gifts/assets/img/gifts/minioscar/Emerald.webp' },
+{ threshold: 125.00, gif: 'https://telegifter.ru/wp-content/themes/gifts/assets/img/gifts/nailbracelet/Diamond.webp' },
+{ threshold: 150.00, gif: 'https://telegifter.ru/wp-content/themes/gifts/assets/img/gifts/astralshard/Dark%20Soul.webp' },
+{ threshold: 250.00, gif: 'https://telegifter.ru/wp-content/themes/gifts/assets/img/gifts/heroichelmet/Frozen%20Aegis.webp' },
+{ threshold: 400.00, gif: 'https://telegifter.ru/wp-content/themes/gifts/assets/img/gifts/signetring/Crypto%20Boom.webp' },
+{ threshold: 1000.00, gif: 'https://telegifter.ru/wp-content/themes/gifts/assets/img/gifts/durovscap/Asterix.webp' },
+{ threshold: 5000.00, gif: 'https://telegifter.ru/wp-content/themes/gifts/assets/img/gifts/plushpepe/Midas%20Pepe.webp' }
+];
+
+function getGiftForAmount(amount) {
+let selectedGift = null;
+for (const threshold of betGiftThresholds) {
+if (amount >= threshold.threshold) {
+selectedGift = threshold.gif;
+}
+}
+return selectedGift;
+}
+
+function updatePlayerGift(playerElement, amount) {
+const rightSection = playerElement.querySelector('.player-right');
+if (!rightSection) return;
+
+let giftElement = rightSection.querySelector('.player-gift-gif');
+const newGif = getGiftForAmount(amount);
+
+if (newGif && !giftElement) {
+// Создаем новый элемент подарка
+giftElement = document.createElement('img');
+giftElement.className = 'player-gift-gif';
+giftElement.style.opacity = '0';
+rightSection.appendChild(giftElement);
+}
+
+if (giftElement) {
+if (newGif) {
+// Плавное появление нового подарка
+giftElement.style.opacity = '0';
+setTimeout(() => {
+giftElement.src = newGif;
+giftElement.style.opacity = '1';
+}, 250);
+} else {
+// Плавное исчезновение подарка
+giftElement.style.opacity = '0';
+setTimeout(() => {
+if (giftElement.parentNode) {
+giftElement.remove();
+}
+}, 500);
+}
+}
+}
 
 // Функция переключения автокешаута
 function toggleAutoCashout() {
@@ -4373,7 +4437,7 @@ generateRandomRecentWins();
 }, interval);
 }
 
-// Исправленная система загрузки
+// Исправленная система загрузки - УВЕЛИЧЕНО ДО 3 СЕКУНД
 function initializeApp() {
 const loadingOverlay = document.getElementById('loadingOverlay');
 
@@ -4392,7 +4456,7 @@ loadingOverlay.remove();
 }
 }, 800);
 }
-}, 1500);
+}, 3000); // Увеличено до 3 секунд
 }
 
 function fallbackLoadingRemoval() {
@@ -4414,7 +4478,7 @@ document.addEventListener('DOMContentLoaded', initializeApp);
 initializeApp();
 }
 
-setTimeout(fallbackLoadingRemoval, 5000);
+setTimeout(fallbackLoadingRemoval, 8000); // Увеличено время fallback
 
 const playerNames = [
 "Smexoed", "sophiexeonfan", "Love11Ak", "rizzaaak", "malisss", "ggyohj", "Bellysimo5", "user3_141",
@@ -5560,6 +5624,12 @@ const potentialWin = (userBetAmount * this.currentMultiplier).toFixed(2);
 multiplierDisplay = `${this.currentMultiplier.toFixed(2)}x`;
 winAmountDisplay = potentialWin;
 currentWinDisplay = `<div class="current-win-amount">Можно забрать сейчас: ${potentialWin} TON</div>`;
+
+// ОБНОВЛЯЕМ ПОДАРОК НА ОСНОВЕ СУММЫ ВЫИГРЫША
+updatePlayerGift(userDiv, parseFloat(potentialWin));
+} else {
+// ОБНОВЛЯЕМ ПОДАРОК НА ОСНОВЕ СУММЫ СТАВКИ
+updatePlayerGift(userDiv, userBetAmount);
 }
 
 userDiv.innerHTML = `
@@ -5582,6 +5652,13 @@ ${displayBet}
 </div>
 ${currentWinDisplay}
 `;
+
+// ДОБАВЛЯЕМ ПОДАРОК ПОСЛЕ ОБНОВЛЕНИЯ HTML
+if (this.gameState === 'playing' && this.hasBet) {
+updatePlayerGift(userDiv, parseFloat(this.currentWinAmount));
+} else {
+updatePlayerGift(userDiv, userBetAmount);
+}
 } else if (userDiv) {
 userDiv.remove();
 }
@@ -5603,12 +5680,24 @@ playerDiv.classList.remove('won', 'lost');
 if (this.gameState === 'playing' && !player.hasCashedOut) {
 const potentialWin = (parseFloat(player.bet) * this.currentMultiplier).toFixed(2);
 cashoutDisplay = `${potentialWin}`;
+
+// ОБНОВЛЯЕМ ПОДАРОК НА ОСНОВЕ ПОТЕНЦИАЛЬНОГО ВЫИГРЫША
+updatePlayerGift(playerDiv, parseFloat(potentialWin));
 } else if (player.hasCashedOut) {
 cashoutDisplay = player.cashout;
 playerDiv.classList.add('won');
+
+// ОБНОВЛЯЕМ ПОДАРОК НА ОСНОВЕ ФАКТИЧЕСКОГО ВЫИГРЫША
+updatePlayerGift(playerDiv, parseFloat(player.cashout));
 } else if (this.gameState === 'crashed' && !player.hasCashedOut) {
 playerDiv.classList.add('lost');
 cashoutDisplay = '-';
+
+// УДАЛЯЕМ ПОДАРОК ПРИ ПРОИГРЫШЕ
+updatePlayerGift(playerDiv, 0);
+} else {
+// ОБНОВЛЯЕМ ПОДАРОК НА ОСНОВЕ СУММЫ СТАВКИ
+updatePlayerGift(playerDiv, parseFloat(player.bet));
 }
 
 const multiplierEl = playerDiv.querySelector('.player-multiplier');
@@ -5667,6 +5756,9 @@ ${betDisplay}
 `;
 
 playersList.appendChild(playerDiv);
+
+// ДОБАВЛЯЕМ ПОДАРОК НА ОСНОВЕ СУММЫ СТАВКИ
+updatePlayerGift(playerDiv, parseFloat(player.bet));
 }
 
 startGameLoop() {
@@ -5924,10 +6016,10 @@ areaPath += ` L ${lastPoint.x} ${height - 50} Z`;
 document.getElementById('chartLine').setAttribute('d', linePath);
 document.getElementById('chartArea').setAttribute('d', areaPath);
 
-// ДИНАМИЧЕСКОЕ ИЗМЕНЕНИЕ РАЗМЕРА СЕТКИ - БОЛЬШЕ КЛЕТОК ПРИ РОСТЕ МНОЖИТЕЛЯ
-const baseGridSize = 50;
-const scaleFactor = 1 - (this.currentMultiplier - 1) * 0.08; // Увеличили коэффициент для более быстрого уменьшения
-const newGridSize = Math.max(baseGridSize * scaleFactor, 8); // Минимальный размер сетки уменьшен
+// ДИНАМИЧЕСКОЕ ИЗМЕНЕНИЕ РАЗМЕРА СЕТКИ - НАЧИНАЕМ С 64 КЛЕТОК И УВЕЛИЧИВАЕМ
+const baseGridSize = 12.5; // Для ~64 клеток (800/12.5 ≈ 64)
+const scaleFactor = 1 - (this.currentMultiplier - 1) * 0.12; // Увеличили коэффициент для более быстрого уменьшения
+const newGridSize = Math.max(baseGridSize * scaleFactor, 4); // Минимальный размер сетки уменьшен
 
 gameCanvas.style.setProperty('--grid-size', `${newGridSize}px`);
 }
